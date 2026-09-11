@@ -1,0 +1,1 @@
+The actual text of Strong's Hebrew dictionary remains in the public domain. The files from which the BDB was added to this project are copyright by the Open Scriptures Hebrew Bible Project. They are freely sharable under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.

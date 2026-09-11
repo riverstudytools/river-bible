@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "defaultTranslationId": 10,
+  "darkMode": true,
+  "redLetter": false,
+  "showEdits": true,
+  "keepSidebarOpen": false,
+  "fontScale": 1.05,
+  "copyIncludeQuotes": true,
+  "copyIncludeReference": true,
+  "copyIncludeTranslationCode": false,
+  "copyIncludeVerseNumbers": false,
+  "translationGroups": [
+    {
+      "id": "favorites",
+      "name": "Favorites",
+      "translationIds": [
+        10,
+        2
+      ]
+    },
+    {
+      "id": "ot",
+      "name": "Old Testament",
+      "translationIds": [
+        5,
+        8,
+        14,
+        15,
+        17,
+        16
+      ]
+    },
+    {
+      "id": "nt",
+      "name": "New Testament",
+      "translationIds": [
+        6,
+        7,
+        13
+      ]
+    }
+  ]
+}

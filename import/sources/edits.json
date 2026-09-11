@@ -1,0 +1,20 @@
+{
+  "HFB:Matthew:5:39:6": {
+    "version": "HFB",
+    "book": "Matthew",
+    "chapter": 5,
+    "verse": 39,
+    "position": 6,
+    "gloss": "the",
+    "updated_at": "2026-09-07T19:05:49.406141+00:00"
+  },
+  "HFB:John:1:18:5": {
+    "version": "HFB",
+    "book": "John",
+    "chapter": 1,
+    "verse": 18,
+    "position": 5,
+    "gloss": "[but] the only-begotten",
+    "updated_at": "2026-09-07T19:10:10.560106+00:00"
+  }
+}

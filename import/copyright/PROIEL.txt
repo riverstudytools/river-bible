@@ -1,0 +1,2 @@
+The Latin PROIEL treebank, which contains much parsed Vulgate text, is from https://github.com/UniversalDependencies/UD_Latin-PROIEL. This work is licensed under the Creative Commons Attribution-NonCommercial-
+ShareAlike 4.0 Generic License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
