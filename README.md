@@ -20,17 +20,15 @@ The River Bible app contains original texts and translations of the main text fa
 Old Testament
 - Masoretic Text
 - Septuagint (LXX)
-(coming soon)
-- Dead Sea Scrolls
+- Dead Sea Scrolls (just the original)
 - Samaritan Pentateuch
 
 New Testament
 - Byzantine (Majority) Text
 - Critical Text
 - Textus Receptus
-(coming soon)
 - Latin Vulgate
-- Syriac Peshitta
+- Syriac Peshitta (just a translation)
 
 Also included are the Old Testament Apocrypha/Deuterocanon.
 
@@ -42,6 +40,7 @@ Hebrew
 
 Greek
 - Abbott-Smith
+- Dodson
 
 # Build
 
@@ -57,6 +56,11 @@ pip install pysword --break-system-packages
 
 cd /path/to/river-bible
 npx --yes @electron-forge/cli import
+
+## Build Pipeline
+
+        ./build_database.sh # Builds the database from the raw text
+        ./build.sh          # Builds the electron app as an AppImage
 
 # Attribution
 
