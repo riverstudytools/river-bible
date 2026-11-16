@@ -80,6 +80,19 @@ def fix_crossref_html(s):
     return re.sub(r'href\s*=\s*\|(\.\./[^|]+)\|', repl, s)
 
 
+def strip_reftext(s):
+    """Berean's TSV embeds a clickable verse-number badge —
+    <span class=|reftext|><a href=|#|><b>1</b></a></span> — right in the
+    begQ/pnc/endQ/endText of some verses' first word (verse 1 of a chapter,
+    at least — see Psalm 3:1, where it lands on "O LORD"'s begQ). The app
+    already draws its own verse number from verses.verse (index.html's
+    <sup class="vnum">), so this leftover badge is dropped whole — tag AND
+    digit, not just the tag — or the digit survives as plain text baked
+    into the word's own punctuation (e.g. "1O LORD" instead of a proper,
+    separately-clickable verse number)."""
+    return re.sub(r'<span class=\|reftext\|>.*?</span>', '', s or '', flags=re.S)
+
+
 def import_translation(con, translation_id, book_id_by_name, rows):
     """Populates verses, words, and edits for one translation."""
     now = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
@@ -113,10 +126,10 @@ def import_translation(con, translation_id, book_id_by_name, rows):
             translit_val = row[COL['translit']] if len(row) > COL['translit'] else ''
             parsing_val = row[COL['parsing']] if len(row) > COL['parsing'] else ''
             gloss_val = row[COL['gloss']] if len(row) > COL['gloss'] else ''
-            beg_q_val = row[COL['begQ']] if len(row) > COL['begQ'] else ''
-            pnc_val = row[COL['pnc']] if len(row) > COL['pnc'] else ''
-            end_q_val = row[COL['endQ']] if len(row) > COL['endQ'] else ''
-            end_text_val = row[COL['endText']] if len(row) > COL['endText'] else ''
+            beg_q_val = strip_reftext(row[COL['begQ']]) if len(row) > COL['begQ'] else ''
+            pnc_val = strip_reftext(row[COL['pnc']]) if len(row) > COL['pnc'] else ''
+            end_q_val = strip_reftext(row[COL['endQ']]) if len(row) > COL['endQ'] else ''
+            end_text_val = strip_reftext(row[COL['endText']]) if len(row) > COL['endText'] else ''
             footnotes_val = row[COL['footnotes']] if len(row) > COL['footnotes'] else ''
             hdg_val = row[COL['hdg']] if len(row) > COL['hdg'] else ''
             crossref_val = row[COL['crossref']] if len(row) > COL['crossref'] else ''

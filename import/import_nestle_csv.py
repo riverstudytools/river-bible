@@ -94,8 +94,9 @@ def parse_nestle_file(file_path):
                 verses_dict[verse_key] = []
 
             verses_dict[verse_key].append({
-                'gloss': word_clean,  # Display text in UI
-                'original': lemma or word_clean,  # Original dictionary lemma for popover
+                'gloss': word_clean,      # Display text in UI (same convention as the Swete/Robinson importers)
+                'original': word_clean,   # Source-language surface text
+                'lemma': lemma,           # Dictionary form, straight from the file's own lemma column
                 'strong': format_strongs(strongs_raw),
                 'parsing': form_morph,
                 'beg_q': beg_q,
@@ -178,7 +179,7 @@ def import_nestle_translation(con, translation_id, verse_records):
             (
                 verse_id, pos, 'Greek',
                 w_obj['original'], None, w_obj['parsing'], w_obj['strong'],
-                w_obj['gloss'], w_obj['beg_q'], w_obj['pnc'], '', '',
+                w_obj['lemma'], w_obj['gloss'], w_obj['beg_q'], w_obj['pnc'], '', '',
                 None, None, None, None
             )
             for pos, w_obj in enumerate(rec['words'])
@@ -187,8 +188,8 @@ def import_nestle_translation(con, translation_id, verse_records):
         con.executemany(
             """INSERT INTO words(
                 verse_id, position, lang, original, translit, parsing, strong,
-                gloss, beg_q, pnc, end_q, end_text, footnote, hdg, crossref, par_classes
-            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                lemma, gloss, beg_q, pnc, end_q, end_text, footnote, hdg, crossref, par_classes
+            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             words_batch
         )
         words_inserted += len(words_batch)

@@ -2,3 +2,5 @@ node_modules/
 .stignore
 bible.sqlite
 bible.sqlite-shm
+out/
+import/sources/kaikki.org-dictionary-AncientGreek.jsonl

@@ -139,7 +139,8 @@ def load_zefania_verses(path):
                 if not verse:
                     continue
                 text = ''.join(verse_elem.itertext()).strip()
-                if text:
+                # Skip dummy/placeholder verses inserted by source maintainer
+                if text and 'dummy verses inserted by amos' not in text.lower():
                     yield book_full, chapter, int(verse), text
 
 

@@ -1,10 +1,12 @@
 {
   "version": 1,
-  "defaultTranslationId": 10,
+  "appName": "River Bible App",
+  "defaultTranslationCode": "HFB",
   "darkMode": true,
   "redLetter": false,
   "showEdits": true,
   "keepSidebarOpen": false,
+  "relatedWordsDefault": "off",
   "fontScale": 1.05,
   "copyIncludeQuotes": true,
   "copyIncludeReference": true,
@@ -14,30 +16,31 @@
     {
       "id": "favorites",
       "name": "Favorites",
-      "translationIds": [
-        10,
-        2
+      "translationCodes": [
+        "HFB",
+        "BSB"
       ]
     },
     {
       "id": "ot",
       "name": "Old Testament",
-      "translationIds": [
-        5,
-        8,
-        14,
-        15,
-        17,
-        16
+      "translationCodes": [
+        "BLXX",
+        "SLXX",
+        "WLC",
+        "DSS",
+        "Samaritan",
+        "SPE"
       ]
     },
     {
       "id": "nt",
       "name": "New Testament",
-      "translationIds": [
-        6,
-        7,
-        13
+      "translationCodes": [
+        "BYZ",
+        "Nestle",
+        "TR",
+        "Murdock"
       ]
     }
   ]

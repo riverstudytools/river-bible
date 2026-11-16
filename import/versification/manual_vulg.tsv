@@ -1,0 +1,2296 @@
+book	from_tradition	from_chapter	from_verse	to_tradition	to_ref
+genesis	VUL	32	1	MT	31:55
+genesis	VUL	32	2	MT	32:1
+genesis	VUL	32	3	MT	32:2
+genesis	VUL	32	4	MT	32:3
+genesis	VUL	32	5	MT	32:4
+genesis	VUL	32	6	MT	32:5
+genesis	VUL	32	7	MT	32:6
+genesis	VUL	32	8	MT	32:7
+genesis	VUL	32	9	MT	32:8
+genesis	VUL	32	10	MT	32:9
+genesis	VUL	32	11	MT	32:10
+genesis	VUL	32	12	MT	32:11
+genesis	VUL	32	13	MT	32:12
+genesis	VUL	32	14	MT	32:13
+genesis	VUL	32	15	MT	32:14
+genesis	VUL	32	16	MT	32:15
+genesis	VUL	32	17	MT	32:16
+genesis	VUL	32	18	MT	32:17
+genesis	VUL	32	19	MT	32:18
+genesis	VUL	32	20	MT	32:19
+genesis	VUL	32	21	MT	32:20
+genesis	VUL	32	22	MT	32:21
+genesis	VUL	32	23	MT	32:22
+genesis	VUL	32	24	MT	32:23
+genesis	VUL	32	25	MT	32:24
+genesis	VUL	32	26	MT	32:25
+genesis	VUL	32	27	MT	32:26
+genesis	VUL	32	28	MT	32:27
+genesis	VUL	32	29	MT	32:28
+genesis	VUL	32	30	MT	32:29
+genesis	VUL	32	31	MT	32:30
+genesis	VUL	32	32	MT	32:31
+genesis	VUL	32	33	MT	32:32
+exodus	VUL	7	26	MT	8:1
+exodus	VUL	7	27	MT	8:2
+exodus	VUL	7	28	MT	8:3
+exodus	VUL	7	29	MT	8:4
+exodus	VUL	8	1	MT	8:5
+exodus	VUL	8	2	MT	8:6
+exodus	VUL	8	3	MT	8:7
+exodus	VUL	8	4	MT	8:8
+exodus	VUL	8	5	MT	8:9
+exodus	VUL	8	6	MT	8:10
+exodus	VUL	8	7	MT	8:11
+exodus	VUL	8	8	MT	8:12
+exodus	VUL	8	9	MT	8:13
+exodus	VUL	8	10	MT	8:14
+exodus	VUL	8	11	MT	8:15
+exodus	VUL	8	12	MT	8:16
+exodus	VUL	8	13	MT	8:17
+exodus	VUL	8	14	MT	8:18
+exodus	VUL	8	15	MT	8:19
+exodus	VUL	8	16	MT	8:20
+exodus	VUL	8	17	MT	8:21
+exodus	VUL	8	18	MT	8:22
+exodus	VUL	8	19	MT	8:23
+exodus	VUL	8	20	MT	8:24
+exodus	VUL	8	21	MT	8:25
+exodus	VUL	8	22	MT	8:26
+exodus	VUL	8	23	MT	8:27
+exodus	VUL	8	24	MT	8:28
+exodus	VUL	8	25	MT	8:29
+exodus	VUL	8	26	MT	8:30
+exodus	VUL	8	27	MT	8:31
+exodus	VUL	8	28	MT	8:32
+exodus	VUL	21	37	MT	22:1
+exodus	VUL	22	1	MT	22:2
+exodus	VUL	22	2	MT	22:3
+exodus	VUL	22	3	MT	22:4
+exodus	VUL	22	4	MT	22:5
+exodus	VUL	22	5	MT	22:6
+exodus	VUL	22	6	MT	22:7
+exodus	VUL	22	7	MT	22:8
+exodus	VUL	22	8	MT	22:9
+exodus	VUL	22	9	MT	22:10
+exodus	VUL	22	10	MT	22:11
+exodus	VUL	22	11	MT	22:12
+exodus	VUL	22	12	MT	22:13
+exodus	VUL	22	13	MT	22:14
+exodus	VUL	22	14	MT	22:15
+exodus	VUL	22	15	MT	22:16
+exodus	VUL	22	16	MT	22:17
+exodus	VUL	22	17	MT	22:18
+exodus	VUL	22	18	MT	22:19
+exodus	VUL	22	19	MT	22:20
+exodus	VUL	22	20	MT	22:21
+exodus	VUL	22	21	MT	22:22
+exodus	VUL	22	22	MT	22:23
+exodus	VUL	22	23	MT	22:24
+exodus	VUL	22	24	MT	22:25
+exodus	VUL	22	25	MT	22:26
+exodus	VUL	22	26	MT	22:27
+exodus	VUL	22	27	MT	22:28
+exodus	VUL	22	28	MT	22:29
+exodus	VUL	22	29	MT	22:30
+exodus	VUL	22	30	MT	22:31
+leviticus	VUL	5	20	MT	6:1
+leviticus	VUL	5	21	MT	6:2
+leviticus	VUL	5	22	MT	6:3
+leviticus	VUL	5	23	MT	6:4
+leviticus	VUL	5	24	MT	6:5
+leviticus	VUL	5	25	MT	6:6
+leviticus	VUL	5	26	MT	6:7
+leviticus	VUL	6	1	MT	6:8
+leviticus	VUL	6	2	MT	6:9
+leviticus	VUL	6	3	MT	6:10
+leviticus	VUL	6	4	MT	6:11
+leviticus	VUL	6	5	MT	6:12
+leviticus	VUL	6	6	MT	6:13
+leviticus	VUL	6	7	MT	6:14
+leviticus	VUL	6	8	MT	6:15
+leviticus	VUL	6	9	MT	6:16
+leviticus	VUL	6	10	MT	6:17
+leviticus	VUL	6	11	MT	6:18
+leviticus	VUL	6	12	MT	6:19
+leviticus	VUL	6	13	MT	6:20
+leviticus	VUL	6	14	MT	6:21
+leviticus	VUL	6	15	MT	6:22
+leviticus	VUL	6	16	MT	6:23
+leviticus	VUL	6	17	MT	6:24
+leviticus	VUL	6	18	MT	6:25
+leviticus	VUL	6	19	MT	6:26
+leviticus	VUL	6	20	MT	6:27
+leviticus	VUL	6	21	MT	6:28
+leviticus	VUL	6	22	MT	6:29
+leviticus	VUL	6	23	MT	6:30
+numbers	VUL	17	1	MT	16:36
+numbers	VUL	17	2	MT	16:37
+numbers	VUL	17	3	MT	16:38
+numbers	VUL	17	4	MT	16:39
+numbers	VUL	17	5	MT	16:40
+numbers	VUL	17	6	MT	16:41
+numbers	VUL	17	7	MT	16:42
+numbers	VUL	17	8	MT	16:43
+numbers	VUL	17	9	MT	16:44
+numbers	VUL	17	10	MT	16:45
+numbers	VUL	17	11	MT	16:46
+numbers	VUL	17	12	MT	16:47
+numbers	VUL	17	13	MT	16:48
+numbers	VUL	17	14	MT	16:49
+numbers	VUL	17	15	MT	16:50
+numbers	VUL	17	16	MT	17:1
+numbers	VUL	17	17	MT	17:2
+numbers	VUL	17	18	MT	17:3
+numbers	VUL	17	19	MT	17:4
+numbers	VUL	17	20	MT	17:5
+numbers	VUL	17	21	MT	17:6
+numbers	VUL	17	22	MT	17:7
+numbers	VUL	17	23	MT	17:8
+numbers	VUL	17	24	MT	17:9
+numbers	VUL	17	25	MT	17:10
+numbers	VUL	17	26	MT	17:11
+numbers	VUL	17	27	MT	17:12
+numbers	VUL	17	28	MT	17:13
+numbers	VUL	25	19	MT	26:1-1
+numbers	VUL	30	1	MT	29:40
+numbers	VUL	30	2	MT	30:1
+numbers	VUL	30	3	MT	30:2
+numbers	VUL	30	4	MT	30:3
+numbers	VUL	30	5	MT	30:4
+numbers	VUL	30	6	MT	30:5
+numbers	VUL	30	7	MT	30:6
+numbers	VUL	30	8	MT	30:7
+numbers	VUL	30	9	MT	30:8
+numbers	VUL	30	10	MT	30:9
+numbers	VUL	30	11	MT	30:10
+numbers	VUL	30	12	MT	30:11
+numbers	VUL	30	13	MT	30:12
+numbers	VUL	30	14	MT	30:13
+numbers	VUL	30	15	MT	30:14
+numbers	VUL	30	16	MT	30:15
+numbers	VUL	30	17	MT	30:16
+deuteronomy	VUL	13	1	MT	12:32
+deuteronomy	VUL	13	2	MT	13:1
+deuteronomy	VUL	13	3	MT	13:2
+deuteronomy	VUL	13	4	MT	13:3
+deuteronomy	VUL	13	5	MT	13:4
+deuteronomy	VUL	13	6	MT	13:5
+deuteronomy	VUL	13	7	MT	13:6
+deuteronomy	VUL	13	8	MT	13:7
+deuteronomy	VUL	13	9	MT	13:8
+deuteronomy	VUL	13	10	MT	13:9
+deuteronomy	VUL	13	11	MT	13:10
+deuteronomy	VUL	13	12	MT	13:11
+deuteronomy	VUL	13	13	MT	13:12
+deuteronomy	VUL	13	14	MT	13:13
+deuteronomy	VUL	13	15	MT	13:14
+deuteronomy	VUL	13	16	MT	13:15
+deuteronomy	VUL	13	17	MT	13:16
+deuteronomy	VUL	13	18	MT	13:17
+deuteronomy	VUL	13	19	MT	13:18
+deuteronomy	VUL	23	1	MT	22:30
+deuteronomy	VUL	23	2	MT	23:1
+deuteronomy	VUL	23	3	MT	23:2
+deuteronomy	VUL	23	4	MT	23:3
+deuteronomy	VUL	23	5	MT	23:4
+deuteronomy	VUL	23	6	MT	23:5
+deuteronomy	VUL	23	7	MT	23:6
+deuteronomy	VUL	23	8	MT	23:7
+deuteronomy	VUL	23	9	MT	23:8
+deuteronomy	VUL	23	10	MT	23:9
+deuteronomy	VUL	23	11	MT	23:10
+deuteronomy	VUL	23	12	MT	23:11
+deuteronomy	VUL	23	13	MT	23:12
+deuteronomy	VUL	23	14	MT	23:13
+deuteronomy	VUL	23	15	MT	23:14
+deuteronomy	VUL	23	16	MT	23:15
+deuteronomy	VUL	23	17	MT	23:16
+deuteronomy	VUL	23	18	MT	23:17
+deuteronomy	VUL	23	19	MT	23:18
+deuteronomy	VUL	23	20	MT	23:19
+deuteronomy	VUL	23	21	MT	23:20
+deuteronomy	VUL	23	22	MT	23:21
+deuteronomy	VUL	23	23	MT	23:22
+deuteronomy	VUL	23	24	MT	23:23
+deuteronomy	VUL	23	25	MT	23:24
+deuteronomy	VUL	23	26	MT	23:25
+deuteronomy	VUL	28	69	MT	29:1
+deuteronomy	VUL	29	1	MT	29:2
+deuteronomy	VUL	29	2	MT	29:3
+deuteronomy	VUL	29	3	MT	29:4
+deuteronomy	VUL	29	4	MT	29:5
+deuteronomy	VUL	29	5	MT	29:6
+deuteronomy	VUL	29	6	MT	29:7
+deuteronomy	VUL	29	7	MT	29:8
+deuteronomy	VUL	29	8	MT	29:9
+deuteronomy	VUL	29	9	MT	29:10
+deuteronomy	VUL	29	10	MT	29:11
+deuteronomy	VUL	29	11	MT	29:12
+deuteronomy	VUL	29	12	MT	29:13
+deuteronomy	VUL	29	13	MT	29:14
+deuteronomy	VUL	29	14	MT	29:15
+deuteronomy	VUL	29	15	MT	29:16
+deuteronomy	VUL	29	16	MT	29:17
+deuteronomy	VUL	29	17	MT	29:18
+deuteronomy	VUL	29	18	MT	29:19
+deuteronomy	VUL	29	19	MT	29:20
+deuteronomy	VUL	29	20	MT	29:21
+deuteronomy	VUL	29	21	MT	29:22
+deuteronomy	VUL	29	22	MT	29:23
+deuteronomy	VUL	29	23	MT	29:24
+deuteronomy	VUL	29	24	MT	29:25
+deuteronomy	VUL	29	25	MT	29:26
+deuteronomy	VUL	29	26	MT	29:27
+deuteronomy	VUL	29	27	MT	29:28
+deuteronomy	VUL	29	28	MT	29:29
+judges	VUL	5	31	MT	5:31-31
+1 samuel	VUL	20	42	MT	20:42-42
+1 samuel	VUL	21	2	MT	21:1
+1 samuel	VUL	21	3	MT	21:2
+1 samuel	VUL	21	4	MT	21:3
+1 samuel	VUL	21	5	MT	21:4
+1 samuel	VUL	21	6	MT	21:5
+1 samuel	VUL	21	7	MT	21:6
+1 samuel	VUL	21	8	MT	21:7
+1 samuel	VUL	21	9	MT	21:8
+1 samuel	VUL	21	10	MT	21:9
+1 samuel	VUL	21	11	MT	21:10
+1 samuel	VUL	21	12	MT	21:11
+1 samuel	VUL	21	13	MT	21:12
+1 samuel	VUL	21	14	MT	21:13
+1 samuel	VUL	21	15	MT	21:14
+1 samuel	VUL	21	16	MT	21:15
+1 samuel	VUL	24	1	MT	23:29
+1 samuel	VUL	24	2	MT	24:1
+1 samuel	VUL	24	3	MT	24:2
+1 samuel	VUL	24	4	MT	24:3
+1 samuel	VUL	24	5	MT	24:4
+1 samuel	VUL	24	6	MT	24:5
+1 samuel	VUL	24	7	MT	24:6
+1 samuel	VUL	24	8	MT	24:7
+1 samuel	VUL	24	9	MT	24:8
+1 samuel	VUL	24	10	MT	24:9
+1 samuel	VUL	24	11	MT	24:10
+1 samuel	VUL	24	12	MT	24:11
+1 samuel	VUL	24	13	MT	24:12
+1 samuel	VUL	24	14	MT	24:13
+1 samuel	VUL	24	15	MT	24:14
+1 samuel	VUL	24	16	MT	24:15
+1 samuel	VUL	24	17	MT	24:16
+1 samuel	VUL	24	18	MT	24:17
+1 samuel	VUL	24	19	MT	24:18
+1 samuel	VUL	24	20	MT	24:19
+1 samuel	VUL	24	21	MT	24:20
+1 samuel	VUL	24	22	MT	24:21
+1 samuel	VUL	24	23	MT	24:22
+2 samuel	VUL	19	1	MT	18:33
+2 samuel	VUL	19	2	MT	19:1
+2 samuel	VUL	19	3	MT	19:2
+2 samuel	VUL	19	4	MT	19:3
+2 samuel	VUL	19	5	MT	19:4
+2 samuel	VUL	19	6	MT	19:5
+2 samuel	VUL	19	7	MT	19:6
+2 samuel	VUL	19	8	MT	19:7
+2 samuel	VUL	19	9	MT	19:8
+2 samuel	VUL	19	10	MT	19:9
+2 samuel	VUL	19	11	MT	19:10
+2 samuel	VUL	19	12	MT	19:11
+2 samuel	VUL	19	13	MT	19:12
+2 samuel	VUL	19	14	MT	19:13
+2 samuel	VUL	19	15	MT	19:14
+2 samuel	VUL	19	16	MT	19:15
+2 samuel	VUL	19	17	MT	19:16
+2 samuel	VUL	19	18	MT	19:17
+2 samuel	VUL	19	19	MT	19:18
+2 samuel	VUL	19	20	MT	19:19
+2 samuel	VUL	19	21	MT	19:20
+2 samuel	VUL	19	22	MT	19:21
+2 samuel	VUL	19	23	MT	19:22
+2 samuel	VUL	19	24	MT	19:23
+2 samuel	VUL	19	25	MT	19:24
+2 samuel	VUL	19	26	MT	19:25
+2 samuel	VUL	19	27	MT	19:26
+2 samuel	VUL	19	28	MT	19:27
+2 samuel	VUL	19	29	MT	19:28
+2 samuel	VUL	19	30	MT	19:29
+2 samuel	VUL	19	31	MT	19:30
+2 samuel	VUL	19	32	MT	19:31
+2 samuel	VUL	19	33	MT	19:32
+2 samuel	VUL	19	34	MT	19:33
+2 samuel	VUL	19	35	MT	19:34
+2 samuel	VUL	19	36	MT	19:35
+2 samuel	VUL	19	37	MT	19:36
+2 samuel	VUL	19	38	MT	19:37
+2 samuel	VUL	19	39	MT	19:38
+2 samuel	VUL	19	40	MT	19:39
+2 samuel	VUL	19	41	MT	19:40
+2 samuel	VUL	19	42	MT	19:41
+2 samuel	VUL	19	43	MT	19:42
+2 samuel	VUL	19	44	MT	19:43
+1 kings	VUL	5	1	MT	4:21
+1 kings	VUL	5	2	MT	4:22
+1 kings	VUL	5	3	MT	4:23
+1 kings	VUL	5	4	MT	4:24
+1 kings	VUL	5	5	MT	4:25
+1 kings	VUL	5	6	MT	4:26
+1 kings	VUL	5	7	MT	4:27
+1 kings	VUL	5	8	MT	4:28
+1 kings	VUL	5	9	MT	4:29
+1 kings	VUL	5	10	MT	4:30
+1 kings	VUL	5	11	MT	4:31
+1 kings	VUL	5	12	MT	4:32
+1 kings	VUL	5	13	MT	4:33
+1 kings	VUL	5	14	MT	4:34
+1 kings	VUL	5	15	MT	5:1
+1 kings	VUL	5	16	MT	5:2
+1 kings	VUL	5	17	MT	5:3
+1 kings	VUL	5	18	MT	5:4
+1 kings	VUL	5	19	MT	5:5
+1 kings	VUL	5	20	MT	5:6
+1 kings	VUL	5	21	MT	5:7
+1 kings	VUL	5	22	MT	5:8
+1 kings	VUL	5	23	MT	5:9
+1 kings	VUL	5	24	MT	5:10
+1 kings	VUL	5	25	MT	5:11
+1 kings	VUL	5	26	MT	5:12
+1 kings	VUL	5	27	MT	5:13
+1 kings	VUL	5	28	MT	5:14
+1 kings	VUL	5	29	MT	5:15
+1 kings	VUL	5	30	MT	5:16
+1 kings	VUL	5	31	MT	5:17
+1 kings	VUL	5	32	MT	5:18
+1 kings	VUL	22	43	MT	22:43-43
+1 kings	VUL	22	45	MT	22:44
+1 kings	VUL	22	46	MT	22:45
+1 kings	VUL	22	47	MT	22:46
+1 kings	VUL	22	48	MT	22:47
+1 kings	VUL	22	49	MT	22:48
+1 kings	VUL	22	50	MT	22:49
+1 kings	VUL	22	51	MT	22:50
+1 kings	VUL	22	52	MT	22:51
+1 kings	VUL	22	53	MT	22:52
+1 kings	VUL	22	54	MT	22:53
+2 kings	VUL	12	1	MT	11:21
+2 kings	VUL	12	2	MT	12:1
+2 kings	VUL	12	3	MT	12:2
+2 kings	VUL	12	4	MT	12:3
+2 kings	VUL	12	5	MT	12:4
+2 kings	VUL	12	6	MT	12:5
+2 kings	VUL	12	7	MT	12:6
+2 kings	VUL	12	8	MT	12:7
+2 kings	VUL	12	9	MT	12:8
+2 kings	VUL	12	10	MT	12:9
+2 kings	VUL	12	11	MT	12:10
+2 kings	VUL	12	12	MT	12:11
+2 kings	VUL	12	13	MT	12:12
+2 kings	VUL	12	14	MT	12:13
+2 kings	VUL	12	15	MT	12:14
+2 kings	VUL	12	16	MT	12:15
+2 kings	VUL	12	17	MT	12:16
+2 kings	VUL	12	18	MT	12:17
+2 kings	VUL	12	19	MT	12:18
+2 kings	VUL	12	20	MT	12:19
+2 kings	VUL	12	21	MT	12:20
+2 kings	VUL	12	22	MT	12:21
+1 chronicles	VUL	5	27	MT	6:1
+1 chronicles	VUL	5	28	MT	6:2
+1 chronicles	VUL	5	29	MT	6:3
+1 chronicles	VUL	5	30	MT	6:4
+1 chronicles	VUL	5	31	MT	6:5
+1 chronicles	VUL	5	32	MT	6:6
+1 chronicles	VUL	5	33	MT	6:7
+1 chronicles	VUL	5	34	MT	6:8
+1 chronicles	VUL	5	35	MT	6:9
+1 chronicles	VUL	5	36	MT	6:10
+1 chronicles	VUL	5	37	MT	6:11
+1 chronicles	VUL	5	38	MT	6:12
+1 chronicles	VUL	5	39	MT	6:13
+1 chronicles	VUL	5	40	MT	6:14
+1 chronicles	VUL	5	41	MT	6:15
+1 chronicles	VUL	6	1	MT	6:16
+1 chronicles	VUL	6	2	MT	6:17
+1 chronicles	VUL	6	3	MT	6:18
+1 chronicles	VUL	6	4	MT	6:19
+1 chronicles	VUL	6	5	MT	6:20
+1 chronicles	VUL	6	6	MT	6:21
+1 chronicles	VUL	6	7	MT	6:22
+1 chronicles	VUL	6	8	MT	6:23
+1 chronicles	VUL	6	9	MT	6:24
+1 chronicles	VUL	6	10	MT	6:25
+1 chronicles	VUL	6	11	MT	6:26
+1 chronicles	VUL	6	12	MT	6:27
+1 chronicles	VUL	6	13	MT	6:28
+1 chronicles	VUL	6	14	MT	6:29
+1 chronicles	VUL	6	15	MT	6:30
+1 chronicles	VUL	6	16	MT	6:31
+1 chronicles	VUL	6	17	MT	6:32
+1 chronicles	VUL	6	18	MT	6:33
+1 chronicles	VUL	6	19	MT	6:34
+1 chronicles	VUL	6	20	MT	6:35
+1 chronicles	VUL	6	21	MT	6:36
+1 chronicles	VUL	6	22	MT	6:37
+1 chronicles	VUL	6	23	MT	6:38
+1 chronicles	VUL	6	24	MT	6:39
+1 chronicles	VUL	6	25	MT	6:40
+1 chronicles	VUL	6	26	MT	6:41
+1 chronicles	VUL	6	27	MT	6:42
+1 chronicles	VUL	6	28	MT	6:43
+1 chronicles	VUL	6	29	MT	6:44
+1 chronicles	VUL	6	30	MT	6:45
+1 chronicles	VUL	6	31	MT	6:46
+1 chronicles	VUL	6	32	MT	6:47
+1 chronicles	VUL	6	33	MT	6:48
+1 chronicles	VUL	6	34	MT	6:49
+1 chronicles	VUL	6	35	MT	6:50
+1 chronicles	VUL	6	36	MT	6:51
+1 chronicles	VUL	6	37	MT	6:52
+1 chronicles	VUL	6	38	MT	6:53
+1 chronicles	VUL	6	39	MT	6:54
+1 chronicles	VUL	6	40	MT	6:55
+1 chronicles	VUL	6	41	MT	6:56
+1 chronicles	VUL	6	42	MT	6:57
+1 chronicles	VUL	6	43	MT	6:58
+1 chronicles	VUL	6	44	MT	6:59
+1 chronicles	VUL	6	45	MT	6:60
+1 chronicles	VUL	6	46	MT	6:61
+1 chronicles	VUL	6	47	MT	6:62
+1 chronicles	VUL	6	48	MT	6:63
+1 chronicles	VUL	6	49	MT	6:64
+1 chronicles	VUL	6	50	MT	6:65
+1 chronicles	VUL	6	51	MT	6:66
+1 chronicles	VUL	6	52	MT	6:67
+1 chronicles	VUL	6	53	MT	6:68
+1 chronicles	VUL	6	54	MT	6:69
+1 chronicles	VUL	6	55	MT	6:70
+1 chronicles	VUL	6	56	MT	6:71
+1 chronicles	VUL	6	57	MT	6:72
+1 chronicles	VUL	6	58	MT	6:73
+1 chronicles	VUL	6	59	MT	6:74
+1 chronicles	VUL	6	60	MT	6:75
+1 chronicles	VUL	6	61	MT	6:76
+1 chronicles	VUL	6	62	MT	6:77
+1 chronicles	VUL	6	63	MT	6:78
+1 chronicles	VUL	6	64	MT	6:79
+1 chronicles	VUL	6	65	MT	6:80
+1 chronicles	VUL	6	66	MT	6:81
+2 chronicles	VUL	1	18	MT	2:1
+2 chronicles	VUL	2	1	MT	2:2
+2 chronicles	VUL	2	2	MT	2:3
+2 chronicles	VUL	2	3	MT	2:4
+2 chronicles	VUL	2	4	MT	2:5
+2 chronicles	VUL	2	5	MT	2:6
+2 chronicles	VUL	2	6	MT	2:7
+2 chronicles	VUL	2	7	MT	2:8
+2 chronicles	VUL	2	8	MT	2:9
+2 chronicles	VUL	2	9	MT	2:10
+2 chronicles	VUL	2	10	MT	2:11
+2 chronicles	VUL	2	11	MT	2:12
+2 chronicles	VUL	2	12	MT	2:13
+2 chronicles	VUL	2	13	MT	2:14
+2 chronicles	VUL	2	14	MT	2:15
+2 chronicles	VUL	2	15	MT	2:16
+2 chronicles	VUL	2	16	MT	2:17
+2 chronicles	VUL	2	17	MT	2:18
+2 chronicles	VUL	13	23	MT	14:1
+2 chronicles	VUL	14	1	MT	14:2
+2 chronicles	VUL	14	2	MT	14:3
+2 chronicles	VUL	14	3	MT	14:4
+2 chronicles	VUL	14	4	MT	14:5
+2 chronicles	VUL	14	5	MT	14:6
+2 chronicles	VUL	14	6	MT	14:7
+2 chronicles	VUL	14	7	MT	14:8
+2 chronicles	VUL	14	8	MT	14:9
+2 chronicles	VUL	14	9	MT	14:10
+2 chronicles	VUL	14	10	MT	14:11
+2 chronicles	VUL	14	11	MT	14:12
+2 chronicles	VUL	14	12	MT	14:13
+2 chronicles	VUL	14	13	MT	14:14
+2 chronicles	VUL	14	14	MT	14:15
+nehemiah	VUL	3	33	MT	4:1
+nehemiah	VUL	3	34	MT	4:2
+nehemiah	VUL	3	35	MT	4:3
+nehemiah	VUL	3	36	MT	4:4
+nehemiah	VUL	3	37	MT	4:5
+nehemiah	VUL	3	38	MT	4:6
+nehemiah	VUL	4	1	MT	4:7
+nehemiah	VUL	4	2	MT	4:8
+nehemiah	VUL	4	3	MT	4:9
+nehemiah	VUL	4	4	MT	4:10
+nehemiah	VUL	4	5	MT	4:11
+nehemiah	VUL	4	6	MT	4:12
+nehemiah	VUL	4	7	MT	4:13
+nehemiah	VUL	4	8	MT	4:14
+nehemiah	VUL	4	9	MT	4:15
+nehemiah	VUL	4	10	MT	4:16
+nehemiah	VUL	4	11	MT	4:17
+nehemiah	VUL	4	12	MT	4:18
+nehemiah	VUL	4	13	MT	4:19
+nehemiah	VUL	4	14	MT	4:20
+nehemiah	VUL	4	15	MT	4:21
+nehemiah	VUL	4	16	MT	4:22
+nehemiah	VUL	4	17	MT	4:23
+nehemiah	VUL	10	1	MT	9:38
+nehemiah	VUL	10	2	MT	10:1
+nehemiah	VUL	10	3	MT	10:2
+nehemiah	VUL	10	4	MT	10:3
+nehemiah	VUL	10	5	MT	10:4
+nehemiah	VUL	10	6	MT	10:5
+nehemiah	VUL	10	7	MT	10:6
+nehemiah	VUL	10	8	MT	10:7
+nehemiah	VUL	10	9	MT	10:8
+nehemiah	VUL	10	10	MT	10:9
+nehemiah	VUL	10	11	MT	10:10
+nehemiah	VUL	10	12	MT	10:11
+nehemiah	VUL	10	13	MT	10:12
+nehemiah	VUL	10	14	MT	10:13
+nehemiah	VUL	10	15	MT	10:14
+nehemiah	VUL	10	16	MT	10:15
+nehemiah	VUL	10	17	MT	10:16
+nehemiah	VUL	10	18	MT	10:17
+nehemiah	VUL	10	19	MT	10:18
+nehemiah	VUL	10	20	MT	10:19
+nehemiah	VUL	10	21	MT	10:20
+nehemiah	VUL	10	22	MT	10:21
+nehemiah	VUL	10	23	MT	10:22
+nehemiah	VUL	10	24	MT	10:23
+nehemiah	VUL	10	25	MT	10:24
+nehemiah	VUL	10	26	MT	10:25
+nehemiah	VUL	10	27	MT	10:26
+nehemiah	VUL	10	28	MT	10:27
+nehemiah	VUL	10	29	MT	10:28
+nehemiah	VUL	10	30	MT	10:29
+nehemiah	VUL	10	31	MT	10:30
+nehemiah	VUL	10	32	MT	10:31
+nehemiah	VUL	10	33	MT	10:32
+nehemiah	VUL	10	34	MT	10:33
+nehemiah	VUL	10	35	MT	10:34
+nehemiah	VUL	10	36	MT	10:35
+nehemiah	VUL	10	37	MT	10:36
+nehemiah	VUL	10	38	MT	10:37
+nehemiah	VUL	10	39	MT	10:38
+nehemiah	VUL	10	40	MT	10:39
+job	VUL	40	25	MT	41:1
+job	VUL	40	26	MT	41:2
+job	VUL	40	27	MT	41:3
+job	VUL	40	28	MT	41:4
+job	VUL	40	29	MT	41:5
+job	VUL	40	30	MT	41:6
+job	VUL	40	31	MT	41:7
+job	VUL	40	32	MT	41:8
+job	VUL	41	1	MT	41:9
+job	VUL	41	2	MT	41:10
+job	VUL	41	3	MT	41:11
+job	VUL	41	4	MT	41:12
+job	VUL	41	5	MT	41:13
+job	VUL	41	6	MT	41:14
+job	VUL	41	7	MT	41:15
+job	VUL	41	8	MT	41:16
+job	VUL	41	9	MT	41:17
+job	VUL	41	10	MT	41:18
+job	VUL	41	11	MT	41:19
+job	VUL	41	12	MT	41:20
+job	VUL	41	13	MT	41:21
+job	VUL	41	14	MT	41:22
+job	VUL	41	15	MT	41:23
+job	VUL	41	16	MT	41:24
+job	VUL	41	17	MT	41:25
+job	VUL	41	18	MT	41:26
+job	VUL	41	19	MT	41:27
+job	VUL	41	20	MT	41:28
+job	VUL	41	21	MT	41:29
+job	VUL	41	22	MT	41:30
+job	VUL	41	23	MT	41:31
+job	VUL	41	24	MT	41:32
+job	VUL	41	25	MT	41:33
+job	VUL	41	26	MT	41:34
+psalms	VUL	3	1	MT	3:0
+psalms	VUL	3	2	MT	3:1
+psalms	VUL	3	3	MT	3:2
+psalms	VUL	3	4	MT	3:3
+psalms	VUL	3	5	MT	3:4
+psalms	VUL	3	6	MT	3:5
+psalms	VUL	3	7	MT	3:6
+psalms	VUL	3	8	MT	3:7
+psalms	VUL	3	9	MT	3:8
+psalms	VUL	4	1	MT	4:0
+psalms	VUL	4	2	MT	4:1
+psalms	VUL	4	3	MT	4:2
+psalms	VUL	4	4	MT	4:3
+psalms	VUL	4	5	MT	4:4
+psalms	VUL	4	6	MT	4:5
+psalms	VUL	4	7	MT	4:6
+psalms	VUL	4	8	MT	4:7
+psalms	VUL	4	9	MT	4:8
+psalms	VUL	5	1	MT	5:0
+psalms	VUL	5	2	MT	5:1
+psalms	VUL	5	3	MT	5:2
+psalms	VUL	5	4	MT	5:3
+psalms	VUL	5	5	MT	5:4
+psalms	VUL	5	6	MT	5:5
+psalms	VUL	5	7	MT	5:6
+psalms	VUL	5	8	MT	5:7
+psalms	VUL	5	9	MT	5:8
+psalms	VUL	5	10	MT	5:9
+psalms	VUL	5	11	MT	5:10
+psalms	VUL	5	12	MT	5:11
+psalms	VUL	5	13	MT	5:12
+psalms	VUL	6	1	MT	6:0
+psalms	VUL	6	2	MT	6:1
+psalms	VUL	6	3	MT	6:2
+psalms	VUL	6	4	MT	6:3
+psalms	VUL	6	5	MT	6:4
+psalms	VUL	6	6	MT	6:5
+psalms	VUL	6	7	MT	6:6
+psalms	VUL	6	8	MT	6:7
+psalms	VUL	6	9	MT	6:8
+psalms	VUL	6	10	MT	6:9
+psalms	VUL	6	11	MT	6:10
+psalms	VUL	7	1	MT	7:0
+psalms	VUL	7	2	MT	7:1
+psalms	VUL	7	3	MT	7:2
+psalms	VUL	7	4	MT	7:3
+psalms	VUL	7	5	MT	7:4
+psalms	VUL	7	6	MT	7:5
+psalms	VUL	7	7	MT	7:6
+psalms	VUL	7	8	MT	7:7
+psalms	VUL	7	9	MT	7:8
+psalms	VUL	7	10	MT	7:9
+psalms	VUL	7	11	MT	7:10
+psalms	VUL	7	12	MT	7:11
+psalms	VUL	7	13	MT	7:12
+psalms	VUL	7	14	MT	7:13
+psalms	VUL	7	15	MT	7:14
+psalms	VUL	7	16	MT	7:15
+psalms	VUL	7	17	MT	7:16
+psalms	VUL	7	18	MT	7:17
+psalms	VUL	8	1	MT	8:0
+psalms	VUL	8	2	MT	8:1
+psalms	VUL	8	3	MT	8:2
+psalms	VUL	8	4	MT	8:3
+psalms	VUL	8	5	MT	8:4
+psalms	VUL	8	6	MT	8:5
+psalms	VUL	8	7	MT	8:6
+psalms	VUL	8	8	MT	8:7
+psalms	VUL	8	9	MT	8:8
+psalms	VUL	8	10	MT	8:9
+psalms	VUL	9	1	MT	9:0
+psalms	VUL	9	2	MT	9:1
+psalms	VUL	9	3	MT	9:2
+psalms	VUL	9	4	MT	9:3
+psalms	VUL	9	5	MT	9:4
+psalms	VUL	9	6	MT	9:5
+psalms	VUL	9	7	MT	9:6
+psalms	VUL	9	8	MT	9:7
+psalms	VUL	9	9	MT	9:8
+psalms	VUL	9	10	MT	9:9
+psalms	VUL	9	11	MT	9:10
+psalms	VUL	9	12	MT	9:11
+psalms	VUL	9	13	MT	9:12
+psalms	VUL	9	14	MT	9:13
+psalms	VUL	9	15	MT	9:14
+psalms	VUL	9	16	MT	9:15
+psalms	VUL	9	17	MT	9:16
+psalms	VUL	9	18	MT	9:17
+psalms	VUL	9	19	MT	9:18
+psalms	VUL	9	20	MT	9:19
+psalms	VUL	9	21	MT	9:20
+psalms	VUL	11	1	MT	11:0
+psalms	VUL	11	1	MT	11:1
+psalms	VUL	12	1	MT	12:0
+psalms	VUL	12	2	MT	12:1
+psalms	VUL	12	3	MT	12:2
+psalms	VUL	12	4	MT	12:3
+psalms	VUL	12	5	MT	12:4
+psalms	VUL	12	6	MT	12:5
+psalms	VUL	12	7	MT	12:6
+psalms	VUL	12	8	MT	12:7
+psalms	VUL	12	9	MT	12:8
+psalms	VUL	13	1	MT	13:0
+psalms	VUL	13	2	MT	13:1
+psalms	VUL	13	3	MT	13:2
+psalms	VUL	13	4	MT	13:3
+psalms	VUL	13	5	MT	13:4
+psalms	VUL	13	6	MT	13:5-6
+psalms	VUL	14	1	MT	14:0
+psalms	VUL	14	1	MT	14:1
+psalms	VUL	15	1	MT	15:0
+psalms	VUL	15	1	MT	15:1
+psalms	VUL	16	1	MT	16:0
+psalms	VUL	16	1	MT	16:1
+psalms	VUL	17	1	MT	17:0
+psalms	VUL	17	1	MT	17:1
+psalms	VUL	18	1	MT	18:0
+psalms	VUL	18	2	MT	18:1
+psalms	VUL	18	3	MT	18:2
+psalms	VUL	18	4	MT	18:3
+psalms	VUL	18	5	MT	18:4
+psalms	VUL	18	6	MT	18:5
+psalms	VUL	18	7	MT	18:6
+psalms	VUL	18	8	MT	18:7
+psalms	VUL	18	9	MT	18:8
+psalms	VUL	18	10	MT	18:9
+psalms	VUL	18	11	MT	18:10
+psalms	VUL	18	12	MT	18:11
+psalms	VUL	18	13	MT	18:12
+psalms	VUL	18	14	MT	18:13
+psalms	VUL	18	15	MT	18:14
+psalms	VUL	18	16	MT	18:15
+psalms	VUL	18	17	MT	18:16
+psalms	VUL	18	18	MT	18:17
+psalms	VUL	18	19	MT	18:18
+psalms	VUL	18	20	MT	18:19
+psalms	VUL	18	21	MT	18:20
+psalms	VUL	18	22	MT	18:21
+psalms	VUL	18	23	MT	18:22
+psalms	VUL	18	24	MT	18:23
+psalms	VUL	18	25	MT	18:24
+psalms	VUL	18	26	MT	18:25
+psalms	VUL	18	27	MT	18:26
+psalms	VUL	18	28	MT	18:27
+psalms	VUL	18	29	MT	18:28
+psalms	VUL	18	30	MT	18:29
+psalms	VUL	18	31	MT	18:30
+psalms	VUL	18	32	MT	18:31
+psalms	VUL	18	33	MT	18:32
+psalms	VUL	18	34	MT	18:33
+psalms	VUL	18	35	MT	18:34
+psalms	VUL	18	36	MT	18:35
+psalms	VUL	18	37	MT	18:36
+psalms	VUL	18	38	MT	18:37
+psalms	VUL	18	39	MT	18:38
+psalms	VUL	18	40	MT	18:39
+psalms	VUL	18	41	MT	18:40
+psalms	VUL	18	42	MT	18:41
+psalms	VUL	18	43	MT	18:42
+psalms	VUL	18	44	MT	18:43
+psalms	VUL	18	45	MT	18:44
+psalms	VUL	18	46	MT	18:45
+psalms	VUL	18	47	MT	18:46
+psalms	VUL	18	48	MT	18:47
+psalms	VUL	18	49	MT	18:48
+psalms	VUL	18	50	MT	18:49
+psalms	VUL	18	51	MT	18:50
+psalms	VUL	19	1	MT	19:0
+psalms	VUL	19	2	MT	19:1
+psalms	VUL	19	3	MT	19:2
+psalms	VUL	19	4	MT	19:3
+psalms	VUL	19	5	MT	19:4
+psalms	VUL	19	6	MT	19:5
+psalms	VUL	19	7	MT	19:6
+psalms	VUL	19	8	MT	19:7
+psalms	VUL	19	9	MT	19:8
+psalms	VUL	19	10	MT	19:9
+psalms	VUL	19	11	MT	19:10
+psalms	VUL	19	12	MT	19:11
+psalms	VUL	19	13	MT	19:12
+psalms	VUL	19	14	MT	19:13
+psalms	VUL	19	15	MT	19:14
+psalms	VUL	20	1	MT	20:0
+psalms	VUL	20	2	MT	20:1
+psalms	VUL	20	3	MT	20:2
+psalms	VUL	20	4	MT	20:3
+psalms	VUL	20	5	MT	20:4
+psalms	VUL	20	6	MT	20:5
+psalms	VUL	20	7	MT	20:6
+psalms	VUL	20	8	MT	20:7
+psalms	VUL	20	9	MT	20:8
+psalms	VUL	20	10	MT	20:9
+psalms	VUL	21	1	MT	21:0
+psalms	VUL	21	2	MT	21:1
+psalms	VUL	21	3	MT	21:2
+psalms	VUL	21	4	MT	21:3
+psalms	VUL	21	5	MT	21:4
+psalms	VUL	21	6	MT	21:5
+psalms	VUL	21	7	MT	21:6
+psalms	VUL	21	8	MT	21:7
+psalms	VUL	21	9	MT	21:8
+psalms	VUL	21	10	MT	21:9
+psalms	VUL	21	11	MT	21:10
+psalms	VUL	21	12	MT	21:11
+psalms	VUL	21	13	MT	21:12
+psalms	VUL	21	14	MT	21:13
+psalms	VUL	22	1	MT	22:0
+psalms	VUL	22	2	MT	22:1
+psalms	VUL	22	3	MT	22:2
+psalms	VUL	22	4	MT	22:3
+psalms	VUL	22	5	MT	22:4
+psalms	VUL	22	6	MT	22:5
+psalms	VUL	22	7	MT	22:6
+psalms	VUL	22	8	MT	22:7
+psalms	VUL	22	9	MT	22:8
+psalms	VUL	22	10	MT	22:9
+psalms	VUL	22	11	MT	22:10
+psalms	VUL	22	12	MT	22:11
+psalms	VUL	22	13	MT	22:12
+psalms	VUL	22	14	MT	22:13
+psalms	VUL	22	15	MT	22:14
+psalms	VUL	22	16	MT	22:15
+psalms	VUL	22	17	MT	22:16
+psalms	VUL	22	18	MT	22:17
+psalms	VUL	22	19	MT	22:18
+psalms	VUL	22	20	MT	22:19
+psalms	VUL	22	21	MT	22:20
+psalms	VUL	22	22	MT	22:21
+psalms	VUL	22	23	MT	22:22
+psalms	VUL	22	24	MT	22:23
+psalms	VUL	22	25	MT	22:24
+psalms	VUL	22	26	MT	22:25
+psalms	VUL	22	27	MT	22:26
+psalms	VUL	22	28	MT	22:27
+psalms	VUL	22	29	MT	22:28
+psalms	VUL	22	30	MT	22:29
+psalms	VUL	22	31	MT	22:30
+psalms	VUL	22	32	MT	22:31
+psalms	VUL	23	1	MT	23:0
+psalms	VUL	23	1	MT	23:1
+psalms	VUL	24	1	MT	24:0
+psalms	VUL	24	1	MT	24:1
+psalms	VUL	25	1	MT	25:0
+psalms	VUL	25	1	MT	25:1
+psalms	VUL	26	1	MT	26:0
+psalms	VUL	26	1	MT	26:1
+psalms	VUL	27	1	MT	27:0
+psalms	VUL	27	1	MT	27:1
+psalms	VUL	28	1	MT	28:0
+psalms	VUL	28	1	MT	28:1
+psalms	VUL	29	1	MT	29:0
+psalms	VUL	29	1	MT	29:1
+psalms	VUL	30	1	MT	30:0
+psalms	VUL	30	2	MT	30:1
+psalms	VUL	30	3	MT	30:2
+psalms	VUL	30	4	MT	30:3
+psalms	VUL	30	5	MT	30:4
+psalms	VUL	30	6	MT	30:5
+psalms	VUL	30	7	MT	30:6
+psalms	VUL	30	8	MT	30:7
+psalms	VUL	30	9	MT	30:8
+psalms	VUL	30	10	MT	30:9
+psalms	VUL	30	11	MT	30:10
+psalms	VUL	30	12	MT	30:11
+psalms	VUL	30	13	MT	30:12
+psalms	VUL	31	1	MT	31:0
+psalms	VUL	31	2	MT	31:1
+psalms	VUL	31	3	MT	31:2
+psalms	VUL	31	4	MT	31:3
+psalms	VUL	31	5	MT	31:4
+psalms	VUL	31	6	MT	31:5
+psalms	VUL	31	7	MT	31:6
+psalms	VUL	31	8	MT	31:7
+psalms	VUL	31	9	MT	31:8
+psalms	VUL	31	10	MT	31:9
+psalms	VUL	31	11	MT	31:10
+psalms	VUL	31	12	MT	31:11
+psalms	VUL	31	13	MT	31:12
+psalms	VUL	31	14	MT	31:13
+psalms	VUL	31	15	MT	31:14
+psalms	VUL	31	16	MT	31:15
+psalms	VUL	31	17	MT	31:16
+psalms	VUL	31	18	MT	31:17
+psalms	VUL	31	19	MT	31:18
+psalms	VUL	31	20	MT	31:19
+psalms	VUL	31	21	MT	31:20
+psalms	VUL	31	22	MT	31:21
+psalms	VUL	31	23	MT	31:22
+psalms	VUL	31	24	MT	31:23
+psalms	VUL	31	25	MT	31:24
+psalms	VUL	32	1	MT	32:0
+psalms	VUL	32	1	MT	32:1
+psalms	VUL	34	1	MT	34:0
+psalms	VUL	34	2	MT	34:1
+psalms	VUL	34	3	MT	34:2
+psalms	VUL	34	4	MT	34:3
+psalms	VUL	34	5	MT	34:4
+psalms	VUL	34	6	MT	34:5
+psalms	VUL	34	7	MT	34:6
+psalms	VUL	34	8	MT	34:7
+psalms	VUL	34	9	MT	34:8
+psalms	VUL	34	10	MT	34:9
+psalms	VUL	34	11	MT	34:10
+psalms	VUL	34	12	MT	34:11
+psalms	VUL	34	13	MT	34:12
+psalms	VUL	34	14	MT	34:13
+psalms	VUL	34	15	MT	34:14
+psalms	VUL	34	16	MT	34:15
+psalms	VUL	34	17	MT	34:16
+psalms	VUL	34	18	MT	34:17
+psalms	VUL	34	19	MT	34:18
+psalms	VUL	34	20	MT	34:19
+psalms	VUL	34	21	MT	34:20
+psalms	VUL	34	22	MT	34:21
+psalms	VUL	34	23	MT	34:22
+psalms	VUL	35	1	MT	35:0
+psalms	VUL	35	1	MT	35:1
+psalms	VUL	36	1	MT	36:0
+psalms	VUL	36	2	MT	36:1
+psalms	VUL	36	3	MT	36:2
+psalms	VUL	36	4	MT	36:3
+psalms	VUL	36	5	MT	36:4
+psalms	VUL	36	6	MT	36:5
+psalms	VUL	36	7	MT	36:6
+psalms	VUL	36	8	MT	36:7
+psalms	VUL	36	9	MT	36:8
+psalms	VUL	36	10	MT	36:9
+psalms	VUL	36	11	MT	36:10
+psalms	VUL	36	12	MT	36:11
+psalms	VUL	36	13	MT	36:12
+psalms	VUL	37	1	MT	37:0
+psalms	VUL	37	1	MT	37:1
+psalms	VUL	38	1	MT	38:0
+psalms	VUL	38	2	MT	38:1
+psalms	VUL	38	3	MT	38:2
+psalms	VUL	38	4	MT	38:3
+psalms	VUL	38	5	MT	38:4
+psalms	VUL	38	6	MT	38:5
+psalms	VUL	38	7	MT	38:6
+psalms	VUL	38	8	MT	38:7
+psalms	VUL	38	9	MT	38:8
+psalms	VUL	38	10	MT	38:9
+psalms	VUL	38	11	MT	38:10
+psalms	VUL	38	12	MT	38:11
+psalms	VUL	38	13	MT	38:12
+psalms	VUL	38	14	MT	38:13
+psalms	VUL	38	15	MT	38:14
+psalms	VUL	38	16	MT	38:15
+psalms	VUL	38	17	MT	38:16
+psalms	VUL	38	18	MT	38:17
+psalms	VUL	38	19	MT	38:18
+psalms	VUL	38	20	MT	38:19
+psalms	VUL	38	21	MT	38:20
+psalms	VUL	38	22	MT	38:21
+psalms	VUL	38	23	MT	38:22
+psalms	VUL	39	1	MT	39:0
+psalms	VUL	39	2	MT	39:1
+psalms	VUL	39	3	MT	39:2
+psalms	VUL	39	4	MT	39:3
+psalms	VUL	39	5	MT	39:4
+psalms	VUL	39	6	MT	39:5
+psalms	VUL	39	7	MT	39:6
+psalms	VUL	39	8	MT	39:7
+psalms	VUL	39	9	MT	39:8
+psalms	VUL	39	10	MT	39:9
+psalms	VUL	39	11	MT	39:10
+psalms	VUL	39	12	MT	39:11
+psalms	VUL	39	13	MT	39:12
+psalms	VUL	39	14	MT	39:13
+psalms	VUL	40	1	MT	40:0
+psalms	VUL	40	2	MT	40:1
+psalms	VUL	40	3	MT	40:2
+psalms	VUL	40	4	MT	40:3
+psalms	VUL	40	5	MT	40:4
+psalms	VUL	40	6	MT	40:5
+psalms	VUL	40	7	MT	40:6
+psalms	VUL	40	8	MT	40:7
+psalms	VUL	40	9	MT	40:8
+psalms	VUL	40	10	MT	40:9
+psalms	VUL	40	11	MT	40:10
+psalms	VUL	40	12	MT	40:11
+psalms	VUL	40	13	MT	40:12
+psalms	VUL	40	14	MT	40:13
+psalms	VUL	40	15	MT	40:14
+psalms	VUL	40	16	MT	40:15
+psalms	VUL	40	17	MT	40:16
+psalms	VUL	40	18	MT	40:17
+psalms	VUL	41	1	MT	41:0
+psalms	VUL	41	2	MT	41:1
+psalms	VUL	41	3	MT	41:2
+psalms	VUL	41	4	MT	41:3
+psalms	VUL	41	5	MT	41:4
+psalms	VUL	41	6	MT	41:5
+psalms	VUL	41	7	MT	41:6
+psalms	VUL	41	8	MT	41:7
+psalms	VUL	41	9	MT	41:8
+psalms	VUL	41	10	MT	41:9
+psalms	VUL	41	11	MT	41:10
+psalms	VUL	41	12	MT	41:11
+psalms	VUL	41	13	MT	41:12
+psalms	VUL	41	14	MT	41:13
+psalms	VUL	42	1	MT	42:0
+psalms	VUL	42	2	MT	42:1
+psalms	VUL	42	3	MT	42:2
+psalms	VUL	42	4	MT	42:3
+psalms	VUL	42	5	MT	42:4
+psalms	VUL	42	6	MT	42:5
+psalms	VUL	42	7	MT	42:6
+psalms	VUL	42	8	MT	42:7
+psalms	VUL	42	9	MT	42:8
+psalms	VUL	42	10	MT	42:9
+psalms	VUL	42	11	MT	42:10
+psalms	VUL	42	12	MT	42:11
+psalms	VUL	44	1	MT	44:0
+psalms	VUL	44	2	MT	44:1
+psalms	VUL	44	3	MT	44:2
+psalms	VUL	44	4	MT	44:3
+psalms	VUL	44	5	MT	44:4
+psalms	VUL	44	6	MT	44:5
+psalms	VUL	44	7	MT	44:6
+psalms	VUL	44	8	MT	44:7
+psalms	VUL	44	9	MT	44:8
+psalms	VUL	44	10	MT	44:9
+psalms	VUL	44	11	MT	44:10
+psalms	VUL	44	12	MT	44:11
+psalms	VUL	44	13	MT	44:12
+psalms	VUL	44	14	MT	44:13
+psalms	VUL	44	15	MT	44:14
+psalms	VUL	44	16	MT	44:15
+psalms	VUL	44	17	MT	44:16
+psalms	VUL	44	18	MT	44:17
+psalms	VUL	44	19	MT	44:18
+psalms	VUL	44	20	MT	44:19
+psalms	VUL	44	21	MT	44:20
+psalms	VUL	44	22	MT	44:21
+psalms	VUL	44	23	MT	44:22
+psalms	VUL	44	24	MT	44:23
+psalms	VUL	44	25	MT	44:24
+psalms	VUL	44	26	MT	44:25
+psalms	VUL	44	27	MT	44:26
+psalms	VUL	45	1	MT	45:0
+psalms	VUL	45	2	MT	45:1
+psalms	VUL	45	3	MT	45:2
+psalms	VUL	45	4	MT	45:3
+psalms	VUL	45	5	MT	45:4
+psalms	VUL	45	6	MT	45:5
+psalms	VUL	45	7	MT	45:6
+psalms	VUL	45	8	MT	45:7
+psalms	VUL	45	9	MT	45:8
+psalms	VUL	45	10	MT	45:9
+psalms	VUL	45	11	MT	45:10
+psalms	VUL	45	12	MT	45:11
+psalms	VUL	45	13	MT	45:12
+psalms	VUL	45	14	MT	45:13
+psalms	VUL	45	15	MT	45:14
+psalms	VUL	45	16	MT	45:15
+psalms	VUL	45	17	MT	45:16
+psalms	VUL	45	18	MT	45:17
+psalms	VUL	46	1	MT	46:0
+psalms	VUL	46	2	MT	46:1
+psalms	VUL	46	3	MT	46:2
+psalms	VUL	46	4	MT	46:3
+psalms	VUL	46	5	MT	46:4
+psalms	VUL	46	6	MT	46:5
+psalms	VUL	46	7	MT	46:6
+psalms	VUL	46	8	MT	46:7
+psalms	VUL	46	9	MT	46:8
+psalms	VUL	46	10	MT	46:9
+psalms	VUL	46	11	MT	46:10
+psalms	VUL	46	12	MT	46:11
+psalms	VUL	47	1	MT	47:0
+psalms	VUL	47	2	MT	47:1
+psalms	VUL	47	3	MT	47:2
+psalms	VUL	47	4	MT	47:3
+psalms	VUL	47	5	MT	47:4
+psalms	VUL	47	6	MT	47:5
+psalms	VUL	47	7	MT	47:6
+psalms	VUL	47	8	MT	47:7
+psalms	VUL	47	9	MT	47:8
+psalms	VUL	47	10	MT	47:9
+psalms	VUL	48	1	MT	48:0
+psalms	VUL	48	2	MT	48:1
+psalms	VUL	48	3	MT	48:2
+psalms	VUL	48	4	MT	48:3
+psalms	VUL	48	5	MT	48:4
+psalms	VUL	48	6	MT	48:5
+psalms	VUL	48	7	MT	48:6
+psalms	VUL	48	8	MT	48:7
+psalms	VUL	48	9	MT	48:8
+psalms	VUL	48	10	MT	48:9
+psalms	VUL	48	11	MT	48:10
+psalms	VUL	48	12	MT	48:11
+psalms	VUL	48	13	MT	48:12
+psalms	VUL	48	14	MT	48:13
+psalms	VUL	48	15	MT	48:14
+psalms	VUL	49	1	MT	49:0
+psalms	VUL	49	2	MT	49:1
+psalms	VUL	49	3	MT	49:2
+psalms	VUL	49	4	MT	49:3
+psalms	VUL	49	5	MT	49:4
+psalms	VUL	49	6	MT	49:5
+psalms	VUL	49	7	MT	49:6
+psalms	VUL	49	8	MT	49:7
+psalms	VUL	49	9	MT	49:8
+psalms	VUL	49	10	MT	49:9
+psalms	VUL	49	11	MT	49:10
+psalms	VUL	49	12	MT	49:11
+psalms	VUL	49	13	MT	49:12
+psalms	VUL	49	14	MT	49:13
+psalms	VUL	49	15	MT	49:14
+psalms	VUL	49	16	MT	49:15
+psalms	VUL	49	17	MT	49:16
+psalms	VUL	49	18	MT	49:17
+psalms	VUL	49	19	MT	49:18
+psalms	VUL	49	20	MT	49:19
+psalms	VUL	49	21	MT	49:20
+psalms	VUL	50	1	MT	50:0
+psalms	VUL	50	1	MT	50:1
+psalms	VUL	51	1	MT	51:0-0
+psalms	VUL	51	3	MT	51:1
+psalms	VUL	51	4	MT	51:2
+psalms	VUL	51	5	MT	51:3
+psalms	VUL	51	6	MT	51:4
+psalms	VUL	51	7	MT	51:5
+psalms	VUL	51	8	MT	51:6
+psalms	VUL	51	9	MT	51:7
+psalms	VUL	51	10	MT	51:8
+psalms	VUL	51	11	MT	51:9
+psalms	VUL	51	12	MT	51:10
+psalms	VUL	51	13	MT	51:11
+psalms	VUL	51	14	MT	51:12
+psalms	VUL	51	15	MT	51:13
+psalms	VUL	51	16	MT	51:14
+psalms	VUL	51	17	MT	51:15
+psalms	VUL	51	18	MT	51:16
+psalms	VUL	51	19	MT	51:17
+psalms	VUL	51	20	MT	51:18
+psalms	VUL	51	21	MT	51:19
+psalms	VUL	52	1	MT	52:0-0
+psalms	VUL	52	3	MT	52:1
+psalms	VUL	52	4	MT	52:2
+psalms	VUL	52	5	MT	52:3
+psalms	VUL	52	6	MT	52:4
+psalms	VUL	52	7	MT	52:5
+psalms	VUL	52	8	MT	52:6
+psalms	VUL	52	9	MT	52:7
+psalms	VUL	52	10	MT	52:8
+psalms	VUL	52	11	MT	52:9
+psalms	VUL	53	1	MT	53:0
+psalms	VUL	53	2	MT	53:1
+psalms	VUL	53	3	MT	53:2
+psalms	VUL	53	4	MT	53:3
+psalms	VUL	53	5	MT	53:4
+psalms	VUL	53	6	MT	53:5
+psalms	VUL	53	7	MT	53:6
+psalms	VUL	54	1	MT	54:0-0
+psalms	VUL	54	3	MT	54:1
+psalms	VUL	54	4	MT	54:2
+psalms	VUL	54	5	MT	54:3
+psalms	VUL	54	6	MT	54:4
+psalms	VUL	54	7	MT	54:5
+psalms	VUL	54	8	MT	54:6
+psalms	VUL	54	9	MT	54:7
+psalms	VUL	55	1	MT	55:0
+psalms	VUL	55	2	MT	55:1
+psalms	VUL	55	3	MT	55:2
+psalms	VUL	55	4	MT	55:3
+psalms	VUL	55	5	MT	55:4
+psalms	VUL	55	6	MT	55:5
+psalms	VUL	55	7	MT	55:6
+psalms	VUL	55	8	MT	55:7
+psalms	VUL	55	9	MT	55:8
+psalms	VUL	55	10	MT	55:9
+psalms	VUL	55	11	MT	55:10
+psalms	VUL	55	12	MT	55:11
+psalms	VUL	55	13	MT	55:12
+psalms	VUL	55	14	MT	55:13
+psalms	VUL	55	15	MT	55:14
+psalms	VUL	55	16	MT	55:15
+psalms	VUL	55	17	MT	55:16
+psalms	VUL	55	18	MT	55:17
+psalms	VUL	55	19	MT	55:18
+psalms	VUL	55	20	MT	55:19
+psalms	VUL	55	21	MT	55:20
+psalms	VUL	55	22	MT	55:21
+psalms	VUL	55	23	MT	55:22
+psalms	VUL	55	24	MT	55:23
+psalms	VUL	56	1	MT	56:0
+psalms	VUL	56	2	MT	56:1
+psalms	VUL	56	3	MT	56:2
+psalms	VUL	56	4	MT	56:3
+psalms	VUL	56	5	MT	56:4
+psalms	VUL	56	6	MT	56:5
+psalms	VUL	56	7	MT	56:6
+psalms	VUL	56	8	MT	56:7
+psalms	VUL	56	9	MT	56:8
+psalms	VUL	56	10	MT	56:9
+psalms	VUL	56	11	MT	56:10
+psalms	VUL	56	12	MT	56:11
+psalms	VUL	56	13	MT	56:12
+psalms	VUL	56	14	MT	56:13
+psalms	VUL	57	1	MT	57:0
+psalms	VUL	57	2	MT	57:1
+psalms	VUL	57	3	MT	57:2
+psalms	VUL	57	4	MT	57:3
+psalms	VUL	57	5	MT	57:4
+psalms	VUL	57	6	MT	57:5
+psalms	VUL	57	7	MT	57:6
+psalms	VUL	57	8	MT	57:7
+psalms	VUL	57	9	MT	57:8
+psalms	VUL	57	10	MT	57:9
+psalms	VUL	57	11	MT	57:10
+psalms	VUL	57	12	MT	57:11
+psalms	VUL	58	1	MT	58:0
+psalms	VUL	58	2	MT	58:1
+psalms	VUL	58	3	MT	58:2
+psalms	VUL	58	4	MT	58:3
+psalms	VUL	58	5	MT	58:4
+psalms	VUL	58	6	MT	58:5
+psalms	VUL	58	7	MT	58:6
+psalms	VUL	58	8	MT	58:7
+psalms	VUL	58	9	MT	58:8
+psalms	VUL	58	10	MT	58:9
+psalms	VUL	58	11	MT	58:10
+psalms	VUL	58	12	MT	58:11
+psalms	VUL	59	1	MT	59:0
+psalms	VUL	59	2	MT	59:1
+psalms	VUL	59	3	MT	59:2
+psalms	VUL	59	4	MT	59:3
+psalms	VUL	59	5	MT	59:4
+psalms	VUL	59	6	MT	59:5
+psalms	VUL	59	7	MT	59:6
+psalms	VUL	59	8	MT	59:7
+psalms	VUL	59	9	MT	59:8
+psalms	VUL	59	10	MT	59:9
+psalms	VUL	59	11	MT	59:10
+psalms	VUL	59	12	MT	59:11
+psalms	VUL	59	13	MT	59:12
+psalms	VUL	59	14	MT	59:13
+psalms	VUL	59	15	MT	59:14
+psalms	VUL	59	16	MT	59:15
+psalms	VUL	59	17	MT	59:16
+psalms	VUL	59	18	MT	59:17
+psalms	VUL	60	1	MT	60:0-0
+psalms	VUL	60	3	MT	60:1
+psalms	VUL	60	4	MT	60:2
+psalms	VUL	60	5	MT	60:3
+psalms	VUL	60	6	MT	60:4
+psalms	VUL	60	7	MT	60:5
+psalms	VUL	60	8	MT	60:6
+psalms	VUL	60	9	MT	60:7
+psalms	VUL	60	10	MT	60:8
+psalms	VUL	60	11	MT	60:9
+psalms	VUL	60	12	MT	60:10
+psalms	VUL	60	13	MT	60:11
+psalms	VUL	60	14	MT	60:12
+psalms	VUL	61	1	MT	61:0
+psalms	VUL	61	2	MT	61:1
+psalms	VUL	61	3	MT	61:2
+psalms	VUL	61	4	MT	61:3
+psalms	VUL	61	5	MT	61:4
+psalms	VUL	61	6	MT	61:5
+psalms	VUL	61	7	MT	61:6
+psalms	VUL	61	8	MT	61:7
+psalms	VUL	61	9	MT	61:8
+psalms	VUL	62	1	MT	62:0
+psalms	VUL	62	2	MT	62:1
+psalms	VUL	62	3	MT	62:2
+psalms	VUL	62	4	MT	62:3
+psalms	VUL	62	5	MT	62:4
+psalms	VUL	62	6	MT	62:5
+psalms	VUL	62	7	MT	62:6
+psalms	VUL	62	8	MT	62:7
+psalms	VUL	62	9	MT	62:8
+psalms	VUL	62	10	MT	62:9
+psalms	VUL	62	11	MT	62:10
+psalms	VUL	62	12	MT	62:11
+psalms	VUL	62	13	MT	62:12
+psalms	VUL	63	1	MT	63:0
+psalms	VUL	63	2	MT	63:1
+psalms	VUL	63	3	MT	63:2
+psalms	VUL	63	4	MT	63:3
+psalms	VUL	63	5	MT	63:4
+psalms	VUL	63	6	MT	63:5
+psalms	VUL	63	7	MT	63:6
+psalms	VUL	63	8	MT	63:7
+psalms	VUL	63	9	MT	63:8
+psalms	VUL	63	10	MT	63:9
+psalms	VUL	63	11	MT	63:10
+psalms	VUL	63	12	MT	63:11
+psalms	VUL	64	1	MT	64:0
+psalms	VUL	64	2	MT	64:1
+psalms	VUL	64	3	MT	64:2
+psalms	VUL	64	4	MT	64:3
+psalms	VUL	64	5	MT	64:4
+psalms	VUL	64	6	MT	64:5
+psalms	VUL	64	7	MT	64:6
+psalms	VUL	64	8	MT	64:7
+psalms	VUL	64	9	MT	64:8
+psalms	VUL	64	10	MT	64:9
+psalms	VUL	64	11	MT	64:10
+psalms	VUL	65	1	MT	65:0
+psalms	VUL	65	2	MT	65:1
+psalms	VUL	65	3	MT	65:2
+psalms	VUL	65	4	MT	65:3
+psalms	VUL	65	5	MT	65:4
+psalms	VUL	65	6	MT	65:5
+psalms	VUL	65	7	MT	65:6
+psalms	VUL	65	8	MT	65:7
+psalms	VUL	65	9	MT	65:8
+psalms	VUL	65	10	MT	65:9
+psalms	VUL	65	11	MT	65:10
+psalms	VUL	65	12	MT	65:11
+psalms	VUL	65	13	MT	65:12
+psalms	VUL	65	14	MT	65:13
+psalms	VUL	66	1	MT	66:0
+psalms	VUL	66	1	MT	66:1
+psalms	VUL	67	1	MT	67:0
+psalms	VUL	67	2	MT	67:1
+psalms	VUL	67	3	MT	67:2
+psalms	VUL	67	4	MT	67:3
+psalms	VUL	67	5	MT	67:4
+psalms	VUL	67	6	MT	67:5
+psalms	VUL	67	7	MT	67:6
+psalms	VUL	67	8	MT	67:7
+psalms	VUL	68	1	MT	68:0
+psalms	VUL	68	2	MT	68:1
+psalms	VUL	68	3	MT	68:2
+psalms	VUL	68	4	MT	68:3
+psalms	VUL	68	5	MT	68:4
+psalms	VUL	68	6	MT	68:5
+psalms	VUL	68	7	MT	68:6
+psalms	VUL	68	8	MT	68:7
+psalms	VUL	68	9	MT	68:8
+psalms	VUL	68	10	MT	68:9
+psalms	VUL	68	11	MT	68:10
+psalms	VUL	68	12	MT	68:11
+psalms	VUL	68	13	MT	68:12
+psalms	VUL	68	14	MT	68:13
+psalms	VUL	68	15	MT	68:14
+psalms	VUL	68	16	MT	68:15
+psalms	VUL	68	17	MT	68:16
+psalms	VUL	68	18	MT	68:17
+psalms	VUL	68	19	MT	68:18
+psalms	VUL	68	20	MT	68:19
+psalms	VUL	68	21	MT	68:20
+psalms	VUL	68	22	MT	68:21
+psalms	VUL	68	23	MT	68:22
+psalms	VUL	68	24	MT	68:23
+psalms	VUL	68	25	MT	68:24
+psalms	VUL	68	26	MT	68:25
+psalms	VUL	68	27	MT	68:26
+psalms	VUL	68	28	MT	68:27
+psalms	VUL	68	29	MT	68:28
+psalms	VUL	68	30	MT	68:29
+psalms	VUL	68	31	MT	68:30
+psalms	VUL	68	32	MT	68:31
+psalms	VUL	68	33	MT	68:32
+psalms	VUL	68	34	MT	68:33
+psalms	VUL	68	35	MT	68:34
+psalms	VUL	68	36	MT	68:35
+psalms	VUL	69	1	MT	69:0
+psalms	VUL	69	2	MT	69:1
+psalms	VUL	69	3	MT	69:2
+psalms	VUL	69	4	MT	69:3
+psalms	VUL	69	5	MT	69:4
+psalms	VUL	69	6	MT	69:5
+psalms	VUL	69	7	MT	69:6
+psalms	VUL	69	8	MT	69:7
+psalms	VUL	69	9	MT	69:8
+psalms	VUL	69	10	MT	69:9
+psalms	VUL	69	11	MT	69:10
+psalms	VUL	69	12	MT	69:11
+psalms	VUL	69	13	MT	69:12
+psalms	VUL	69	14	MT	69:13
+psalms	VUL	69	15	MT	69:14
+psalms	VUL	69	16	MT	69:15
+psalms	VUL	69	17	MT	69:16
+psalms	VUL	69	18	MT	69:17
+psalms	VUL	69	19	MT	69:18
+psalms	VUL	69	20	MT	69:19
+psalms	VUL	69	21	MT	69:20
+psalms	VUL	69	22	MT	69:21
+psalms	VUL	69	23	MT	69:22
+psalms	VUL	69	24	MT	69:23
+psalms	VUL	69	25	MT	69:24
+psalms	VUL	69	26	MT	69:25
+psalms	VUL	69	27	MT	69:26
+psalms	VUL	69	28	MT	69:27
+psalms	VUL	69	29	MT	69:28
+psalms	VUL	69	30	MT	69:29
+psalms	VUL	69	31	MT	69:30
+psalms	VUL	69	32	MT	69:31
+psalms	VUL	69	33	MT	69:32
+psalms	VUL	69	34	MT	69:33
+psalms	VUL	69	35	MT	69:34
+psalms	VUL	69	36	MT	69:35
+psalms	VUL	69	37	MT	69:36
+psalms	VUL	70	1	MT	70:0
+psalms	VUL	70	2	MT	70:1
+psalms	VUL	70	3	MT	70:2
+psalms	VUL	70	4	MT	70:3
+psalms	VUL	70	5	MT	70:4
+psalms	VUL	70	6	MT	70:5
+psalms	VUL	72	1	MT	72:0
+psalms	VUL	72	1	MT	72:1
+psalms	VUL	73	1	MT	73:0
+psalms	VUL	73	1	MT	73:1
+psalms	VUL	74	1	MT	74:0
+psalms	VUL	74	1	MT	74:1
+psalms	VUL	75	1	MT	75:0
+psalms	VUL	75	2	MT	75:1
+psalms	VUL	75	3	MT	75:2
+psalms	VUL	75	4	MT	75:3
+psalms	VUL	75	5	MT	75:4
+psalms	VUL	75	6	MT	75:5
+psalms	VUL	75	7	MT	75:6
+psalms	VUL	75	8	MT	75:7
+psalms	VUL	75	9	MT	75:8
+psalms	VUL	75	10	MT	75:9
+psalms	VUL	75	11	MT	75:10
+psalms	VUL	76	1	MT	76:0
+psalms	VUL	76	2	MT	76:1
+psalms	VUL	76	3	MT	76:2
+psalms	VUL	76	4	MT	76:3
+psalms	VUL	76	5	MT	76:4
+psalms	VUL	76	6	MT	76:5
+psalms	VUL	76	7	MT	76:6
+psalms	VUL	76	8	MT	76:7
+psalms	VUL	76	9	MT	76:8
+psalms	VUL	76	10	MT	76:9
+psalms	VUL	76	11	MT	76:10
+psalms	VUL	76	12	MT	76:11
+psalms	VUL	76	13	MT	76:12
+psalms	VUL	77	1	MT	77:0
+psalms	VUL	77	2	MT	77:1
+psalms	VUL	77	3	MT	77:2
+psalms	VUL	77	4	MT	77:3
+psalms	VUL	77	5	MT	77:4
+psalms	VUL	77	6	MT	77:5
+psalms	VUL	77	7	MT	77:6
+psalms	VUL	77	8	MT	77:7
+psalms	VUL	77	9	MT	77:8
+psalms	VUL	77	10	MT	77:9
+psalms	VUL	77	11	MT	77:10
+psalms	VUL	77	12	MT	77:11
+psalms	VUL	77	13	MT	77:12
+psalms	VUL	77	14	MT	77:13
+psalms	VUL	77	15	MT	77:14
+psalms	VUL	77	16	MT	77:15
+psalms	VUL	77	17	MT	77:16
+psalms	VUL	77	18	MT	77:17
+psalms	VUL	77	19	MT	77:18
+psalms	VUL	77	20	MT	77:19
+psalms	VUL	77	21	MT	77:20
+psalms	VUL	78	1	MT	78:0
+psalms	VUL	78	1	MT	78:1
+psalms	VUL	79	1	MT	79:0
+psalms	VUL	79	1	MT	79:1
+psalms	VUL	80	1	MT	80:0
+psalms	VUL	80	2	MT	80:1
+psalms	VUL	80	3	MT	80:2
+psalms	VUL	80	4	MT	80:3
+psalms	VUL	80	5	MT	80:4
+psalms	VUL	80	6	MT	80:5
+psalms	VUL	80	7	MT	80:6
+psalms	VUL	80	8	MT	80:7
+psalms	VUL	80	9	MT	80:8
+psalms	VUL	80	10	MT	80:9
+psalms	VUL	80	11	MT	80:10
+psalms	VUL	80	12	MT	80:11
+psalms	VUL	80	13	MT	80:12
+psalms	VUL	80	14	MT	80:13
+psalms	VUL	80	15	MT	80:14
+psalms	VUL	80	16	MT	80:15
+psalms	VUL	80	17	MT	80:16
+psalms	VUL	80	18	MT	80:17
+psalms	VUL	80	19	MT	80:18
+psalms	VUL	80	20	MT	80:19
+psalms	VUL	81	1	MT	81:0
+psalms	VUL	81	2	MT	81:1
+psalms	VUL	81	3	MT	81:2
+psalms	VUL	81	4	MT	81:3
+psalms	VUL	81	5	MT	81:4
+psalms	VUL	81	6	MT	81:5
+psalms	VUL	81	7	MT	81:6
+psalms	VUL	81	8	MT	81:7
+psalms	VUL	81	9	MT	81:8
+psalms	VUL	81	10	MT	81:9
+psalms	VUL	81	11	MT	81:10
+psalms	VUL	81	12	MT	81:11
+psalms	VUL	81	13	MT	81:12
+psalms	VUL	81	14	MT	81:13
+psalms	VUL	81	15	MT	81:14
+psalms	VUL	81	16	MT	81:15
+psalms	VUL	81	17	MT	81:16
+psalms	VUL	82	1	MT	82:0
+psalms	VUL	82	1	MT	82:1
+psalms	VUL	83	1	MT	83:0
+psalms	VUL	83	2	MT	83:1
+psalms	VUL	83	3	MT	83:2
+psalms	VUL	83	4	MT	83:3
+psalms	VUL	83	5	MT	83:4
+psalms	VUL	83	6	MT	83:5
+psalms	VUL	83	7	MT	83:6
+psalms	VUL	83	8	MT	83:7
+psalms	VUL	83	9	MT	83:8
+psalms	VUL	83	10	MT	83:9
+psalms	VUL	83	11	MT	83:10
+psalms	VUL	83	12	MT	83:11
+psalms	VUL	83	13	MT	83:12
+psalms	VUL	83	14	MT	83:13
+psalms	VUL	83	15	MT	83:14
+psalms	VUL	83	16	MT	83:15
+psalms	VUL	83	17	MT	83:16
+psalms	VUL	83	18	MT	83:17
+psalms	VUL	83	19	MT	83:18
+psalms	VUL	84	1	MT	84:0
+psalms	VUL	84	2	MT	84:1
+psalms	VUL	84	3	MT	84:2
+psalms	VUL	84	4	MT	84:3
+psalms	VUL	84	5	MT	84:4
+psalms	VUL	84	6	MT	84:5
+psalms	VUL	84	7	MT	84:6
+psalms	VUL	84	8	MT	84:7
+psalms	VUL	84	9	MT	84:8
+psalms	VUL	84	10	MT	84:9
+psalms	VUL	84	11	MT	84:10
+psalms	VUL	84	12	MT	84:11
+psalms	VUL	84	13	MT	84:12
+psalms	VUL	85	1	MT	85:0
+psalms	VUL	85	2	MT	85:1
+psalms	VUL	85	3	MT	85:2
+psalms	VUL	85	4	MT	85:3
+psalms	VUL	85	5	MT	85:4
+psalms	VUL	85	6	MT	85:5
+psalms	VUL	85	7	MT	85:6
+psalms	VUL	85	8	MT	85:7
+psalms	VUL	85	9	MT	85:8
+psalms	VUL	85	10	MT	85:9
+psalms	VUL	85	11	MT	85:10
+psalms	VUL	85	12	MT	85:11
+psalms	VUL	85	13	MT	85:12
+psalms	VUL	85	14	MT	85:13
+psalms	VUL	86	1	MT	86:0
+psalms	VUL	86	1	MT	86:1
+psalms	VUL	87	1	MT	87:0
+psalms	VUL	87	1	MT	87:1
+psalms	VUL	88	1	MT	88:0
+psalms	VUL	88	2	MT	88:1
+psalms	VUL	88	3	MT	88:2
+psalms	VUL	88	4	MT	88:3
+psalms	VUL	88	5	MT	88:4
+psalms	VUL	88	6	MT	88:5
+psalms	VUL	88	7	MT	88:6
+psalms	VUL	88	8	MT	88:7
+psalms	VUL	88	9	MT	88:8
+psalms	VUL	88	10	MT	88:9
+psalms	VUL	88	11	MT	88:10
+psalms	VUL	88	12	MT	88:11
+psalms	VUL	88	13	MT	88:12
+psalms	VUL	88	14	MT	88:13
+psalms	VUL	88	15	MT	88:14
+psalms	VUL	88	16	MT	88:15
+psalms	VUL	88	17	MT	88:16
+psalms	VUL	88	18	MT	88:17
+psalms	VUL	88	19	MT	88:18
+psalms	VUL	89	1	MT	89:0
+psalms	VUL	89	2	MT	89:1
+psalms	VUL	89	3	MT	89:2
+psalms	VUL	89	4	MT	89:3
+psalms	VUL	89	5	MT	89:4
+psalms	VUL	89	6	MT	89:5
+psalms	VUL	89	7	MT	89:6
+psalms	VUL	89	8	MT	89:7
+psalms	VUL	89	9	MT	89:8
+psalms	VUL	89	10	MT	89:9
+psalms	VUL	89	11	MT	89:10
+psalms	VUL	89	12	MT	89:11
+psalms	VUL	89	13	MT	89:12
+psalms	VUL	89	14	MT	89:13
+psalms	VUL	89	15	MT	89:14
+psalms	VUL	89	16	MT	89:15
+psalms	VUL	89	17	MT	89:16
+psalms	VUL	89	18	MT	89:17
+psalms	VUL	89	19	MT	89:18
+psalms	VUL	89	20	MT	89:19
+psalms	VUL	89	21	MT	89:20
+psalms	VUL	89	22	MT	89:21
+psalms	VUL	89	23	MT	89:22
+psalms	VUL	89	24	MT	89:23
+psalms	VUL	89	25	MT	89:24
+psalms	VUL	89	26	MT	89:25
+psalms	VUL	89	27	MT	89:26
+psalms	VUL	89	28	MT	89:27
+psalms	VUL	89	29	MT	89:28
+psalms	VUL	89	30	MT	89:29
+psalms	VUL	89	31	MT	89:30
+psalms	VUL	89	32	MT	89:31
+psalms	VUL	89	33	MT	89:32
+psalms	VUL	89	34	MT	89:33
+psalms	VUL	89	35	MT	89:34
+psalms	VUL	89	36	MT	89:35
+psalms	VUL	89	37	MT	89:36
+psalms	VUL	89	38	MT	89:37
+psalms	VUL	89	39	MT	89:38
+psalms	VUL	89	40	MT	89:39
+psalms	VUL	89	41	MT	89:40
+psalms	VUL	89	42	MT	89:41
+psalms	VUL	89	43	MT	89:42
+psalms	VUL	89	44	MT	89:43
+psalms	VUL	89	45	MT	89:44
+psalms	VUL	89	46	MT	89:45
+psalms	VUL	89	47	MT	89:46
+psalms	VUL	89	48	MT	89:47
+psalms	VUL	89	49	MT	89:48
+psalms	VUL	89	50	MT	89:49
+psalms	VUL	89	51	MT	89:50
+psalms	VUL	89	52	MT	89:51
+psalms	VUL	89	53	MT	89:52
+psalms	VUL	90	1	MT	90:0
+psalms	VUL	90	1	MT	90:1
+psalms	VUL	92	1	MT	92:0
+psalms	VUL	92	2	MT	92:1
+psalms	VUL	92	3	MT	92:2
+psalms	VUL	92	4	MT	92:3
+psalms	VUL	92	5	MT	92:4
+psalms	VUL	92	6	MT	92:5
+psalms	VUL	92	7	MT	92:6
+psalms	VUL	92	8	MT	92:7
+psalms	VUL	92	9	MT	92:8
+psalms	VUL	92	10	MT	92:9
+psalms	VUL	92	11	MT	92:10
+psalms	VUL	92	12	MT	92:11
+psalms	VUL	92	13	MT	92:12
+psalms	VUL	92	14	MT	92:13
+psalms	VUL	92	15	MT	92:14
+psalms	VUL	92	16	MT	92:15
+psalms	VUL	98	1	MT	98:0
+psalms	VUL	98	1	MT	98:1
+psalms	VUL	100	1	MT	100:0
+psalms	VUL	100	1	MT	100:1
+psalms	VUL	101	1	MT	101:0
+psalms	VUL	101	1	MT	101:1
+psalms	VUL	102	1	MT	102:0
+psalms	VUL	102	2	MT	102:1
+psalms	VUL	102	3	MT	102:2
+psalms	VUL	102	4	MT	102:3
+psalms	VUL	102	5	MT	102:4
+psalms	VUL	102	6	MT	102:5
+psalms	VUL	102	7	MT	102:6
+psalms	VUL	102	8	MT	102:7
+psalms	VUL	102	9	MT	102:8
+psalms	VUL	102	10	MT	102:9
+psalms	VUL	102	11	MT	102:10
+psalms	VUL	102	12	MT	102:11
+psalms	VUL	102	13	MT	102:12
+psalms	VUL	102	14	MT	102:13
+psalms	VUL	102	15	MT	102:14
+psalms	VUL	102	16	MT	102:15
+psalms	VUL	102	17	MT	102:16
+psalms	VUL	102	18	MT	102:17
+psalms	VUL	102	19	MT	102:18
+psalms	VUL	102	20	MT	102:19
+psalms	VUL	102	21	MT	102:20
+psalms	VUL	102	22	MT	102:21
+psalms	VUL	102	23	MT	102:22
+psalms	VUL	102	24	MT	102:23
+psalms	VUL	102	25	MT	102:24
+psalms	VUL	102	26	MT	102:25
+psalms	VUL	102	27	MT	102:26
+psalms	VUL	102	28	MT	102:27
+psalms	VUL	102	29	MT	102:28
+psalms	VUL	103	1	MT	103:0
+psalms	VUL	103	1	MT	103:1
+psalms	VUL	108	1	MT	108:0
+psalms	VUL	108	2	MT	108:1
+psalms	VUL	108	3	MT	108:2
+psalms	VUL	108	4	MT	108:3
+psalms	VUL	108	5	MT	108:4
+psalms	VUL	108	6	MT	108:5
+psalms	VUL	108	7	MT	108:6
+psalms	VUL	108	8	MT	108:7
+psalms	VUL	108	9	MT	108:8
+psalms	VUL	108	10	MT	108:9
+psalms	VUL	108	11	MT	108:10
+psalms	VUL	108	12	MT	108:11
+psalms	VUL	108	13	MT	108:12
+psalms	VUL	108	14	MT	108:13
+psalms	VUL	109	1	MT	109:0
+psalms	VUL	109	1	MT	109:1
+psalms	VUL	110	1	MT	110:0
+psalms	VUL	110	1	MT	110:1
+psalms	VUL	120	1	MT	120:0
+psalms	VUL	120	1	MT	120:1
+psalms	VUL	121	1	MT	121:0
+psalms	VUL	121	1	MT	121:1
+psalms	VUL	122	1	MT	122:0
+psalms	VUL	122	1	MT	122:1
+psalms	VUL	123	1	MT	123:0
+psalms	VUL	123	1	MT	123:1
+psalms	VUL	124	1	MT	124:0
+psalms	VUL	124	1	MT	124:1
+psalms	VUL	125	1	MT	125:0
+psalms	VUL	125	1	MT	125:1
+psalms	VUL	126	1	MT	126:0
+psalms	VUL	126	1	MT	126:1
+psalms	VUL	127	1	MT	127:0
+psalms	VUL	127	1	MT	127:1
+psalms	VUL	128	1	MT	128:0
+psalms	VUL	128	1	MT	128:1
+psalms	VUL	129	1	MT	129:0
+psalms	VUL	129	1	MT	129:1
+psalms	VUL	130	1	MT	130:0
+psalms	VUL	130	1	MT	130:1
+psalms	VUL	131	1	MT	131:0
+psalms	VUL	131	1	MT	131:1
+psalms	VUL	132	1	MT	132:0
+psalms	VUL	132	1	MT	132:1
+psalms	VUL	133	1	MT	133:0
+psalms	VUL	133	1	MT	133:1
+psalms	VUL	134	1	MT	134:0
+psalms	VUL	134	1	MT	134:1
+psalms	VUL	138	1	MT	138:0
+psalms	VUL	138	1	MT	138:1
+psalms	VUL	139	1	MT	139:0
+psalms	VUL	139	1	MT	139:1
+psalms	VUL	140	1	MT	140:0
+psalms	VUL	140	2	MT	140:1
+psalms	VUL	140	3	MT	140:2
+psalms	VUL	140	4	MT	140:3
+psalms	VUL	140	5	MT	140:4
+psalms	VUL	140	6	MT	140:5
+psalms	VUL	140	7	MT	140:6
+psalms	VUL	140	8	MT	140:7
+psalms	VUL	140	9	MT	140:8
+psalms	VUL	140	10	MT	140:9
+psalms	VUL	140	11	MT	140:10
+psalms	VUL	140	12	MT	140:11
+psalms	VUL	140	13	MT	140:12
+psalms	VUL	140	14	MT	140:13
+psalms	VUL	141	1	MT	141:0
+psalms	VUL	141	1	MT	141:1
+psalms	VUL	142	1	MT	142:0
+psalms	VUL	142	2	MT	142:1
+psalms	VUL	142	3	MT	142:2
+psalms	VUL	142	4	MT	142:3
+psalms	VUL	142	5	MT	142:4
+psalms	VUL	142	6	MT	142:5
+psalms	VUL	142	7	MT	142:6
+psalms	VUL	142	8	MT	142:7
+psalms	VUL	143	1	MT	143:0
+psalms	VUL	143	1	MT	143:1
+psalms	VUL	144	1	MT	144:0
+psalms	VUL	144	1	MT	144:1
+psalms	VUL	145	1	MT	145:0
+psalms	VUL	145	1	MT	145:1
+ecclesiastes	VUL	4	17	MT	5:1
+ecclesiastes	VUL	5	1	MT	5:2
+ecclesiastes	VUL	5	2	MT	5:3
+ecclesiastes	VUL	5	3	MT	5:4
+ecclesiastes	VUL	5	4	MT	5:5
+ecclesiastes	VUL	5	5	MT	5:6
+ecclesiastes	VUL	5	6	MT	5:7
+ecclesiastes	VUL	5	7	MT	5:8
+ecclesiastes	VUL	5	8	MT	5:9
+ecclesiastes	VUL	5	9	MT	5:10
+ecclesiastes	VUL	5	10	MT	5:11
+ecclesiastes	VUL	5	11	MT	5:12
+ecclesiastes	VUL	5	12	MT	5:13
+ecclesiastes	VUL	5	13	MT	5:14
+ecclesiastes	VUL	5	14	MT	5:15
+ecclesiastes	VUL	5	15	MT	5:16
+ecclesiastes	VUL	5	16	MT	5:17
+ecclesiastes	VUL	5	17	MT	5:18
+ecclesiastes	VUL	5	18	MT	5:19
+ecclesiastes	VUL	5	19	MT	5:20
+song of solomon	VUL	7	1	MT	6:13
+song of solomon	VUL	7	2	MT	7:1
+song of solomon	VUL	7	3	MT	7:2
+song of solomon	VUL	7	4	MT	7:3
+song of solomon	VUL	7	5	MT	7:4
+song of solomon	VUL	7	6	MT	7:5
+song of solomon	VUL	7	7	MT	7:6
+song of solomon	VUL	7	8	MT	7:7
+song of solomon	VUL	7	9	MT	7:8
+song of solomon	VUL	7	10	MT	7:9
+song of solomon	VUL	7	11	MT	7:10
+song of solomon	VUL	7	12	MT	7:11
+song of solomon	VUL	7	13	MT	7:12
+song of solomon	VUL	7	14	MT	7:13
+isaiah	VUL	8	23	MT	9:1
+isaiah	VUL	9	1	MT	9:2
+isaiah	VUL	9	2	MT	9:3
+isaiah	VUL	9	3	MT	9:4
+isaiah	VUL	9	4	MT	9:5
+isaiah	VUL	9	5	MT	9:6
+isaiah	VUL	9	6	MT	9:7
+isaiah	VUL	9	7	MT	9:8
+isaiah	VUL	9	8	MT	9:9
+isaiah	VUL	9	9	MT	9:10
+isaiah	VUL	9	10	MT	9:11
+isaiah	VUL	9	11	MT	9:12
+isaiah	VUL	9	12	MT	9:13
+isaiah	VUL	9	13	MT	9:14
+isaiah	VUL	9	14	MT	9:15
+isaiah	VUL	9	15	MT	9:16
+isaiah	VUL	9	16	MT	9:17
+isaiah	VUL	9	17	MT	9:18
+isaiah	VUL	9	18	MT	9:19
+isaiah	VUL	9	19	MT	9:20
+isaiah	VUL	9	20	MT	9:21
+isaiah	VUL	63	19	MT	63:19
+isaiah	VUL	63	19	MT	64:1
+isaiah	VUL	64	1	MT	64:2
+isaiah	VUL	64	2	MT	64:3
+isaiah	VUL	64	3	MT	64:4
+isaiah	VUL	64	4	MT	64:5
+isaiah	VUL	64	5	MT	64:6
+isaiah	VUL	64	6	MT	64:7
+isaiah	VUL	64	7	MT	64:8
+isaiah	VUL	64	8	MT	64:9
+isaiah	VUL	64	9	MT	64:10
+isaiah	VUL	64	10	MT	64:11
+isaiah	VUL	64	11	MT	64:12
+jeremiah	VUL	8	23	MT	9:1
+jeremiah	VUL	9	1	MT	9:2
+jeremiah	VUL	9	2	MT	9:3
+jeremiah	VUL	9	3	MT	9:4
+jeremiah	VUL	9	4	MT	9:5
+jeremiah	VUL	9	5	MT	9:6
+jeremiah	VUL	9	6	MT	9:7
+jeremiah	VUL	9	7	MT	9:8
+jeremiah	VUL	9	8	MT	9:9
+jeremiah	VUL	9	9	MT	9:10
+jeremiah	VUL	9	10	MT	9:11
+jeremiah	VUL	9	11	MT	9:12
+jeremiah	VUL	9	12	MT	9:13
+jeremiah	VUL	9	13	MT	9:14
+jeremiah	VUL	9	14	MT	9:15
+jeremiah	VUL	9	15	MT	9:16
+jeremiah	VUL	9	16	MT	9:17
+jeremiah	VUL	9	17	MT	9:18
+jeremiah	VUL	9	18	MT	9:19
+jeremiah	VUL	9	19	MT	9:20
+jeremiah	VUL	9	20	MT	9:21
+jeremiah	VUL	9	21	MT	9:22
+jeremiah	VUL	9	22	MT	9:23
+jeremiah	VUL	9	23	MT	9:24
+jeremiah	VUL	9	24	MT	9:25
+jeremiah	VUL	9	25	MT	9:26
+ezekiel	VUL	21	1	MT	20:45
+ezekiel	VUL	21	2	MT	20:46
+ezekiel	VUL	21	3	MT	20:47
+ezekiel	VUL	21	4	MT	20:48
+ezekiel	VUL	21	5	MT	20:49
+ezekiel	VUL	21	6	MT	21:1
+ezekiel	VUL	21	7	MT	21:2
+ezekiel	VUL	21	8	MT	21:3
+ezekiel	VUL	21	9	MT	21:4
+ezekiel	VUL	21	10	MT	21:5
+ezekiel	VUL	21	11	MT	21:6
+ezekiel	VUL	21	12	MT	21:7
+ezekiel	VUL	21	13	MT	21:8
+ezekiel	VUL	21	14	MT	21:9
+ezekiel	VUL	21	15	MT	21:10
+ezekiel	VUL	21	16	MT	21:11
+ezekiel	VUL	21	17	MT	21:12
+ezekiel	VUL	21	18	MT	21:13
+ezekiel	VUL	21	19	MT	21:14
+ezekiel	VUL	21	20	MT	21:15
+ezekiel	VUL	21	21	MT	21:16
+ezekiel	VUL	21	22	MT	21:17
+ezekiel	VUL	21	23	MT	21:18
+ezekiel	VUL	21	24	MT	21:19
+ezekiel	VUL	21	25	MT	21:20
+ezekiel	VUL	21	26	MT	21:21
+ezekiel	VUL	21	27	MT	21:22
+ezekiel	VUL	21	28	MT	21:23
+ezekiel	VUL	21	29	MT	21:24
+ezekiel	VUL	21	30	MT	21:25
+ezekiel	VUL	21	31	MT	21:26
+ezekiel	VUL	21	32	MT	21:27
+ezekiel	VUL	21	33	MT	21:28
+ezekiel	VUL	21	34	MT	21:29
+ezekiel	VUL	21	35	MT	21:30
+ezekiel	VUL	21	36	MT	21:31
+ezekiel	VUL	21	37	MT	21:32
+daniel	VUL	3	91	MT	3:24
+daniel	VUL	3	92	MT	3:25
+daniel	VUL	3	93	MT	3:26
+daniel	VUL	3	94	MT	3:27
+daniel	VUL	3	95	MT	3:28
+daniel	VUL	3	96	MT	3:29
+daniel	VUL	3	97	MT	3:30
+daniel	VUL	3	98	MT	4:1
+daniel	VUL	3	99	MT	4:2
+daniel	VUL	3	100	MT	4:3
+daniel	VUL	4	1	MT	4:4
+daniel	VUL	4	2	MT	4:5
+daniel	VUL	4	3	MT	4:6
+daniel	VUL	4	4	MT	4:7
+daniel	VUL	4	5	MT	4:8
+daniel	VUL	4	6	MT	4:9
+daniel	VUL	4	7	MT	4:10
+daniel	VUL	4	8	MT	4:11
+daniel	VUL	4	9	MT	4:12
+daniel	VUL	4	10	MT	4:13
+daniel	VUL	4	11	MT	4:14
+daniel	VUL	4	12	MT	4:15
+daniel	VUL	4	13	MT	4:16
+daniel	VUL	4	14	MT	4:17
+daniel	VUL	4	15	MT	4:18
+daniel	VUL	4	16	MT	4:19
+daniel	VUL	4	17	MT	4:20
+daniel	VUL	4	18	MT	4:21
+daniel	VUL	4	19	MT	4:22
+daniel	VUL	4	20	MT	4:23
+daniel	VUL	4	21	MT	4:24
+daniel	VUL	4	22	MT	4:25
+daniel	VUL	4	23	MT	4:26
+daniel	VUL	4	24	MT	4:27
+daniel	VUL	4	25	MT	4:28
+daniel	VUL	4	26	MT	4:29
+daniel	VUL	4	27	MT	4:30
+daniel	VUL	4	28	MT	4:31
+daniel	VUL	4	29	MT	4:32
+daniel	VUL	4	30	MT	4:33
+daniel	VUL	4	31	MT	4:34
+daniel	VUL	4	32	MT	4:35
+daniel	VUL	4	33	MT	4:36
+daniel	VUL	4	34	MT	4:37
+daniel	VUL	6	1	MT	5:31
+daniel	VUL	6	2	MT	6:1
+daniel	VUL	6	3	MT	6:2
+daniel	VUL	6	4	MT	6:3
+daniel	VUL	6	5	MT	6:4
+daniel	VUL	6	6	MT	6:5
+daniel	VUL	6	7	MT	6:6
+daniel	VUL	6	8	MT	6:7
+daniel	VUL	6	9	MT	6:8
+daniel	VUL	6	10	MT	6:9
+daniel	VUL	6	11	MT	6:10
+daniel	VUL	6	12	MT	6:11
+daniel	VUL	6	13	MT	6:12
+daniel	VUL	6	14	MT	6:13
+daniel	VUL	6	15	MT	6:14
+daniel	VUL	6	16	MT	6:15
+daniel	VUL	6	17	MT	6:16
+daniel	VUL	6	18	MT	6:17
+daniel	VUL	6	19	MT	6:18
+daniel	VUL	6	20	MT	6:19
+daniel	VUL	6	21	MT	6:20
+daniel	VUL	6	22	MT	6:21
+daniel	VUL	6	23	MT	6:22
+daniel	VUL	6	24	MT	6:23
+daniel	VUL	6	25	MT	6:24
+daniel	VUL	6	26	MT	6:25
+daniel	VUL	6	27	MT	6:26
+daniel	VUL	6	28	MT	6:27
+daniel	VUL	6	29	MT	6:28
+hosea	VUL	2	1	MT	1:10
+hosea	VUL	2	2	MT	1:11
+hosea	VUL	2	3	MT	2:1
+hosea	VUL	2	4	MT	2:2
+hosea	VUL	2	5	MT	2:3
+hosea	VUL	2	6	MT	2:4
+hosea	VUL	2	7	MT	2:5
+hosea	VUL	2	8	MT	2:6
+hosea	VUL	2	9	MT	2:7
+hosea	VUL	2	10	MT	2:8
+hosea	VUL	2	11	MT	2:9
+hosea	VUL	2	12	MT	2:10
+hosea	VUL	2	13	MT	2:11
+hosea	VUL	2	14	MT	2:12
+hosea	VUL	2	15	MT	2:13
+hosea	VUL	2	16	MT	2:14
+hosea	VUL	2	17	MT	2:15
+hosea	VUL	2	18	MT	2:16
+hosea	VUL	2	19	MT	2:17
+hosea	VUL	2	20	MT	2:18
+hosea	VUL	2	21	MT	2:19
+hosea	VUL	2	22	MT	2:20
+hosea	VUL	2	23	MT	2:21
+hosea	VUL	2	24	MT	2:22
+hosea	VUL	2	25	MT	2:23
+hosea	VUL	12	1	MT	11:12
+hosea	VUL	12	2	MT	1:1
+hosea	VUL	12	3	MT	1:2
+hosea	VUL	12	4	MT	1:3
+hosea	VUL	12	5	MT	1:4
+hosea	VUL	12	6	MT	1:5
+hosea	VUL	12	7	MT	1:6
+hosea	VUL	12	8	MT	1:7
+hosea	VUL	12	9	MT	1:8
+hosea	VUL	12	10	MT	1:9
+hosea	VUL	12	11	MT	1:10
+hosea	VUL	12	12	MT	1:11
+hosea	VUL	12	13	MT	1:12
+hosea	VUL	12	14	MT	1:13
+hosea	VUL	12	15	MT	1:14
+hosea	VUL	14	1	MT	13:16
+hosea	VUL	14	2	MT	14:1
+hosea	VUL	14	3	MT	14:2
+hosea	VUL	14	4	MT	14:3
+hosea	VUL	14	5	MT	14:4
+hosea	VUL	14	6	MT	14:5
+hosea	VUL	14	7	MT	14:6
+hosea	VUL	14	8	MT	14:7
+hosea	VUL	14	9	MT	14:8
+hosea	VUL	14	10	MT	14:9
+joel	VUL	3	1	MT	2:28
+joel	VUL	3	2	MT	2:29
+joel	VUL	3	3	MT	2:30
+joel	VUL	3	4	MT	2:31
+joel	VUL	3	5	MT	2:32
+joel	VUL	4	1	MT	3:1
+joel	VUL	4	2	MT	3:2
+joel	VUL	4	3	MT	3:3
+joel	VUL	4	4	MT	3:4
+joel	VUL	4	5	MT	3:5
+joel	VUL	4	6	MT	3:6
+joel	VUL	4	7	MT	3:7
+joel	VUL	4	8	MT	3:8
+joel	VUL	4	9	MT	3:9
+joel	VUL	4	10	MT	3:10
+joel	VUL	4	11	MT	3:11
+joel	VUL	4	12	MT	3:12
+joel	VUL	4	13	MT	3:13
+joel	VUL	4	14	MT	3:14
+joel	VUL	4	15	MT	3:15
+joel	VUL	4	16	MT	3:16
+joel	VUL	4	17	MT	3:17
+joel	VUL	4	18	MT	3:18
+joel	VUL	4	19	MT	3:19
+joel	VUL	4	20	MT	3:20
+joel	VUL	4	21	MT	3:21
+jonah	VUL	2	1	MT	1:17
+jonah	VUL	2	2	MT	2:1
+jonah	VUL	2	3	MT	2:2
+jonah	VUL	2	4	MT	2:3
+jonah	VUL	2	5	MT	2:4
+jonah	VUL	2	6	MT	2:5
+jonah	VUL	2	7	MT	2:6
+jonah	VUL	2	8	MT	2:7
+jonah	VUL	2	9	MT	2:8
+jonah	VUL	2	10	MT	2:9
+jonah	VUL	2	11	MT	2:10
+micah	VUL	4	14	MT	5:1
+micah	VUL	5	1	MT	5:2
+micah	VUL	5	2	MT	5:3
+micah	VUL	5	3	MT	5:4
+micah	VUL	5	4	MT	5:5
+micah	VUL	5	5	MT	5:6
+micah	VUL	5	6	MT	5:7
+micah	VUL	5	7	MT	5:8
+micah	VUL	5	8	MT	5:9
+micah	VUL	5	9	MT	5:10
+micah	VUL	5	10	MT	5:11
+micah	VUL	5	11	MT	5:12
+micah	VUL	5	12	MT	5:13
+micah	VUL	5	13	MT	5:14
+micah	VUL	5	14	MT	5:15
+nahum	VUL	2	1	MT	1:15
+nahum	VUL	2	2	MT	2:1
+nahum	VUL	2	3	MT	2:2
+nahum	VUL	2	4	MT	2:3
+nahum	VUL	2	5	MT	2:4
+nahum	VUL	2	6	MT	2:5
+nahum	VUL	2	7	MT	2:6
+nahum	VUL	2	8	MT	2:7
+nahum	VUL	2	9	MT	2:8
+nahum	VUL	2	10	MT	2:9
+nahum	VUL	2	11	MT	2:10
+nahum	VUL	2	12	MT	2:11
+nahum	VUL	2	13	MT	2:12
+nahum	VUL	2	14	MT	2:13
+zechariah	VUL	2	1	MT	1:18
+zechariah	VUL	2	2	MT	1:19
+zechariah	VUL	2	3	MT	1:20
+zechariah	VUL	2	4	MT	1:21
+zechariah	VUL	2	5	MT	2:1
+zechariah	VUL	2	6	MT	2:2
+zechariah	VUL	2	7	MT	2:3
+zechariah	VUL	2	8	MT	2:4
+zechariah	VUL	2	9	MT	2:5
+zechariah	VUL	2	10	MT	2:6
+zechariah	VUL	2	11	MT	2:7
+zechariah	VUL	2	12	MT	2:8
+zechariah	VUL	2	13	MT	2:9
+zechariah	VUL	2	14	MT	2:10
+zechariah	VUL	2	15	MT	2:11
+zechariah	VUL	2	16	MT	2:12
+zechariah	VUL	2	17	MT	2:13
+malachi	VUL	3	19	MT	4:1
+malachi	VUL	3	20	MT	4:2
+malachi	VUL	3	21	MT	4:3
+malachi	VUL	3	22	MT	4:4
+malachi	VUL	3	23	MT	4:5
+malachi	VUL	3	24	MT	4:6
+tobit	VUL	5	8	MT	5:8-8
+tobit	VUL	5	10	MT	5:9
+tobit	VUL	5	11	MT	5:10
+tobit	VUL	5	12	MT	5:11
+tobit	VUL	5	13	MT	5:12
+tobit	VUL	5	14	MT	5:13
+tobit	VUL	5	15	MT	5:14
+tobit	VUL	5	16	MT	5:15
+tobit	VUL	5	17	MT	5:16
+tobit	VUL	5	18	MT	5:17
+tobit	VUL	5	19	MT	5:18
+tobit	VUL	5	20	MT	5:19
+tobit	VUL	5	21	MT	5:20
+tobit	VUL	5	22	MT	5:21
+tobit	VUL	5	23	MT	5:22
+tobit	VUL	6	5	MT	6:5-5
+tobit	VUL	6	7	MT	6:6
+tobit	VUL	6	8	MT	6:7
+tobit	VUL	6	9	MT	6:8
+tobit	VUL	6	10	MT	6:9
+tobit	VUL	6	11	MT	6:10
+tobit	VUL	6	12	MT	6:11
+tobit	VUL	6	13	MT	6:12
+tobit	VUL	6	14	MT	6:13
+tobit	VUL	6	15	MT	6:14
+tobit	VUL	6	16	MT	6:15
+tobit	VUL	6	17	MT	6:16
+tobit	VUL	6	18	MT	6:17-17
+tobit	VUL	7	8	MT	7:8-8
+tobit	VUL	7	10	MT	7:9
+tobit	VUL	7	10	MT	7:10
+tobit	VUL	7	11	MT	7:11
+tobit	VUL	7	11	MT	7:12
+tobit	VUL	7	12	MT	7:13
+tobit	VUL	7	13	MT	7:14
+tobit	VUL	7	14	MT	7:15
+tobit	VUL	7	15	MT	7:16
+tobit	VUL	7	16	MT	7:17
+tobit	VUL	7	17	MT	7:18
+tobit	VUL	10	7	MT	10:7-7
+tobit	VUL	10	9	MT	10:8
+tobit	VUL	10	9	MT	10:9
+tobit	VUL	10	12	MT	10:12-12
+tobit	VUL	10	14	MT	11:1a
+tobit	VUL	11	1	MT	11:1b
+judith	VUL	15	14	MT	16:1
+judith	VUL	16	1	MT	16:2
+judith	VUL	16	2	MT	16:3
+judith	VUL	16	3	MT	16:4
+judith	VUL	16	4	MT	16:5
+judith	VUL	16	5	MT	16:6
+judith	VUL	16	6	MT	16:7
+judith	VUL	16	7	MT	16:8-8
+sirach	VUL	33	16	MT	33:16-16
+sirach	VUL	33	18	MT	33:17
+sirach	VUL	33	19	MT	33:18
+sirach	VUL	33	20	MT	33:19
+sirach	VUL	33	21	MT	33:20
+sirach	VUL	33	22	MT	33:21
+sirach	VUL	33	23	MT	33:22
+sirach	VUL	33	24	MT	33:23
+sirach	VUL	33	25	MT	33:24
+sirach	VUL	33	26	MT	33:25
+sirach	VUL	33	27	MT	33:26
+sirach	VUL	33	28	MT	33:27-27
+sirach	VUL	33	30	MT	33:28
+sirach	VUL	33	30	MT	33:29
+sirach	VUL	33	31	MT	33:30
+sirach	VUL	33	32	MT	33:31-31
+sirach	VUL	34	10	MT	34:10-10
+sirach	VUL	34	12	MT	34:11
+sirach	VUL	34	13	MT	34:12
+sirach	VUL	34	14	MT	34:13-13
+sirach	VUL	34	16	MT	34:14
+sirach	VUL	34	17	MT	34:15-15
+sirach	VUL	34	19	MT	34:16
+sirach	VUL	34	20	MT	34:17
+sirach	VUL	34	21	MT	34:18-18
+sirach	VUL	34	23	MT	34:19
+sirach	VUL	34	24	MT	34:20
+sirach	VUL	34	25	MT	34:21
+sirach	VUL	34	26	MT	34:22-22
+sirach	VUL	34	28	MT	34:23
+sirach	VUL	34	29	MT	34:24
+sirach	VUL	34	30	MT	34:25
+sirach	VUL	34	31	MT	34:26
+sirach	VUL	36	6	MT	36:6-6
+sirach	VUL	36	8	MT	36:7-7
+sirach	VUL	36	10	MT	36:8
+sirach	VUL	36	11	MT	36:9
+sirach	VUL	36	12	MT	36:10
+sirach	VUL	36	13	MT	36:11-11
+sirach	VUL	36	17	MT	36:12
+sirach	VUL	36	18	MT	36:13
+sirach	VUL	36	19	MT	36:14
+sirach	VUL	36	20	MT	36:15
+sirach	VUL	36	21	MT	36:16
+sirach	VUL	36	22	MT	36:17
+sirach	VUL	36	23	MT	36:18
+sirach	VUL	36	24	MT	36:19
+sirach	VUL	36	25	MT	36:20
+sirach	VUL	36	26	MT	36:21
+sirach	VUL	36	27	MT	36:22
+sirach	VUL	36	28	MT	36:23
+sirach	VUL	36	29	MT	36:24
+sirach	VUL	36	30	MT	36:25
+sirach	VUL	36	31	MT	36:26
+sirach	VUL	42	1	MT	41:23-24
+sirach	VUL	42	1	MT	42:1
+sirach	VUL	44	22	MT	44:22-22
+baruch	VUL	3	34	MT	3:34-34
+baruch	VUL	3	36	MT	3:35
+baruch	VUL	3	37	MT	3:36
+baruch	VUL	3	38	MT	3:37
+baruch	VUL	6	0	MT	6:1
+baruch	VUL	6	1	MT	6:2
+baruch	VUL	6	2	MT	6:3
+baruch	VUL	6	3	MT	6:4
+baruch	VUL	6	4	MT	6:5
+baruch	VUL	6	5	MT	6:6
+baruch	VUL	6	6	MT	6:7
+baruch	VUL	6	7	MT	6:8
+baruch	VUL	6	8	MT	6:9
+baruch	VUL	6	9	MT	6:10
+baruch	VUL	6	10	MT	6:11
+baruch	VUL	6	11	MT	6:12
+baruch	VUL	6	12	MT	6:13
+baruch	VUL	6	13	MT	6:14
+baruch	VUL	6	14	MT	6:15
+baruch	VUL	6	15	MT	6:16
+baruch	VUL	6	16	MT	6:17
+baruch	VUL	6	17	MT	6:18
+baruch	VUL	6	18	MT	6:19
+baruch	VUL	6	19	MT	6:20
+baruch	VUL	6	20	MT	6:21
+baruch	VUL	6	21	MT	6:22
+baruch	VUL	6	22	MT	6:23
+baruch	VUL	6	23	MT	6:24
+baruch	VUL	6	24	MT	6:25
+baruch	VUL	6	25	MT	6:26
+baruch	VUL	6	26	MT	6:27
+baruch	VUL	6	27	MT	6:28
+baruch	VUL	6	28	MT	6:29
+baruch	VUL	6	29	MT	6:30
+baruch	VUL	6	30	MT	6:31
+baruch	VUL	6	31	MT	6:32
+baruch	VUL	6	32	MT	6:33
+baruch	VUL	6	33	MT	6:34
+baruch	VUL	6	34	MT	6:35
+baruch	VUL	6	35	MT	6:36
+baruch	VUL	6	36	MT	6:37
+baruch	VUL	6	37	MT	6:38
+baruch	VUL	6	38	MT	6:39
+baruch	VUL	6	39	MT	6:40
+baruch	VUL	6	40	MT	6:41
+baruch	VUL	6	41	MT	6:42
+baruch	VUL	6	42	MT	6:43
+baruch	VUL	6	43	MT	6:44
+baruch	VUL	6	44	MT	6:45
+baruch	VUL	6	45	MT	6:46
+baruch	VUL	6	46	MT	6:47
+baruch	VUL	6	47	MT	6:48
+baruch	VUL	6	48	MT	6:49
+baruch	VUL	6	49	MT	6:50
+baruch	VUL	6	50	MT	6:51
+baruch	VUL	6	51	MT	6:52
+baruch	VUL	6	52	MT	6:53
+baruch	VUL	6	53	MT	6:54
+baruch	VUL	6	54	MT	6:55
+baruch	VUL	6	55	MT	6:56
+baruch	VUL	6	56	MT	6:57
+baruch	VUL	6	57	MT	6:58
+baruch	VUL	6	58	MT	6:59
+baruch	VUL	6	59	MT	6:60
+baruch	VUL	6	60	MT	6:61
+baruch	VUL	6	61	MT	6:62
+baruch	VUL	6	62	MT	6:63
+baruch	VUL	6	63	MT	6:64
+baruch	VUL	6	64	MT	6:65
+baruch	VUL	6	65	MT	6:66
+baruch	VUL	6	66	MT	6:67
+baruch	VUL	6	67	MT	6:68
+baruch	VUL	6	68	MT	6:69
+baruch	VUL	6	69	MT	6:70
+baruch	VUL	6	70	MT	6:71
+baruch	VUL	6	71	MT	6:72
+baruch	VUL	6	72	MT	6:73
+1 maccabees	VUL	12	53	MT	12:53-53
+2 maccabees	VUL	12	45	MT	12:45-45

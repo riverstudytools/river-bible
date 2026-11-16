@@ -128,7 +128,8 @@ def parse_swete_parsed_tsv(parsed_tsv_path, punct_map, translit_map):
             verses_dict[ref_tuple].append({
                 'original': surface,
                 'translit': translit,
-                'gloss': lemma,
+                'gloss': surface,
+                'lemma': lemma,
                 'strong': strongs_formatted,
                 'parsing': parsing_combined,
                 'beg_q': beg_q,
@@ -205,7 +206,7 @@ def import_swete_translation(con, translation_id, verse_records):
             (
                 verse_id, pos, 'Greek',
                 w_obj['original'], w_obj['translit'], w_obj['parsing'], w_obj['strong'],
-                w_obj['gloss'], w_obj['beg_q'], w_obj['pnc'], '', '',
+                w_obj['lemma'], w_obj['gloss'], w_obj['beg_q'], w_obj['pnc'], '', '',
                 None, None, None, None
             )
             for pos, w_obj in enumerate(rec['words'])
@@ -214,8 +215,8 @@ def import_swete_translation(con, translation_id, verse_records):
         con.executemany(
             """INSERT INTO words(
                 verse_id, position, lang, original, translit, parsing, strong,
-                gloss, beg_q, pnc, end_q, end_text, footnote, hdg, crossref, par_classes
-            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                lemma, gloss, beg_q, pnc, end_q, end_text, footnote, hdg, crossref, par_classes
+            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             words_batch
         )
         words_inserted += len(words_batch)

@@ -1,12 +1,15 @@
 {
   "name": "river-bible",
+  "productName": "River Bible",
   "version": "1.0.0",
   "description": "Open source Bible app",
   "main": "main.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "electron-forge start",
     "dev": "nodemon server.js",
-    "electron": "electron ."
+    "electron": "electron .",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "repository": {
     "type": "git",
@@ -21,9 +24,17 @@
   "homepage": "https://github.com/elvishcraftsman/river-bible#readme",
   "dependencies": {
     "better-sqlite3": "^13.0.3",
+    "electron-squirrel-startup": "^1.0.1",
     "express": "^5.2.1"
   },
   "devDependencies": {
+    "@electron-forge/cli": "^6.4.2",
+    "@electron-forge/maker-deb": "^6.4.2",
+    "@electron-forge/maker-rpm": "^6.4.2",
+    "@electron-forge/maker-squirrel": "^6.4.2",
+    "@electron-forge/maker-zip": "^6.4.2",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.4.2",
+    "@reforged/maker-appimage": "^5.3.1",
     "electron": "^44.1.0",
     "nodemon": "^3.1.14"
   }

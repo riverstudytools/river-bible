@@ -13,21 +13,43 @@ const fs = require('fs');
 const Database = require('better-sqlite3');
 const { createQueries } = require('./db-queries');
 
+// AppImage FUSE mounts are nosuid, so chrome-sandbox can never be mode
+// 4755 root. Chromium then aborts if that helper is present but
+// misconfigured. Disable the setuid sandbox before ready; the renderer
+// still uses BrowserWindow webPreferences.sandbox.
+if (process.env.APPIMAGE || process.env.APPDIR) {
+  app.commandLine.appendSwitch('no-sandbox');
+  app.commandLine.appendSwitch('disable-setuid-sandbox');
+}
+
 let db;
 let queries;
 
+function getDbPath() {
+  if (!app.isPackaged) {
+    return path.join(__dirname, 'bible.sqlite');
+  }
+  // extraResource → resources/bible.sqlite. Older/unpacked builds left
+  // it next to main.js as resources/app/bible.sqlite.
+  const candidates = [
+    path.join(process.resourcesPath, 'bible.sqlite'),
+    path.join(__dirname, 'bible.sqlite'),
+  ];
+  return candidates.find((p) => fs.existsSync(p)) || candidates[0];
+}
+
 function openDatabase() {
-  const dbPath = path.join(__dirname, 'bible.sqlite');
-  db = new Database(dbPath, { timeout: 5000, readonly: true });
-  // No journal_mode pragma here: setting it is a write, even on a
-  // connection that never touches data, and this connection is
-  // readonly. Whatever mode build_db.py left the file in is fine for a
-  // reader either way.
+  const dbPath = getDbPath();
+  if (!fs.existsSync(dbPath)) {
+    throw new Error(`Bible database not found at ${dbPath}`);
+  }
+  db = new Database(dbPath, { timeout: 5000, readonly: true, fileMustExist: true });
   queries = createQueries(db);
   console.log(`Search index: ${queries.searchReady ? 'ready' : 'NOT FOUND (verses_fts table missing)'}`);
   console.log(`Lexicon data: ${queries.lexiconReady ? 'ready' : 'NOT FOUND (lexicon_words/entries/sources missing)'}`);
   console.log(`Word occurrence index: ${queries.occurrencesReady ? 'ready' : 'NOT FOUND (lexicon_word_occurrences/gloss_stats missing)'}`);
   console.log(`Versification diffs: ${queries.versificationReady ? 'ready' : 'NOT FOUND (versification_diffs missing)'}`);
+  console.log(`Cross references: ${queries.xrefsReady ? 'ready' : 'NOT FOUND (cross_references missing)'}`);
 }
 
 /* ================================================================
@@ -71,6 +93,17 @@ function loadDefaultSettingsSync() {
   }
 }
 
+// The app's visible name, from default-settings.json's "appName" field
+// (read fresh each time, so it's never frozen into a user's saved
+// settings.json). Used for the window title and the Help > About item;
+// index.html reads the same field for the in-page header and its own
+// About menu item.
+function getAppName() {
+  const defaults = loadDefaultSettingsSync();
+  const name = defaults && typeof defaults.appName === 'string' ? defaults.appName.trim() : '';
+  return name || 'River Bible App';
+}
+
 // Synchronous on purpose: this is read once at startup (before the
 // window/menu are built, so the menu can reflect saved settings from
 // its very first paint) and the file is small (a handful of booleans
@@ -103,12 +136,14 @@ function saveSettingsSync(data) {
 function registerIpcHandlers() {
   ipcMain.handle('db:listTranslations', () => queries.listTranslations());
   ipcMain.handle('db:getBookWords', (event, translationId, bookKey) => queries.getBookWords(translationId, bookKey));
+  ipcMain.handle('db:getChapterWords', (event, translationId, bookKey, fromChapter, toChapter) => queries.getChapterWords(translationId, bookKey, fromChapter, toChapter));
   ipcMain.handle('db:getAvailableBooks', (event, translationId) => queries.getAvailableBooks(translationId));
   ipcMain.handle('db:getBookStructure', (event, translationId, bookKey) => queries.getBookStructure(translationId, bookKey));
   ipcMain.handle('db:search', (event, matchQuery, translationId, bookFilters) => queries.search(matchQuery, translationId, bookFilters));
   ipcMain.handle('db:getLexiconEntry', (event, strong) => queries.getLexiconEntry(strong));
   ipcMain.handle('db:getWordOccurrences', (event, strong, translationId) => queries.getWordOccurrences(strong, translationId));
-  ipcMain.handle('db:getVersificationDiffs', (event, bookKey) => queries.getVersificationDiffs(bookKey));
+  ipcMain.handle('db:getVersificationLinks', (event, bookKey) => queries.getVersificationLinks(bookKey));
+  ipcMain.handle('db:getCrossReferences', (event, translationId, bookKey, chapter, fromVerse, toVerse) => queries.getCrossReferences(translationId, bookKey, chapter, fromVerse, toVerse));
   ipcMain.handle('db:searchLexicon', (event, query) => queries.searchLexicon(query));
   ipcMain.handle('db:getWordOccurrencesByQuery', (event, query, translationId) => queries.getWordOccurrencesByQuery(query, translationId));
   
@@ -147,6 +182,19 @@ function registerIpcHandlers() {
   ipcMain.on('open-external', (event, url) => {
     shell.openExternal(url);
   });
+
+  // In-page find (Ctrl/Cmd+F) — index.html's find bar. Both go straight
+  // to event.sender (the webContents that actually sent them) rather
+  // than the focused window, so find state always tracks whichever
+  // window's find bar the renderer opened, even with more than one
+  // window on screen. Results come back via the 'found-in-page' listener
+  // registered on each window's webContents in createWindow below.
+  ipcMain.on('find-in-page', (event, text, options) => {
+    event.sender.findInPage(text, options);
+  });
+  ipcMain.on('stop-find-in-page', (event, action) => {
+    event.sender.stopFindInPage(action);
+  });
 }
 
 function createWindow(settings, openTabPayload) {
@@ -154,7 +202,8 @@ function createWindow(settings, openTabPayload) {
   const win = new BrowserWindow({
     width: 1280,
     height: 900,
-    // Matches index.html's default theme for whichever mode we're about
+    title: getAppName(), // Explicit window title fallback for Linux frame
+    icon: path.join(__dirname, 'assets', 'icon.svg'), // Explicit window icon path for taskbar/dock frame// Matches index.html's default theme for whichever mode we're about
     // to start in. Without this, Electron defaults to a white window
     // background, which shows through as a visible flash/gap around the
     // web contents during resize — most noticeably as a 1px sliver under
@@ -190,6 +239,14 @@ function createWindow(settings, openTabPayload) {
     return { action: 'deny' };
   });
   Menu.setApplicationMenu(Menu.buildFromTemplate(buildMenuTemplate(win, settings)));
+
+  // Forwards Chromium's own find-in-page results back to index.html's
+  // find bar, which sent the search in the first place via the
+  // 'find-in-page' IPC listener above — see preload.js's findInPage/
+  // onFoundInPage.
+  win.webContents.on('found-in-page', (event, result) => {
+    win.webContents.send('found-in-page', result);
+  });
 
   // Works around a known Electron/GTK issue on Linux where maximizing
   // leaves a 1px gap between the native menu bar and the web contents —
@@ -313,6 +370,12 @@ function buildMenuTemplate(win, settings) {
         { role: 'delete' },
         { role: 'selectAll' },
         { type: 'separator' },
+        { label: 'Find in Page\u2026', accelerator: 'CmdOrCtrl+F', click: () => sendAction('find-in-page') },
+        { type: 'separator' },
+        // Prints just the Bible text of whichever pane has focus — see
+        // index.html's printPaneText and its 'print' menu-action case.
+        { label: 'Print\u2026', accelerator: 'CmdOrCtrl+P', click: () => sendAction('print') },
+        { type: 'separator' },
         { label: 'Preferences\u2026', accelerator: 'CmdOrCtrl+,', click: () => sendAction('open-settings') }
       ]
     },
@@ -330,7 +393,7 @@ function buildMenuTemplate(win, settings) {
       role: 'help',
       submenu: [
         {
-          label: 'About River',
+          label: 'About ' + getAppName(),
           click: () => sendAction('about')
         },
         {

@@ -18,6 +18,8 @@ import sqlite3
 import sys
 import time
 
+import nltk
+
 # Import NLTK lemmatizer
 from lemmatizer import lemmatize_phrase
 
@@ -148,6 +150,7 @@ def rebuild_word_index(con):
             b.testament,
             v.chapter,
             v.verse,
+            w.position,
             w.strong,
             w.lang,
             COALESCE(e.gloss, w.gloss, w.original, '') AS display_gloss
@@ -169,15 +172,29 @@ def rebuild_word_index(con):
     rows_seen = 0
     start_time = time.time()
 
-    for row in cursor:
-        (trans_id, book_id, book_name, book_order, testament,
-         chapter, verse, raw_strong, lang, gloss) = row
+    # Some source USFM (e.g. WEB-with-Strong's) splits a single original-
+    # language word's English gloss across multiple adjacent \w tags that
+    # each carry the same Strong's number (e.g. "has" / "eaten" for one
+    # Greek verb), rather than wrapping the whole phrase in one tag the way
+    # other translations do. Tallying each tag independently corrupts both
+    # the occurrence counts and the gloss statistics with word fragments.
+    # To fix this without touching how words are imported/stored, we fold
+    # contiguous rows here — same translation, same verse, same normalized
+    # Strong's number, and consecutive w.position values — into a single
+    # logical occurrence before anything gets counted. A translation that
+    # already stores one row per original word (single- or multi-word gloss)
+    # is unaffected: every "group" is just size 1, a no-op.
+    group_key = None       # (trans_id, book_id, chapter, verse, strong)
+    group_position = None  # position of the last row folded into the group
+    group_meta = None      # (book_name, book_order, testament)
+    group_gloss_parts = []
 
-        strong = normalize_strong(raw_strong, lang)
-        if not strong:
-            continue
-
-        rows_seen += 1
+    def flush_group():
+        nonlocal group_key, group_position, group_meta, group_gloss_parts
+        if group_key is None:
+            return
+        trans_id, book_id, chapter, verse, strong = group_key
+        book_name, book_order, testament = group_meta
 
         loc_key = (strong, book_id, chapter, verse)
         pt_key = (strong, trans_id, book_id, chapter, verse)
@@ -185,13 +202,46 @@ def rebuild_word_index(con):
         if loc_key not in location_meta:
             location_meta[loc_key] = (book_name, book_order, testament)
 
-        gloss = strip_bracketed_words(gloss or '')
+        merged_gloss = ' '.join(p for p in group_gloss_parts if p).strip()
+        gloss = strip_bracketed_words(merged_gloss)
         if gloss:
             dedup_key = gloss_dedup_key(gloss)
             g_key = (strong, trans_id, dedup_key)
             gloss_counts[g_key] = gloss_counts.get(g_key, 0) + 1
             display_counts = gloss_display_counts.setdefault(g_key, {})
             display_counts[gloss] = display_counts.get(gloss, 0) + 1
+
+        group_key = None
+        group_position = None
+        group_meta = None
+        group_gloss_parts = []
+
+    for row in cursor:
+        (trans_id, book_id, book_name, book_order, testament,
+         chapter, verse, position, raw_strong, lang, gloss) = row
+
+        strong = normalize_strong(raw_strong, lang)
+        if not strong:
+            continue
+
+        rows_seen += 1
+
+        key = (trans_id, book_id, chapter, verse, strong)
+        contiguous = (
+            group_key == key and
+            group_position is not None and
+            position == group_position + 1
+        )
+
+        if not contiguous:
+            flush_group()
+            group_key = key
+            group_meta = (book_name, book_order, testament)
+
+        group_gloss_parts.append(gloss or '')
+        group_position = position
+
+    flush_group()
 
     print(f"Scanned {rows_seen} Strong's-numbered word tokens.")
 

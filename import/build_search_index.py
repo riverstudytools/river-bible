@@ -5,8 +5,16 @@ build_search_index.py — Builds flat verse text and FTS5 search indexes for Riv
 Creates:
   1. verse_text (plain table): Stores pre-flattened verse text for instant UI rendering 
      across active translations.
-  2. verses_fts (FTS5 table): External-contentless FTS5 table indexed for fast full-text matching,
-     with metadata fields marked UNINDEXED for efficient filtering.
+  2. verses_fts (FTS5 table): Full-text index with three searchable columns plus UNINDEXED
+     metadata:
+       text    - the verse's glosses/text, diacritics stripped
+       orig    - the original-language words (Greek/Hebrew/...), diacritics stripped
+       orig_x  - the same original-language words with every diacritic kept, each combining
+                 mark encoded as a private-use letter so FTS5 doesn't split words at them
+                 (used only by the "diacritics:keep" search option)
+
+Diacritics: fold_text() and exact_text() below MUST stay in sync with foldText() and
+exactText() in index.html, which normalize search terms the same way.
 
 Usage:
     python3 build_search_index.py --db /path/to/bible.sqlite
@@ -16,6 +24,35 @@ import argparse
 import sqlite3
 import sys
 import time
+import unicodedata
+
+# Interlinear elision markers from the Berean TSV importer (see index.html's
+# placeholder-dot handling); never part of the readable verse text.
+PLACEHOLDER_GLOSSES = {'-', 'vvv', '. . .'}
+
+
+def fold_text(s):
+    """Lowercase and strip every combining mark (Greek accents/breathings/iota subscript,
+    Hebrew niqqud/cantillation, Latin accents, ...). Final sigma becomes plain sigma."""
+    s = unicodedata.normalize('NFD', s.lower())
+    s = ''.join(c for c in s if not unicodedata.category(c).startswith('M'))
+    return s.replace('\u03c2', '\u03c3')
+
+
+def exact_text(s):
+    """Like fold_text but keeps the marks, each re-encoded as a private-use character
+    (U+E000 + codepoint - U+0300). FTS5's unicode61 tokenizer treats private-use characters
+    as word characters, whereas real combining marks (esp. Hebrew points) would split words.
+    Marks outside U+0300-U+06FF are dropped."""
+    out = []
+    for c in unicodedata.normalize('NFD', s.lower()):
+        if unicodedata.category(c).startswith('M'):
+            cp = ord(c)
+            if 0x300 <= cp < 0x700:
+                out.append(chr(0xE000 + cp - 0x300))
+        else:
+            out.append(c)
+    return ''.join(out).replace('\u03c2', '\u03c3')
 
 
 def ensure_index_schema(con):
@@ -40,6 +77,8 @@ def ensure_index_schema(con):
         -- Re-create FTS5 table with UNINDEXED metadata columns
         CREATE VIRTUAL TABLE verses_fts USING fts5(
             text,
+            orig,
+            orig_x,
             translation_id UNINDEXED,
             book_id UNINDEXED,
             book_name UNINDEXED,
@@ -73,7 +112,8 @@ def rebuild_search_index(con):
             v.id AS verse_id,
             w.beg_q,
             COALESCE(e.gloss, w.gloss, w.original, '') AS display_gloss,
-            w.pnc
+            w.pnc,
+            w.original
         FROM verses v
         JOIN books b ON b.id = v.book_id
         JOIN words w ON w.verse_id = v.id
@@ -86,6 +126,8 @@ def rebuild_search_index(con):
     current_verse_key = None
     current_verse_meta = None
     verse_tokens = []
+    orig_tokens = []
+    pending_prefix = ''
 
     verse_text_batch = []
     fts_batch = []
@@ -94,8 +136,10 @@ def rebuild_search_index(con):
     start_time = time.time()
 
     def flush_verse():
-        nonlocal current_verse_key, current_verse_meta, verse_tokens, verses_processed
+        nonlocal current_verse_key, current_verse_meta, verse_tokens, orig_tokens, verses_processed, pending_prefix
+        pending_prefix = ''
         if not current_verse_key or not verse_tokens:
+            orig_tokens = []
             return
 
         trans_id, book_id, ch, v = current_verse_key
@@ -104,14 +148,19 @@ def rebuild_search_index(con):
         flattened_text = " ".join(verse_tokens).strip()
 
         if flattened_text:
+            # verse_text keeps the display text untouched (diacritics and all);
+            # only the FTS copies are folded.
+            orig_text = " ".join(orig_tokens)
             verse_text_batch.append((trans_id, book_id, ch, v, flattened_text))
-            fts_batch.append((flattened_text, trans_id, book_id, book_name, ch, v, testament))
+            fts_batch.append((fold_text(flattened_text), fold_text(orig_text), exact_text(orig_text),
+                              trans_id, book_id, book_name, ch, v, testament))
             verses_processed += 1
 
         verse_tokens = []
+        orig_tokens = []
 
     for row in cursor:
-        trans_id, book_id, book_name, testament, ch, v, verse_id, beg_q, gloss, pnc = row
+        trans_id, book_id, book_name, testament, ch, v, verse_id, beg_q, gloss, pnc, original = row
         verse_key = (trans_id, book_id, ch, v)
 
         if verse_key != current_verse_key:
@@ -119,9 +168,27 @@ def rebuild_search_index(con):
             current_verse_key = verse_key
             current_verse_meta = (book_name, testament)
 
-        token = f"{beg_q or ''}{gloss}{pnc or ''}".strip()
-        if token:
+        # Berean TSV elision placeholders carry no readable text: drop the gloss
+        # but keep any punctuation, attached to the previous word (or carried
+        # forward to the next one if the verse opens with a placeholder).
+        gloss = (gloss or '').strip()
+        if gloss in PLACEHOLDER_GLOSSES:
+            gloss = ''
+        # Strip the punctuation fields too: Berean's carry their own spacing,
+        # which would otherwise surface as "word ," once tokens are space-joined.
+        beg_q = (beg_q or '').strip()
+        pnc = (pnc or '').strip()
+        if gloss:
+            token = f"{pending_prefix}{beg_q}{gloss}{pnc}"
+            pending_prefix = ''
             verse_tokens.append(token)
+        elif beg_q or pnc:
+            if verse_tokens:
+                verse_tokens[-1] += beg_q + pnc
+            else:
+                pending_prefix += beg_q + pnc
+        if original and original.strip():
+            orig_tokens.append(original.strip())
 
     flush_verse()
 
@@ -135,8 +202,8 @@ def rebuild_search_index(con):
     # Batch insert into verses_fts
     print(f"Inserting {len(fts_batch)} rows into 'verses_fts'...")
     con.executemany("""
-        INSERT INTO verses_fts(text, translation_id, book_id, book_name, chapter, verse, testament)
-        VALUES (?, ?, ?, ?, ?, ?, ?);
+        INSERT INTO verses_fts(text, orig, orig_x, translation_id, book_id, book_name, chapter, verse, testament)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
     """, fts_batch)
 
     elapsed = time.time() - start_time

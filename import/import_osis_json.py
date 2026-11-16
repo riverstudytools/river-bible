@@ -7,7 +7,7 @@ normalizes Strong's numbers (OT/NT), extracts Robinson morphology, captures lemm
 leading/trailing punctuation onto word records, and imports verses.
 
 Usage:
-    python3 import/import_osis_json.py path/to/bible.json --code KJV_OSIS --name "King James Version (OSIS)" --replace
+    python3 import_osis_json.py path/to/bible.json --code KJV_OSIS --name "King James Version (OSIS)" --replace
 """
 
 import argparse
@@ -20,26 +20,23 @@ import xml.etree.ElementTree as ET
 import book_codes
 import build_db as db_builder
 
-# Isolates leading and trailing punctuation from word tokens
+# Matches leading non-word, word content, and trailing non-word/punctuation
 WORD_PUNCT_RE = re.compile(
-    r"^([\s\.\,;:\·\?\!–—;·\(\)\[\]«»\"']*)"
+    r"^([^\w'’᾽᾿\-]*)"
     r"([\w'’᾽᾿\-]+)?"
-    r"([\s\.,;:\·\?\!–—;·\(\)\[\]«»\"']*)$",
+    r"(.*)$",
     re.UNICODE
 )
 
 
 def clean_strongs(lemma_attr):
-    """
-    Extracts Strong's codes (e.g. 'strong:G976 lemma.TR:βιβλος' -> 'G976').
-    """
+    """Extracts Strong's codes (e.g. 'strong:G976 lemma.TR:βιβλος' -> 'G976')."""
     if not lemma_attr:
         return None
     codes = []
     for part in lemma_attr.split():
         if part.startswith('strong:'):
             cleaned = re.sub(r'^strong:', '', part).strip()
-            # Strip leading zeros (e.g. G0976 -> G976)
             cleaned = re.sub(r'^([GH])0+', r'\1', cleaned)
             if cleaned:
                 codes.append(cleaned)
@@ -47,9 +44,7 @@ def clean_strongs(lemma_attr):
 
 
 def clean_lemma(lemma_attr):
-    """
-    Extracts the lemma string (e.g. 'strong:G976 lemma.TR:βιβλος' -> 'βιβλος').
-    """
+    """Extracts the lemma string (e.g. 'strong:G976 lemma.TR:βιβλος' -> 'βιβλος')."""
     if not lemma_attr:
         return None
     for part in lemma_attr.split():
@@ -59,9 +54,7 @@ def clean_lemma(lemma_attr):
 
 
 def clean_morph(morph_attr):
-    """
-    Extracts morphology codes (e.g. 'robinson:N-NSF' -> 'N-NSF', 'strongMorph:TH8804' -> 'TH8804').
-    """
+    """Extracts morphology codes (e.g. 'robinson:N-NSF' -> 'N-NSF')."""
     if not morph_attr:
         return None
     codes = []
@@ -72,54 +65,80 @@ def clean_morph(morph_attr):
     return ' '.join(codes) if codes else None
 
 
+def tokenize_and_add(words, text, strong=None, parsing=None, lemma_word=None):
+    """Tokenizes raw text or XML element text into individual word items."""
+    if not text:
+        return
+
+    tokens = text.split()
+    for idx, token in enumerate(tokens):
+        pm = WORD_PUNCT_RE.match(token)
+        if pm:
+            beg_q, word_clean, pnc = pm.groups()
+        else:
+            beg_q, word_clean, pnc = '', token, ''
+
+        # Add space to punctuation if it's not the last token in a sequence
+        trailing_pnc = pnc + (' ' if idx < len(tokens) - 1 else '')
+
+        if word_clean:
+            words.append({
+                'original': lemma_word or word_clean,
+                'gloss': word_clean,
+                'strong': strong,
+                'parsing': parsing,
+                'beg_q': beg_q or '',
+                'pnc': trailing_pnc,
+                'footnote': ''
+            })
+        elif words and (beg_q or trailing_pnc):
+            words[-1]['pnc'] += (beg_q + trailing_pnc)
+
+
 def parse_verse_text(html_text):
-    """
-    Parses OSIS tagged XML text inside a verse into word tokens with punctuation and metadata.
-    """
+    """Parses OSIS tagged XML text inside a verse into word tokens with punctuation and footnotes."""
     wrapped_xml = f"<root>{html_text}</root>"
     
     try:
         root = ET.fromstring(wrapped_xml)
     except ET.ParseError:
         sanitized = html_text.replace('&', '&amp;')
-        root = ET.fromstring(f"<root>{sanitized}</root>")
+        try:
+            root = ET.fromstring(f"<root>{sanitized}</root>")
+        except ET.ParseError:
+            return []
 
     words = []
 
-    def process_element(elem):
-        strong = clean_strongs(elem.attrib.get('lemma'))
-        parsing = clean_morph(elem.attrib.get('morph'))
-        lemma_word = clean_lemma(elem.attrib.get('lemma'))
-        
-        elem_text = (elem.text or '').strip()
-        
-        if elem_text:
-            sub_tokens = elem_text.split()
-            for idx, token in enumerate(sub_tokens):
-                pm = WORD_PUNCT_RE.match(token)
-                if pm:
-                    beg_q, word_clean, pnc = pm.groups()
-                else:
-                    beg_q, word_clean, pnc = '', token, ''
+    def traverse(elem, inherit_strong=None, inherit_parsing=None, inherit_lemma=None):
+        if elem.tag == 'note':
+            note_content = "".join(elem.itertext()).strip()
+            if words and note_content:
+                existing_note = words[-1]['footnote']
+                words[-1]['footnote'] = f"{existing_note} {note_content}".strip() if existing_note else note_content
+            
+            if elem.tail:
+                tokenize_and_add(words, elem.tail)
+            return
 
-                words.append({
-                    'original': (lemma_word if idx == 0 and lemma_word else word_clean) or token,
-                    'gloss': word_clean or token,
-                    'strong': strong if idx == 0 else None,
-                    'parsing': parsing if idx == 0 else None,
-                    'beg_q': beg_q or '',
-                    'pnc': pnc or ('' if idx < len(sub_tokens) - 1 else ' ')
-                })
+        own_strong = clean_strongs(elem.attrib.get('lemma'))
+        own_parsing = clean_morph(elem.attrib.get('morph'))
+        own_lemma_word = clean_lemma(elem.attrib.get('lemma'))
 
-        if elem.tail:
-            pm = WORD_PUNCT_RE.match(elem.tail)
-            if pm and words:
-                _, _, tail_pnc = pm.groups()
-                if tail_pnc:
-                    words[-1]['pnc'] = (words[-1]['pnc'] + tail_pnc).rstrip() + ' '
+        strong = own_strong if own_strong is not None else inherit_strong
+        parsing = own_parsing if own_parsing is not None else inherit_parsing
+        lemma_word = own_lemma_word if own_lemma_word is not None else inherit_lemma
 
-    for child in root:
-        process_element(child)
+        if elem.text:
+            tokenize_and_add(words, elem.text, strong, parsing, lemma_word)
+
+        for child in elem:
+            traverse(child, strong, parsing, lemma_word)
+
+        if elem.tail and elem.tag != 'root':
+            tokenize_and_add(words, elem.tail)
+
+    traverse(root)
 
     return words
 
@@ -174,7 +193,7 @@ def import_osis_json(con, translation_id, json_path, book_id_by_name, book_order
                         verse_id, pos, None,
                         w['original'], None, w['parsing'], w['strong'],
                         w['gloss'], w['beg_q'], w['pnc'], '', '',
-                        None, None, None, None
+                        w['footnote'], None, None, None
                     )
                     for pos, w in enumerate(parsed_words)
                 ]

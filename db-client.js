@@ -76,6 +76,30 @@ export async function getBookWords(translationId, bookKey) {
   return data.rows;
 }
 
+// Every word of chapters fromChapter..toChapter (inclusive) of one book —
+// what the reading view loads, instead of the whole book. Resolves to
+// { rows, fromChapter, toChapter }: the chapter range the rows actually
+// cover, which is the range asked for on the web but can be wider (up to
+// the whole book) on a backend that can't slice by chapter — callers
+// should trust that range rather than the one they requested.
+export async function getChapterWords(translationId, bookKey, fromChapter, toChapter) {
+  if (window.electronAPI) {
+    if (window.electronAPI.getChapterWords) {
+      const rows = await window.electronAPI.getChapterWords(translationId, bookKey, fromChapter, toChapter);
+      return { rows, fromChapter, toChapter };
+    }
+    // Desktop build without a chapter-level IPC handler: the database is
+    // local, so fetching the whole book is fast, and every chapter of it
+    // is then already in hand for the next navigation.
+    const rows = await window.electronAPI.getBookWords(translationId, bookKey);
+    return { rows, fromChapter: 1, toChapter: 9999 };
+  }
+  const url = '/api/books/' + encodeURIComponent(translationId) + '/' + encodeURIComponent(bookKey) +
+    '/chapters/' + encodeURIComponent(fromChapter) + '/' + encodeURIComponent(toChapter);
+  const data = await fetchJson(url);
+  return { rows: data.rows, fromChapter: data.fromChapter, toChapter: data.toChapter };
+}
+
 // Every book (lowercase name) that has verses in a translation, in
 // canonical order. Returns an array of lowercase book names.
 export async function getAvailableBooks(translationId) {
@@ -149,17 +173,44 @@ export async function getWordOccurrences(strong, translationId) {
   return { strong: data.strong, totalOccurrences: data.totalOccurrences, occurrences: data.occurrences, glosses: data.glosses };
 }
 
-// Every MT/LXX verse-numbering difference recorded for one book (see
-// build_versification_index.py). Backs the compare view's "Align verse
-// numbers" option — bookKey is the lowercase book name, same convention
-// as getBookWords/getAvailableBooks. Returns an array of
-// { stdChapter, stdVerse, lxxRef }.
-export async function getVersificationDiffs(bookKey) {
+// Every recorded versification edge for one book (see
+// build_versification_index.py) — was getVersificationDiffs before the
+// server-side table became an edge list rather than a set of diffs
+// against a single pivot; renamed to match. Backs the compare view's
+// "Align verse numbers" option — bookKey is the lowercase book name,
+// same convention as getBookWords/getAvailableBooks. Returns an array of
+// { fromTradition, fromChapter, fromVerse, toTradition, toRef, source }.
+// fromTradition is almost always 'MT' (the pivot/standard reference
+// space); a 'source':'manual' row may instead run directly between two
+// non-pivot traditions (e.g. LXX -> VUL) for a passage with no pivot
+// address at all — see build_versification_index.py's --manual.
+export async function getVersificationLinks(bookKey) {
   if (window.electronAPI) {
-    return await window.electronAPI.getVersificationDiffs(bookKey);
+    return await window.electronAPI.getVersificationLinks(bookKey);
   }
   const data = await fetchJson('/api/versification/' + encodeURIComponent(bookKey));
   return data.rows;
+}
+
+// Cross-references (see build_xrefs.py / cross_references) touching a
+// verse range [fromVerse, toVerse] of one book/chapter — pass fromVerse
+// === toVerse for a single verse. bookKey is the lowercase book name,
+// same convention as getBookWords/getVersificationLinks. Returns
+// { outbound, inbound } (see getCrossReferences in db-queries.js for
+// what each side carries — rows now arrive already converted into
+// translationId's own versification, with sourceLabel/approximate/
+// noEquivalent attached where a dataset's numbering differed from it).
+// text fields are null if verse_text isn't built, this translation
+// doesn't carry that verse, or the row has no equivalent verse at all in
+// this translation's tradition (noEquivalent: true).
+export async function getCrossReferences(translationId, bookKey, chapter, fromVerse, toVerse) {
+  if (window.electronAPI) {
+    return await window.electronAPI.getCrossReferences(translationId, bookKey, chapter, fromVerse, toVerse);
+  }
+  const url = '/api/xrefs/' + encodeURIComponent(translationId) + '/' + encodeURIComponent(bookKey) +
+    '/' + encodeURIComponent(chapter) + '/' + encodeURIComponent(fromVerse) + '/' + encodeURIComponent(toVerse);
+  const data = await fetchJson(url);
+  return { outbound: data.outbound, inbound: data.inbound };
 }
 
 // Search the lexicon by Strong's number, dictionary lexeme, or literal original text.

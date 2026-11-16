@@ -55,6 +55,9 @@ pip install text-fabric[all] --break-system-packages
 
 pip install pysword --break-system-packages
 
+cd /path/to/river-bible
+npx --yes @electron-forge/cli import
+
 # Attribution
 
 Copyright information for each of the included texts or lexicons can be found in `import/copyright`. Other attribution can be found below.

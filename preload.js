@@ -12,12 +12,14 @@ const { contextBridge, ipcRenderer } = require('electron');
 contextBridge.exposeInMainWorld('electronAPI', {
   listTranslations: () => ipcRenderer.invoke('db:listTranslations'),
   getBookWords: (translationId, bookKey) => ipcRenderer.invoke('db:getBookWords', translationId, bookKey),
+  getChapterWords: (translationId, bookKey, fromChapter, toChapter) => ipcRenderer.invoke('db:getChapterWords', translationId, bookKey, fromChapter, toChapter),
   getAvailableBooks: (translationId) => ipcRenderer.invoke('db:getAvailableBooks', translationId),
   getBookStructure: (translationId, bookKey) => ipcRenderer.invoke('db:getBookStructure', translationId, bookKey),
   search: (matchQuery, translationId, bookFilters) => ipcRenderer.invoke('db:search', matchQuery, translationId, bookFilters),
   getLexiconEntry: (strong) => ipcRenderer.invoke('db:getLexiconEntry', strong),
   getWordOccurrences: (strong, translationId) => ipcRenderer.invoke('db:getWordOccurrences', strong, translationId),
-  getVersificationDiffs: (bookKey) => ipcRenderer.invoke('db:getVersificationDiffs', bookKey),
+  getVersificationLinks: (bookKey) => ipcRenderer.invoke('db:getVersificationLinks', bookKey),
+  getCrossReferences: (translationId, bookKey, chapter, fromVerse, toVerse) => ipcRenderer.invoke('db:getCrossReferences', translationId, bookKey, chapter, fromVerse, toVerse),
   searchLexicon: (query) => ipcRenderer.invoke('db:searchLexicon', query),
   getWordOccurrencesByQuery: (query, translationId) => ipcRenderer.invoke('db:getWordOccurrencesByQuery', query, translationId),
 
@@ -48,5 +50,18 @@ contextBridge.exposeInMainWorld('electronAPI', {
   // load inside this window — see index.html's document-level external
   // link click handler, and main.js's 'open-external' listener plus its
   // setWindowOpenHandler backstop.
-  openExternal: (url) => ipcRenderer.send('open-external', url)
+  openExternal: (url) => ipcRenderer.send('open-external', url),
+
+  // In-page find (Ctrl/Cmd+F) — index.html's find bar drives Chromium's
+  // native webContents.findInPage/stopFindInPage through these, and
+  // listens for results via onFoundInPage. See main.js's 'find-in-page'/
+  // 'stop-find-in-page' listeners and the 'found-in-page' forwarder set
+  // up in createWindow.
+  findInPage: (text, options) => ipcRenderer.send('find-in-page', text, options),
+  stopFindInPage: (action) => ipcRenderer.send('stop-find-in-page', action),
+  onFoundInPage: (callback) => {
+    const listener = (event, result) => callback(result);
+    ipcRenderer.on('found-in-page', listener);
+    return () => ipcRenderer.removeListener('found-in-page', listener);
+  }
 });

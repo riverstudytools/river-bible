@@ -1,0 +1,1 @@
+python3 import/edit_bible.py --code HFB --db bible.sqlite --json import/sources/edits.json

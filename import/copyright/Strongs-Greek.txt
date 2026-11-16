@@ -1,0 +1,1 @@
+The text of Strong's Greek dictionary comes from <a href="https://github.com/morphgnt/strongs-dictionary-xml">github.com/morphgnt/strongs-dictionary-xml</a> and is distributed as <a href="http://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.

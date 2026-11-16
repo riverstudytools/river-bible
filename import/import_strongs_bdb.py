@@ -101,13 +101,30 @@ def load_pos_mapping(xml_path):
     return mapping
 
 
+def get_full_text(elem):
+    """Recursively extracts ALL text inside an element (including text that
+    follows nested child tags), normalizing whitespace. Using .text or
+    findtext() alone silently drops everything after the first nested
+    element (e.g. cross-reference <w> tags inside <source>/<usage>)."""
+    if elem is None:
+        return ""
+    text = "".join(elem.itertext())
+    return re.sub(r"\s+", " ", text).strip()
+
+
 def elem_to_html(elem, pos_map=None):
     """Converts XML element tree recursively to sanitized HTML string."""
     if elem is None:
         return ""
     
     tag = clean_tag(elem.tag)
-    
+
+    # <status> nodes ("done", "ref", "new", "base", "made") are internal
+    # editorial workflow markers, not lexicon content -- drop them entirely
+    # rather than letting their text fall through to the default renderer.
+    if tag == "status":
+        return elem.tail or ""
+
     # Process attributes and text inside nodes
     if tag == "w":
         content = "".join([elem_to_html(child, pos_map) for child in elem]) if len(elem) else (elem.text or "")
@@ -159,7 +176,11 @@ def parse_strongs(file_path, pos_map):
         raw_id = entry.attrib.get("id", "")
         if not raw_id.startswith("H"):
             continue
-        strong_num = f"H{int(raw_id[1:]):04d}"  # Zero-padded standard (H0001, H0002)
+        try:
+            strong_num = f"H{int(raw_id[1:])}"  # Unpadded, matches OSHB/morphhb convention (H1, H22, H353)
+        except ValueError:
+            print(f"Warning: skipping entry with malformed id: {raw_id!r}")
+            continue
 
         w_elem = entry.find("{*}w")
         lexeme = w_elem.text if w_elem is not None and w_elem.text else ""
@@ -168,12 +189,17 @@ def parse_strongs(file_path, pos_map):
         raw_pos = w_elem.attrib.get("pos", "") if w_elem is not None else ""
         pos_expanded = pos_map.get(raw_pos, raw_pos)
 
-        source = entry.findtext("{*}source") or ""
+        # NOTE: source/usage frequently contain nested <w src="H..."> cross-
+        # reference tags (e.g. "(Aramaic) corresponding to <w src="H1">1</w>").
+        # findtext() only returns the text *before* the first child element,
+        # silently truncating ~80% of <source> fields and ~300 <usage>
+        # fields. get_full_text() walks the whole subtree instead.
+        source = get_full_text(entry.find("{*}source"))
         meaning_elem = entry.find("{*}meaning")
         def_elem = meaning_elem.find("{*}def") if meaning_elem is not None else None
         short_gloss = def_elem.text if def_elem is not None and def_elem.text else ""
-        meaning = "".join(meaning_elem.itertext()) if meaning_elem is not None else ""
-        usage = entry.findtext("{*}usage") or ""
+        meaning = get_full_text(meaning_elem)
+        usage = get_full_text(entry.find("{*}usage"))
 
         html_parts = [f'<p><strong>{lexeme}</strong> ({translit}) - <em>{pos_expanded}</em></p>']
         if source:
@@ -212,7 +238,7 @@ def parse_lexical_index(file_path):
                 digits = re.sub(r"\D", "", strong_attr)
                 
                 if digits:
-                    strong_num = f"H{int(digits):04d}"
+                    strong_num = f"H{int(digits)}"  # Unpadded, must match parse_strongs()'s key format
                     # Append BDB ID to list so multiple references group under the same Strong's entry
                     strong_to_bdb.setdefault(strong_num, []).append(bdb_attr)
 

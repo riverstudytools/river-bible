@@ -1,20 +1,279 @@
 {
-  "HFB:Matthew:5:39:6": {
-    "version": "HFB",
-    "book": "Matthew",
-    "chapter": 5,
-    "verse": 39,
-    "position": 6,
-    "gloss": "the",
-    "updated_at": "2026-09-07T19:05:49.406141+00:00"
+  "reorders": {
+    "HFB:Romans:9:5": [
+      {
+        "orig_pos": 1,
+        "original": "ὧν"
+      },
+      {
+        "orig_pos": 2,
+        "original": "οἱ"
+      },
+      {
+        "orig_pos": 3,
+        "original": "πατέρες"
+      },
+      {
+        "orig_pos": 4,
+        "original": "καὶ"
+      },
+      {
+        "orig_pos": 5,
+        "original": "ἐξ"
+      },
+      {
+        "orig_pos": 6,
+        "original": "ὧν"
+      },
+      {
+        "orig_pos": 10,
+        "original": "ὁ"
+      },
+      {
+        "orig_pos": 11,
+        "original": "χριστὸς"
+      },
+      {
+        "orig_pos": 7,
+        "original": "τὸ"
+      },
+      {
+        "orig_pos": 8,
+        "original": "κατὰ"
+      },
+      {
+        "orig_pos": 9,
+        "original": "σάρκα"
+      },
+      {
+        "orig_pos": 12,
+        "original": "ὁ"
+      },
+      {
+        "orig_pos": 13,
+        "original": "ὢν"
+      },
+      {
+        "orig_pos": 14,
+        "original": "θεὸς"
+      },
+      {
+        "orig_pos": 15,
+        "original": "ἐπὶ"
+      },
+      {
+        "orig_pos": 16,
+        "original": "πάντων"
+      },
+      {
+        "orig_pos": 17,
+        "original": "εἰς"
+      },
+      {
+        "orig_pos": 18,
+        "original": "τοὺς"
+      },
+      {
+        "orig_pos": 19,
+        "original": "αἰῶνας"
+      },
+      {
+        "orig_pos": 20,
+        "original": "εὐλογητὸς"
+      },
+      {
+        "orig_pos": 21,
+        "original": "Ἀμήν"
+      }
+    ]
   },
-  "HFB:John:1:18:5": {
-    "version": "HFB",
-    "book": "John",
-    "chapter": 1,
-    "verse": 18,
-    "position": 5,
-    "gloss": "[but] the only-begotten",
-    "updated_at": "2026-09-07T19:10:10.560106+00:00"
+  "glosses": {
+    "HFB:Romans:9:5:8": {
+      "version": "HFB",
+      "book": "Romans",
+      "chapter": 9,
+      "verse": 5,
+      "position": 8,
+      "original": "κατὰ",
+      "default_gloss": " vvv ",
+      "gloss": "according to",
+      "updated_at": "2026-10-01T19:04:12.974104+00:00"
+    },
+    "HFB:Romans:9:5:9": {
+      "version": "HFB",
+      "book": "Romans",
+      "chapter": 9,
+      "verse": 5,
+      "position": 9,
+      "original": "σάρκα",
+      "default_gloss": " [the] human [descent] ",
+      "gloss": "[the] flesh",
+      "updated_at": "2026-10-01T19:04:35.166159+00:00"
+    },
+    "HFB:Romans:9:5:6": {
+      "version": "HFB",
+      "book": "Romans",
+      "chapter": 9,
+      "verse": 5,
+      "position": 6,
+      "original": "ὧν",
+      "default_gloss": " them [ proceeds ] ",
+      "gloss": "them [ is ]",
+      "updated_at": "2026-10-01T19:11:50.345494+00:00"
+    },
+    "HFB:Matthew:5:39:7": {
+      "version": "HFB",
+      "book": "Matthew",
+      "chapter": 5,
+      "verse": 39,
+      "position": 7,
+      "original": "τῷ",
+      "default_gloss": " an ",
+      "gloss": "the",
+      "updated_at": "2026-10-01T19:29:54.385684+00:00"
+    },
+    "HFB:John:1:18:6": {
+      "version": "HFB",
+      "book": "John",
+      "chapter": 1,
+      "verse": 18,
+      "position": 6,
+      "original": "μονογενὴς",
+      "default_gloss": " [but] the one and only ",
+      "gloss": "[but] the only-begotten",
+      "updated_at": "2026-10-01T19:30:33.921870+00:00"
+    },
+    "HFB:John:1:4:6": {
+      "version": "HFB",
+      "book": "John",
+      "chapter": 1,
+      "verse": 4,
+      "position": 6,
+      "original": "ἡ",
+      "default_gloss": " [that] ",
+      "gloss": "the",
+      "updated_at": "2026-10-01T19:30:56.922050+00:00"
+    },
+    "HFB:Mark:1:2:12": {
+      "version": "HFB",
+      "book": "Mark",
+      "chapter": 1,
+      "verse": 2,
+      "position": 12,
+      "original": "πρὸ",
+      "default_gloss": " ahead of You ",
+      "gloss": "ahead of",
+      "updated_at": "2026-10-01T19:31:24.506445+00:00"
+    },
+    "HFB:Mark:1:2:13": {
+      "version": "HFB",
+      "book": "Mark",
+      "chapter": 1,
+      "verse": 2,
+      "position": 13,
+      "original": "σου",
+      "default_gloss": " . . . ",
+      "gloss": "You",
+      "updated_at": "2026-10-01T19:31:34.050488+00:00"
+    },
+    "HFB:Romans:9:5:11": {
+      "version": "HFB",
+      "book": "Romans",
+      "chapter": 9,
+      "verse": 5,
+      "position": 11,
+      "original": "χριστὸς",
+      "default_gloss": " of Christ ",
+      "gloss": "Christ",
+      "updated_at": "2026-10-22T18:22:51.245944+00:00"
+    },
+    "HFB:Romans:9:5:10": {
+      "version": "HFB",
+      "book": "Romans",
+      "chapter": 9,
+      "verse": 5,
+      "position": 10,
+      "original": "ὁ",
+      "default_gloss": " - ",
+      "gloss": "the",
+      "updated_at": "2026-10-22T18:22:55.972905+00:00"
+    },
+    "HFB:John:1:14:17": {
+      "version": "HFB",
+      "book": "John",
+      "chapter": 1,
+      "verse": 14,
+      "position": 17,
+      "original": "μονογενοῦς",
+      "default_gloss": " [the] one and only [Son] ",
+      "gloss": "[the] only-begotten",
+      "updated_at": "2026-10-22T19:29:09.385812+00:00"
+    },
+    "HFB:1 John:4:9:16": {
+      "version": "HFB",
+      "book": "1 John",
+      "chapter": 4,
+      "verse": 9,
+      "position": 16,
+      "original": "μονογενῆ",
+      "default_gloss": " one and only ",
+      "gloss": "only-begotten",
+      "updated_at": "2026-10-22T19:30:13.114511+00:00"
+    },
+    "HFB:John:3:18:22": {
+      "version": "HFB",
+      "book": "John",
+      "chapter": 3,
+      "verse": 18,
+      "position": 22,
+      "original": "μονογενοῦς",
+      "default_gloss": " one and only ",
+      "gloss": "only-begotten",
+      "updated_at": "2026-10-22T19:30:36.402256+00:00"
+    },
+    "HFB:John:3:16:13": {
+      "version": "HFB",
+      "book": "John",
+      "chapter": 3,
+      "verse": 16,
+      "position": 13,
+      "original": "μονογενῆ",
+      "default_gloss": " one and only ",
+      "gloss": "only-begotten",
+      "updated_at": "2026-10-22T19:30:52.954734+00:00"
+    },
+    "HFB:Hebrews:11:17:14": {
+      "version": "HFB",
+      "book": "Hebrews",
+      "chapter": 11,
+      "verse": 17,
+      "position": 14,
+      "original": "μονογενῆ",
+      "default_gloss": " one and only son ",
+      "gloss": "only-begotten [son]",
+      "updated_at": "2026-10-22T19:32:13.715301+00:00"
+    }
+  },
+  "punctuation": {
+    "HFB:Romans:9:5:9": {
+      "version": "HFB",
+      "book": "Romans",
+      "chapter": 9,
+      "verse": 5,
+      "position": 9,
+      "original": "σάρκα",
+      "pnc": ",",
+      "updated_at": "2026-10-01T19:10:22.927252+00:00"
+    },
+    "HFB:Romans:9:5:11": {
+      "version": "HFB",
+      "book": "Romans",
+      "chapter": 9,
+      "verse": 5,
+      "position": 11,
+      "original": "χριστὸς",
+      "pnc": "",
+      "updated_at": "2026-10-01T19:29:01.371598+00:00"
+    }
   }
 }

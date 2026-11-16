@@ -66,6 +66,7 @@ CREATE TABLE IF NOT EXISTS words(
     translit TEXT,
     parsing TEXT,
     strong TEXT,
+    lemma TEXT,
     gloss TEXT,
     beg_q TEXT,
     pnc TEXT,
@@ -73,6 +74,7 @@ CREATE TABLE IF NOT EXISTS words(
     end_text TEXT,
     footnote TEXT,
     hdg TEXT,
+    hdg_type TEXT,
     crossref TEXT,
     par_classes TEXT
 );
@@ -118,6 +120,22 @@ CREATE INDEX IF NOT EXISTS idx_lexicon_entries ON lexicon_entries(strong_id, sou
 def ensure_schema(con):
     """Initializes tables and seeds initial books if empty."""
     con.executescript(SCHEMA)
+
+    # Migration: add 'lemma' column to pre-existing 'words' tables that predate it.
+    existing_cols = {row[1] for row in con.execute('PRAGMA table_info(words)').fetchall()}
+    if 'lemma' not in existing_cols:
+        con.execute('ALTER TABLE words ADD COLUMN lemma TEXT')
+
+    # Migration: add 'hdg_type' to pre-existing 'words' tables that predate it.
+    # Distinguishes a psalm superscription/descriptive title (USFM \d, MT
+    # style — 'psalm') from an ordinary editorial section heading (\s/\ms/\qa
+    # — NULL) stored in the existing 'hdg' column, so the frontend can style
+    # the two differently (see index.html's w.hdgType / .psalm-hdg). Set by
+    # import_usfm.py; NULL for words imported before this existed, which
+    # just renders as a plain section heading rather than breaking anything.
+    if 'hdg_type' not in existing_cols:
+        con.execute('ALTER TABLE words ADD COLUMN hdg_type TEXT')
+
     n = con.execute('SELECT count(*) FROM books').fetchone()[0]
     if n == 0:
         con.executemany(

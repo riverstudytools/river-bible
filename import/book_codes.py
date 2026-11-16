@@ -53,6 +53,52 @@ FULL_NAME_LOOKUP.update({
     'ii maccabees': '2 Maccabees',
     'iii maccabees': '3 Maccabees',
     'iv maccabees': '4 Maccabees',
+
+    # Douay-Rheims / Vulgate book-name variants (English Douay-Rheims
+    # uses Latin-derived names throughout — "Josue", "Machabees",
+    # "Paralipomenon", "Osee", "Sophonias", "Aggeus", "Canticle of
+    # Canticles", "Apocalypse" — plus a handful of French-derived
+    # spellings ("Isaie", "Jeremie", "Malachie") observed in the same
+    # cross-reference dataset. 3/4 Kings follow the Vulgate's four-book
+    # Samuel+Kings scheme (1-2 Kings = Protestant 1-2 Samuel, 3-4 Kings =
+    # Protestant 1-2 Kings) — this dataset uses '1-samuel'/'2-samuel' for
+    # the first pair directly, so only 3/4 need the alias here.
+    '3 kings': '1 Kings',
+    '4 kings': '2 Kings',
+    '1 paralipomenon': '1 Chronicles',
+    '2 paralipomenon': '2 Chronicles',
+    'josue': 'Joshua',
+    'abdias': 'Obadiah',
+    'osee': 'Hosea',
+    'micheas': 'Micah',
+    'habacuc': 'Habakkuk',
+    'sophonias': 'Zephaniah',
+    'aggeus': 'Haggai',
+    'zacharias': 'Zechariah',
+    'malachie': 'Malachi',
+    'isaie': 'Isaiah',
+    'jeremie': 'Jeremiah',
+    'ezechiel': 'Ezekiel',
+    'jonas': 'Jonah',
+    'canticle of canticles': 'Song of Solomon',
+    '1 machabees': '1 Maccabees',
+    '2 machabees': '2 Maccabees',
+    'ecclesiasticus': 'Sirach',
+    'tobias': 'Tobit',
+    'wisdom': 'Wisdom of Solomon',
+
+    # Greek Esther / Greek Daniel are whole-book Greek texts (Esther with its
+    # additions inline; Daniel with 3:24-90 etc.). "Additions to Esther" is a
+    # different thing: just the additions, as a book of their own.
+    'greek esther': 'Greek Esther',
+    'esther (greek)': 'Greek Esther',
+    'esther greek': 'Greek Esther',
+    'greek daniel': 'Greek Daniel',
+    'daniel (greek)': 'Greek Daniel',
+    'daniel greek': 'Greek Daniel',
+    'additions to esther': 'Additions to Esther',
+    'rest of esther': 'Additions to Esther',
+    'the rest of esther': 'Additions to Esther',
 })
 
 # Centralized Book Code Map covering standard OT/NT, Apocrypha, Swete LXX, and variant source codes
@@ -66,22 +112,22 @@ BOOK_CODE_MAP = {
     'EZR': 'Ezra', 'NEH': 'Nehemiah', 'EST': 'Esther', 'JOB': 'Job', 
     'PSA': 'Psalms', 'PSM': 'Psalms', 'PS': 'Psalms', 'PSS': 'Psalms',
     'PRO': 'Proverbs', 'PRV': 'Proverbs', 'ECC': 'Ecclesiastes', 
-    'SNG': 'Song of Solomon', 'SOS': 'Song of Solomon', 'CANT': 'Song of Solomon', 'Solomon\'s Song': 'Song of Solomon',
+    'SNG': 'Song of Solomon', 'SOS': 'Song of Solomon', 'CANT': 'Song of Solomon', 'SOLOMON\'S SONG': 'Song of Solomon',
     'ISA': 'Isaiah', 'JER': 'Jeremiah', 'LAM': 'Lamentations', 'EZK': 'Ezekiel', 'EZE': 'Ezekiel',
     'DAN': 'Daniel', 'HOS': 'Hosea', 'JOL': 'Joel', 'JOE': 'Joel', 'AMO': 'Amos', 
     'OBA': 'Obadiah', 'JON': 'Jonah', 'MIC': 'Micah', 'NAM': 'Nahum', 'NAH': 'Nahum', 
     'HAB': 'Habakkuk', 'ZEP': 'Zephaniah', 'HAG': 'Haggai', 'ZEC': 'Zechariah', 'MAL': 'Malachi',
 
     # New Testament
-    'MAT': 'Matthew', 'MATT': 'Matthew',
-    'MRK': 'Mark', 'MARK': 'Mark', 'MAR': 'Mark',
-    'LUK': 'Luke', 'LUKE': 'Luke',
+    'MAT': 'Matthew', 'MATT': 'Matthew', 'MT': 'Matthew',
+    'MRK': 'Mark', 'MARK': 'Mark', 'MAR': 'Mark', 'MR': 'Mark',
+    'LUK': 'Luke', 'LUKE': 'Luke', 'LU': 'Luke',
     'JHN': 'John', 'JOH': 'John', 'JOHN': 'John',
-    'ACT': 'Acts', 'ACTS': 'Acts',
-    'ROM': 'Romans',
+    'ACT': 'Acts', 'ACTS': 'Acts', 'AC': 'Acts',
+    'ROM': 'Romans', 'RO': 'Romans',
     '1CO': '1 Corinthians', '1COR': '1 Corinthians', '1-COR': '1 Corinthians', '1_CO': '1 Corinthians',
     '2CO': '2 Corinthians', '2COR': '2 Corinthians', '2-COR': '2 Corinthians', '2_CO': '2 Corinthians',
-    'GAL': 'Galatians',
+    'GAL': 'Galatians', 'GA': 'Galatians',
     'EPH': 'Ephesians',
     'PHP': 'Philippians', 'PHIL': 'Philippians', 'PHI': 'Philippians',
     'COL': 'Colossians',
@@ -99,10 +145,11 @@ BOOK_CODE_MAP = {
     '2JO': '2 John', '2JN': '2 John', '2JHN': '2 John', '2JOHN': '2 John',
     '3JO': '3 John', '3JN': '3 John', '3JHN': '3 John', '3JOHN': '3 John',
     'JUD': 'Jude', 'JUDE': 'Jude',
-    'REV': 'Revelation', 'REVELATION': 'Revelation', 'APO': 'Revelation', 'APOC': 'Revelation',
+    'REV': 'Revelation', 'REVELATION': 'Revelation', 'APO': 'Revelation', 'APOC': 'Revelation', 'RE': 'Revelation',
 
     # Extended Canon / Apocrypha / Swete LXX Codes
-    'ESG': 'Additions to Esther',
+    'ESG': 'Greek Esther', 'ESTG': 'Greek Esther', 'ESTGR': 'Greek Esther',
+    'ADE': 'Additions to Esther', 'ADDESTH': 'Additions to Esther',
     'DAG': 'Greek Daniel', 'DAT': 'Greek Daniel',
     'BET': 'Bel and the Dragon', 'BEL': 'Bel and the Dragon',
     'SUT': 'Susanna', 'SUS': 'Susanna',

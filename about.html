@@ -1,0 +1,38 @@
+<!--
+  This fragment is pulled into the About overlay by index.html at runtime
+  (see loadAboutContent()). It is NOT a full HTML document — no <html>,
+  <head>, or <body> — just the markup that goes inside the popover body.
+
+  Because index.html fetches this as a plain relative file, the Electron
+  build and the website can each ship their own version of about.html
+  without any changes to index.html itself.
+-->
+<div class="about-header">
+  <span class="about-icon">📖</span>
+  <div>
+    <div class="about-title">River</div>
+    <div class="about-version">Version 0.1.0 · development build</div>
+  </div>
+</div>
+<p class="about-desc">River is a free and open source app intended to be an online or offline user interface for the best freely available English Bibles and original language Bible study tools.</p>
+<p class="about-desc">
+  Verse-numbering alignment data in this app is derived from two sources: 
+  <a href="https://github.com/STEPBible/STEPBible-Data">STEPBible's TVTMS dataset</a> 
+  (© Tyndale House Cambridge / STEPBible.org, CC BY 4.0) and the 
+  <a href="https://github.com/AndBible/jsword">AndBible/jsword project</a>'s 
+  Vulgate versification mappings (LGPL 2.1+).
+</p>
+<p class="about-desc">
+  Finding which glosses should be lumped together is done using <a href="https://github.com/nltk/nltk">
+    NLTK's WordNetLemmatizer</a> (Apache 2.0).
+</p>
+<p class="about-desc">
+  Related Greek words (word families and compounds) in the Occurrences pane are derived from the derivation notes in <a href="https://github.com/openscriptures/strongs">Open Scriptures' Strong's Greek Dictionary</a> (text public domain; XML © Open Scriptures, CC BY-SA 4.0), G. Abbott-Smith's 1904 <em>A Manual Greek Lexicon of the New Testament</em> (public domain; digital edition from <a href="https://github.com/translatable-exegetical-tools/Abbott-Smith/">translatable-exegetical-tools/Abbott-Smith</a>), and etymology and derived-term data from <a href="https://en.wiktionary.org/">Wiktionary</a> contributors, extracted by <a href="https://github.com/tatuylonen/wiktextract">wiktextract</a> and distributed via <a href="https://kaikki.org/">kaikki.org</a> (CC BY-SA 4.0).
+</p>
+<p class="about-desc">
+  Cross-references were built from two sources: the marginal cross-reference apparatus of the original 1582/1610 Douay-Rheims Bible (public domain), and <a href="https://www.openbible.info/labs/cross-references/">openbible.info's Cross References dataset</a> (CC BY 4.0), which traces back to the public-domain Treasury of Scripture Knowledge and is filtered here to high-confidence, community-voted entries.
+</p>
+<div class="about-meta">
+  <div class="about-meta-row"><span>Source</span><span>github.com/elvishcraftsman/river-bible</span></div>
+  <div class="about-meta-row"><span>License</span><span>MIT</span></div>
+</div>
