@@ -160,8 +160,9 @@ PKG_DIR="$(ls -d out/*-linux-x64 | head -n1)"
 say "Assembling AppDir"
 mkdir -p "$APPDIR" "$RELEASE_DIR"
 cp -a "$PKG_DIR"/. "$APPDIR"/
-cp assets/icon.svg "$APPDIR/$APP_ID.svg"
-ln -sf "$APP_ID.svg" "$APPDIR/.DirIcon"
+# appimagetool wants a PNG icon (it derives .DirIcon from it); an SVG .DirIcon is rejected.
+[ -f assets/icon.png ] || die "assets/icon.png is missing (it is rendered from assets/icon.svg and committed)."
+cp assets/icon.png "$APPDIR/$APP_ID.png"
 
 cat > "$APPDIR/$APP_ID.desktop" <<EOF
 [Desktop Entry]
@@ -180,6 +181,9 @@ HERE="$(dirname "$(readlink -f "$0")")"
 exec "$HERE/river-bible" "$@"
 EOF
 chmod +x "$APPDIR/AppRun"
+# Other users must be able to read/run the AppImage; your umask may have made these 0700.
+chmod -R a+rX "$APPDIR"
+chmod a+rx "$APPDIR" "$APPDIR/AppRun"
 
 say "Building the AppImage (uruntime)"
 OUT_NAME="River-Bible-${NEXT}-${ARCH}.AppImage"
