@@ -1,7 +1,7 @@
 {
   "name": "river-bible",
   "productName": "River Bible",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Open source Bible app",
   "main": "main.js",
   "engines": {
