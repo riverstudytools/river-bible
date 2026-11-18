@@ -45,6 +45,10 @@ while [ $# -gt 0 ]; do
   shift
 done
 
+# npm 12 refuses git-hosted dependencies unless allowed. Electron's build tooling pulls in one
+# (@electron/node-gyp, pinned to an exact commit in package-lock.json), so allow it for this script's npm calls.
+export NPM_CONFIG_ALLOW_GIT=all
+
 say()  { printf '\n\033[1m==> %s\033[0m\n' "$*"; }
 die()  { printf '\033[31mError: %s\033[0m\n' "$*" >&2; exit 1; }
 confirm() { # prompt
