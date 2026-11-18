@@ -1,0 +1,720 @@
+diff --git a/.gitignore b/.gitignore
+index a167da2..07697b4 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -4,3 +4,4 @@ bible.sqlite
+ bible.sqlite-shm
+ out/
+ import/sources/kaikki.org-dictionary-AncientGreek.jsonl
++.build-cache/
+diff --git a/build.sh b/build.sh
+old mode 100644
+new mode 100755
+index e69de29..3b9299a
+--- a/build.sh
++++ b/build.sh
+@@ -0,0 +1,237 @@
++#!/usr/bin/env bash
++#
++# build.sh — build the River Bible AppImage and publish it to GitHub Releases.
++#
++#   ./build.sh                  interactive: shows the current version, asks for the next one,
++#                               builds, then commits + tags + pushes + creates the GitHub release
++#   ./build.sh --no-publish     build only (still asks for / bumps a version, then restores it)
++#   ./build.sh --version 1.2.0  skip the version prompt
++#   ./build.sh --yes            skip the confirmation prompt
++#
++# Prerequisites: bible.sqlite (run ./build_database.sh first), node + npm, git, curl,
++# and — for publishing — the GitHub CLI (`gh auth login`). No FUSE needed: the AppImage is
++# built with appimagetool in extract-and-run mode and uses the uruntime runtime
++# (https://github.com/VHSgunzo/uruntime), which bundles its own FUSE support.
++#
++# Output (in out/release/):
++#   River-Bible-<version>-x86_64.AppImage
++#   latest-linux.yml            <- what the in-app updater reads; must be uploaded with the AppImage
++
++set -euo pipefail
++cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
++
++REPO="riverstudytools/river-bible"
++APP_NAME="River Bible"
++APP_ID="river-bible"
++ARCH="x86_64"
++CACHE=".build-cache"
++RELEASE_DIR="out/release"
++APPDIR="out/AppDir"
++APPIMAGETOOL_URL="https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-${ARCH}.AppImage"
++URUNTIME_URL="https://github.com/VHSgunzo/uruntime/releases/latest/download/uruntime-appimage-squashfs-lite-${ARCH}"
++
++PUBLISH=1
++ASSUME_YES=0
++NEXT=""
++
++while [ $# -gt 0 ]; do
++  case "$1" in
++    --no-publish) PUBLISH=0 ;;
++    --yes|-y)     ASSUME_YES=1 ;;
++    --version)    NEXT="${2:-}"; shift ;;
++    -h|--help)    sed -n '2,18p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
++    *)            echo "Unknown option: $1 (try --help)" >&2; exit 1 ;;
++  esac
++  shift
++done
++
++say()  { printf '\n\033[1m==> %s\033[0m\n' "$*"; }
++die()  { printf '\033[31mError: %s\033[0m\n' "$*" >&2; exit 1; }
++confirm() { # prompt
++  [ "$ASSUME_YES" = 1 ] && return 0
++  local ans; read -r -p "$1 [y/N] " ans
++  [[ "$ans" =~ ^[Yy]$ ]]
++}
++
++# ---------------------------------------------------------------- preflight
++for tool in node npm git curl; do
++  command -v "$tool" >/dev/null || die "'$tool' is not installed (on Silverblue, run this inside your toolbox/distrobox)."
++done
++if [ "$PUBLISH" = 1 ]; then
++  command -v gh >/dev/null || die "GitHub CLI 'gh' is not installed. Install it, or use --no-publish."
++  gh auth status >/dev/null 2>&1 || die "Not logged in to GitHub. Run: gh auth login"
++fi
++[ -f bible.sqlite ] || die "bible.sqlite not found. Run ./build_database.sh first."
++
++if [ "$PUBLISH" = 1 ]; then
++  if ! git diff --quiet || ! git diff --cached --quiet; then
++    die "You have uncommitted changes. Commit or stash them first — the release tag must match what gets built (or use --no-publish)."
++  fi
++  branch="$(git rev-parse --abbrev-ref HEAD)"
++  if [ "$branch" != "main" ]; then
++    confirm "You are on '$branch', not 'main'. Release from here anyway?" || exit 1
++  fi
++  git fetch --quiet origin
++  if [ -n "$(git rev-list 'HEAD..@{u}' 2>/dev/null || true)" ]; then
++    die "Your branch is behind origin. Pull first."
++  fi
++fi
++
++# ---------------------------------------------------------------- version
++say "Installing dependencies"
++npm ci
++
++CURRENT="$(node -p "require('./package.json').version")"
++LATEST_RELEASE="none yet"
++if [ "$PUBLISH" = 1 ]; then
++  LATEST_RELEASE="$(gh release view --repo "$REPO" --json tagName -q .tagName 2>/dev/null || echo 'none yet')"
++fi
++
++bump() { node -e "const s=require('semver');console.log(s.inc(process.argv[1],process.argv[2])||'')" "$CURRENT" "$1"; }
++PATCH="$(bump patch)"; MINOR="$(bump minor)"; MAJOR="$(bump major)"
++
++say "Version"
++echo "  package.json version : $CURRENT"
++echo "  latest GitHub release: $LATEST_RELEASE"
++
++if [ -z "$NEXT" ]; then
++  echo
++  echo "  What should the next version be?"
++  echo "    1) patch  -> $PATCH"
++  echo "    2) minor  -> $MINOR"
++  echo "    3) major  -> $MAJOR"
++  echo "    or type a version, e.g. 1.2.0 or 1.2.0-beta.1 (pre-releases are not offered as updates)"
++  read -r -p "  Next version: " choice
++  case "$choice" in
++    1) NEXT="$PATCH" ;;
++    2) NEXT="$MINOR" ;;
++    3) NEXT="$MAJOR" ;;
++    *) NEXT="${choice#v}" ;;
++  esac
++fi
++
++node -e "
++  const s=require('semver'); const [cur,next]=process.argv.slice(1);
++  if(!s.valid(next)){console.error('\"'+next+'\" is not a valid version (expected MAJOR.MINOR.PATCH).');process.exit(1)}
++  if(!s.gt(next,cur)){console.error('Version '+next+' is not higher than the current '+cur+'.');process.exit(1)}
++" "$CURRENT" "$NEXT" || exit 1
++
++TAG="v$NEXT"
++if [ "$PUBLISH" = 1 ]; then
++  git rev-parse -q --verify "refs/tags/$TAG" >/dev/null && die "Tag $TAG already exists locally."
++  git ls-remote --exit-code --tags origin "$TAG" >/dev/null 2>&1 && die "Tag $TAG already exists on GitHub."
++  confirm "Build and publish $APP_NAME $NEXT to GitHub?" || exit 1
++else
++  confirm "Build $APP_NAME $NEXT (no publish)?" || exit 1
++fi
++
++# Bump package.json + package-lock.json with npm itself (no git tag yet — we tag after a good build).
++# If anything fails before the release is committed, put the version files back.
++RELEASED=0
++restore_version() {
++  if [ "$RELEASED" = 0 ]; then
++    git checkout -- package.json package-lock.json 2>/dev/null || true
++  fi
++}
++trap restore_version EXIT
++npm version "$NEXT" --no-git-tag-version >/dev/null
++echo "  package.json is now at $(node -p "require('./package.json').version")"
++
++# ---------------------------------------------------------------- tools
++mkdir -p "$CACHE"
++fetch_tool() { # url dest
++  if [ ! -x "$2" ]; then
++    say "Downloading $(basename "$2")"
++    curl -fL --retry 3 -o "$2.part" "$1"
++    chmod +x "$2.part"
++    mv "$2.part" "$2"
++  fi
++}
++fetch_tool "$APPIMAGETOOL_URL" "$CACHE/appimagetool"
++fetch_tool "$URUNTIME_URL"     "$CACHE/uruntime"
++
++# ---------------------------------------------------------------- build
++say "Packaging the Electron app"
++rm -rf out
++npx electron-forge package --platform linux --arch x64
++PKG_DIR="$(ls -d out/*-linux-x64 | head -n1)"
++[ -d "$PKG_DIR" ] || die "electron-forge did not produce out/*-linux-x64"
++
++say "Assembling AppDir"
++mkdir -p "$APPDIR" "$RELEASE_DIR"
++cp -a "$PKG_DIR"/. "$APPDIR"/
++cp assets/icon.svg "$APPDIR/$APP_ID.svg"
++ln -sf "$APP_ID.svg" "$APPDIR/.DirIcon"
++
++cat > "$APPDIR/$APP_ID.desktop" <<EOF
++[Desktop Entry]
++Type=Application
++Name=$APP_NAME
++Comment=Open source Bible study app
++Exec=$APP_ID %U
++Icon=$APP_ID
++Terminal=false
++Categories=Education;Literature;
++EOF
++
++cat > "$APPDIR/AppRun" <<'EOF'
++#!/bin/sh
++HERE="$(dirname "$(readlink -f "$0")")"
++exec "$HERE/river-bible" "$@"
++EOF
++chmod +x "$APPDIR/AppRun"
++
++say "Building the AppImage (uruntime)"
++OUT_NAME="River-Bible-${NEXT}-${ARCH}.AppImage"
++OUT="$RELEASE_DIR/$OUT_NAME"
++rm -f "$OUT"
++APPIMAGE_EXTRACT_AND_RUN=1 ARCH="$ARCH" "$CACHE/appimagetool" \
++  --no-appstream \
++  --runtime-file "$CACHE/uruntime" \
++  "$APPDIR" "$OUT"
++chmod +x "$OUT"
++[ -s "$OUT" ] || die "appimagetool produced no output."
++
++# The in-app updater (electron-updater) reads this file to learn the newest version and verify the download.
++say "Writing latest-linux.yml"
++node -e "
++  const fs=require('fs'), path=require('path'), crypto=require('crypto');
++  const [file, name, version]=process.argv.slice(1);
++  const buf=fs.readFileSync(file);
++  const sha512=crypto.createHash('sha512').update(buf).digest('base64');
++  fs.writeFileSync(path.join(path.dirname(file),'latest-linux.yml'),
++    'version: '+version+'\n'+
++    'files:\n'+
++    '  - url: '+name+'\n'+
++    '    sha512: '+sha512+'\n'+
++    '    size: '+buf.length+'\n'+
++    'path: '+name+'\n'+
++    'sha512: '+sha512+'\n'+
++    'releaseDate: \''+new Date().toISOString()+'\'\n');
++" "$OUT" "$OUT_NAME" "$NEXT"
++
++say "Built $OUT ($(du -h "$OUT" | cut -f1))"
++
++if [ "$PUBLISH" = 0 ]; then
++  echo "Skipping publish (--no-publish). package.json restored to $CURRENT."
++  exit 0
++fi
++
++# ---------------------------------------------------------------- publish
++say "Publishing $TAG"
++git add package.json package-lock.json
++git commit -m "Release $TAG"
++git tag -a "$TAG" -m "$APP_NAME $NEXT"
++RELEASED=1   # from here on, don't roll package.json back — the commit exists
++
++PRE_FLAG=()
++[[ "$NEXT" == *-* ]] && PRE_FLAG=(--prerelease)
++
++git push origin HEAD "$TAG"
++gh release create "$TAG" \
++  "$OUT" "$RELEASE_DIR/latest-linux.yml" \
++  --repo "$REPO" --verify-tag \
++  --title "$APP_NAME $NEXT" --generate-notes \
++  ${PRE_FLAG[@]+"${PRE_FLAG[@]}"}
++
++say "Done: https://github.com/$REPO/releases/tag/$TAG"
+diff --git a/forge.config.js b/forge.config.js
+index 747a98a..c165f3c 100644
+--- a/forge.config.js
++++ b/forge.config.js
+@@ -14,6 +14,9 @@ module.exports = {
+       /\/import($|\/)/,
+       /^\/bible\.sqlite$/,
+     ],
++    // The AppImage is assembled by build.sh (uruntime + appimagetool) from the
++    // output of `electron-forge package`, so there is no AppImage maker below.
++    //
+     // AppImage (and most FUSE) mounts are nosuid, so a shipped
+     // chrome-sandbox can never be the setuid-root helper Chromium wants.
+     // Removing it lets the namespace sandbox / --no-sandbox path work.
+@@ -40,14 +43,6 @@ module.exports = {
+       name: '@electron-forge/maker-deb',
+       config: {},
+     },
+-    {
+-      name: '@reforged/maker-appimage',
+-      config: {
+-        options: {
+-          icon: './assets/icon.svg',
+-        },
+-      },
+-    },
+     {
+       name: '@electron-forge/maker-rpm',
+       config: {},
+diff --git a/index.html b/index.html
+index 462e433..8dc8a08 100644
+--- a/index.html
++++ b/index.html
+@@ -3161,6 +3161,31 @@ h3.section-hdg + .psalm-hdg{ margin-top:2px; }
+         <div class="menu-separator"></div>
+       </div>
+ 
++      <!-- Electron only: the website is always current, so this block stays hidden there. -->
++      <div id="settingsUpdatesSection" hidden>
++        <div class="settings-section-hdg">Updates</div>
++        <div class="menu-row menu-row-wrap" id="settingsUpdateModeRow">
++          <span class="menu-row-label">Check for Updates</span>
++          <div class="btn-group" id="settingsUpdateModeGroup" role="radiogroup" aria-label="How River checks for updates">
++            <button type="button" class="btn flat" data-update-mode="github" role="radio" aria-checked="true">GitHub Releases</button>
++            <button type="button" class="btn flat" data-update-mode="custom" role="radio" aria-checked="false">Custom page</button>
++            <button type="button" class="btn flat" data-update-mode="off" role="radio" aria-checked="false">Never</button>
++          </div>
++        </div>
++        <div class="menu-row menu-row-wrap" id="settingsUpdateUrlRow" hidden>
++          <label class="menu-row-label" for="settingsUpdateUrlInput">Release Page</label>
++          <input type="text" id="settingsUpdateUrlInput" class="settings-text-input" placeholder="https://github.com/owner/repo" autocomplete="off" autocapitalize="off" spellcheck="false">
++        </div>
++        <p class="settings-hint" id="settingsUpdateHint">River checks its GitHub Releases when it starts and downloads new versions in the background. Updates apply the next time you restart.</p>
++        <div class="settings-import-export">
++          <button type="button" class="btn flat" id="settingsUpdateCheckBtn">Check Now</button>
++          <span class="settings-hint" id="settingsUpdateStatus" aria-live="polite"></span>
++        </div>
++        <p class="settings-hint">Updating works in the AppImage version only.</p>
++
++        <div class="menu-separator"></div>
++      </div>
++
+       <div class="settings-section-hdg">Translations</div>
+       <p class="settings-hint">Arrange translations into groups — drag a translation chip to reorder it within its group, or drag a group's handle to reorder the groups themselves. Groups appear in this order in every translation dropdown, and a translation can belong to more than one group at once (e.g. a favorite Old Testament text).</p>
+       <div id="translationGroupsList" class="translation-groups-list"></div>
+@@ -3284,6 +3309,9 @@ var state = {
+   // own to use). On the website this setting is ignored and hidden — links use the site's own origin.
+   // See shareOrigin / normalizeShareDomain.
+   shareDomain: 'earlychristianbible.org',
++  // Electron/AppImage only — see updater.js. 'github' (default) | 'custom' | 'off'; updateUrl is used by 'custom'.
++  updateMode: 'github',
++  updateUrl: '',
+   tabs: [],              // open tabs, in tab-strip display order
+   mru: [],               // tab ids, most-recently-used first (drives the alt-tab-style switcher)
+   focusedPaneIndex: 0,    // which pane the search box / nav buttons / keyboard shortcuts act on
+@@ -6365,6 +6393,7 @@ async function ensureLexFamilyLoaded(paneIndex){
+ 
+ /* ---- related words: shared default / reset ---- */
+ 
++function normalizeUpdateMode(v){ return (v === 'custom' || v === 'off') ? v : 'github'; }
+ function normalizeRelatedWordsDefault(v){ return (v === 'on' || v === 'remember') ? v : 'off'; }
+ 
+ // Where the "Show related words" switch starts each time a new word is looked up (Settings ▸ Word Study).
+@@ -11855,6 +11884,62 @@ settingsShareDomainInput.addEventListener('change', function(){
+ });
+ syncShareDomainSetting();
+ 
++// Settings ▸ Updates (Electron only; main.js reads updateMode/updateUrl back out of settings.json,
++// and the "Check Now" button hands it the live values so it works before the debounced save lands).
++var settingsUpdatesSection = document.getElementById('settingsUpdatesSection');
++var settingsUpdateModeGroup = document.getElementById('settingsUpdateModeGroup');
++var settingsUpdateUrlRow = document.getElementById('settingsUpdateUrlRow');
++var settingsUpdateUrlInput = document.getElementById('settingsUpdateUrlInput');
++var settingsUpdateHint = document.getElementById('settingsUpdateHint');
++var settingsUpdateStatus = document.getElementById('settingsUpdateStatus');
++var UPDATE_HINTS = {
++  github: 'River checks its GitHub Releases when it starts and downloads new versions in the background. Updates apply the next time you restart.',
++  custom: 'Paste a GitHub repository address (https://github.com/owner/repo) or the web folder that holds latest-linux.yml and the AppImage.',
++  off: 'River will not look for updates on its own. You can still use Check Now or Help ▸ Check for Updates.'
++};
++function syncUpdateSettings(){
++  Array.prototype.forEach.call(settingsUpdateModeGroup.querySelectorAll('[data-update-mode]'), function(b){
++    var on = b.getAttribute('data-update-mode') === state.updateMode;
++    b.classList.toggle('active', on);
++    b.setAttribute('aria-checked', on ? 'true' : 'false');
++  });
++  settingsUpdateUrlRow.hidden = state.updateMode !== 'custom';
++  settingsUpdateUrlInput.value = state.updateUrl;
++  settingsUpdateHint.textContent = UPDATE_HINTS[state.updateMode];
++}
++function showUpdateStatus(st){
++  var t = '';
++  if (!st) t = '';
++  else if (st.state === 'checking') t = 'Checking…';
++  else if (st.state === 'downloading') t = 'Downloading ' + (st.version || '') + (typeof st.percent === 'number' ? ' (' + st.percent + '%)' : '') + '…';
++  else if (st.state === 'downloaded') t = 'Version ' + st.version + ' is ready — restart to install.';
++  else if (st.state === 'current') t = 'You have the latest version.';
++  else if (st.state === 'error') t = st.message || 'Could not check for updates.';
++  else if (st.state === 'unsupported') t = 'Updates are not available in this build.';
++  settingsUpdateStatus.textContent = t;
++}
++if (window.electronAPI && window.electronAPI.checkForUpdates){
++  settingsUpdatesSection.hidden = false;
++  settingsUpdateModeGroup.addEventListener('click', function(e){
++    var btn = e.target.closest('[data-update-mode]');
++    if (!btn) return;
++    state.updateMode = normalizeUpdateMode(btn.getAttribute('data-update-mode'));
++    syncUpdateSettings();
++    scheduleSaveSettings();
++  });
++  settingsUpdateUrlInput.addEventListener('change', function(){
++    state.updateUrl = settingsUpdateUrlInput.value.trim();
++    scheduleSaveSettings();
++  });
++  document.getElementById('settingsUpdateCheckBtn').addEventListener('click', function(){
++    state.updateUrl = settingsUpdateUrlInput.value.trim();
++    window.electronAPI.checkForUpdates({ mode: state.updateMode, url: state.updateUrl }).then(showUpdateStatus);
++  });
++  window.electronAPI.onUpdateStatus(showUpdateStatus);
++  window.electronAPI.getUpdateStatus().then(showUpdateStatus);
++}
++syncUpdateSettings();
++
+ document.getElementById('settingsCopyVerseNumsRow').addEventListener('click', function(){
+   state.copyIncludeVerseNumbers = !state.copyIncludeVerseNumbers;
+   setSwitch(settingsCopyVerseNumsSwitch, state.copyIncludeVerseNumbers);
+@@ -11919,6 +12004,9 @@ function applySettingsBlob(data, opts){
+   syncRelatedWordsSetting();
+   state.shareDomain = normalizeShareDomain(data.shareDomain);
+   syncShareDomainSetting();
++  state.updateMode = normalizeUpdateMode(data.updateMode);
++  state.updateUrl = typeof data.updateUrl === 'string' ? data.updateUrl.trim() : '';
++  syncUpdateSettings();
+ 
+   // translationGroups: null (or absent) means "use whatever's already in
+   // place" (default-settings.json sets it to null deliberately, to mean
+@@ -12302,6 +12390,8 @@ function buildSettingsPayload(){
+     relatedWordsDefault: state.relatedWordsDefault,
+     relatedWordsLast: state.relatedWordsLast,
+     shareDomain: state.shareDomain,
++    updateMode: state.updateMode,
++    updateUrl: state.updateUrl,
+     // Groups are stored as {id, name, translationCodes} — translationIds
+     // is intentionally omitted here (contrast state.translationGroups,
+     // the in-memory shape used everywhere else in the app) so a saved
+@@ -12481,6 +12571,9 @@ function restoreSession(session){
+       syncRelatedWordsSetting();
+       state.shareDomain = normalizeShareDomain(saved.shareDomain);
+       syncShareDomainSetting();
++      state.updateMode = normalizeUpdateMode(saved.updateMode);
++      state.updateUrl = typeof saved.updateUrl === 'string' ? saved.updateUrl.trim() : '';
++      syncUpdateSettings();
+       if (Array.isArray(saved.translationGroups)){
+         // translationGroups entries can carry translationCodes (portable
+         // across bible.sqlite builds — see default-settings.json) in
+diff --git a/main.js b/main.js
+index 6e4e8a2..32be86c 100644
+--- a/main.js
++++ b/main.js
+@@ -12,6 +12,7 @@ const path = require('path');
+ const fs = require('fs');
+ const Database = require('better-sqlite3');
+ const { createQueries } = require('./db-queries');
++const updater = require('./updater');
+ 
+ // AppImage FUSE mounts are nosuid, so chrome-sandbox can never be mode
+ // 4755 root. Chromium then aborts if that helper is present but
+@@ -129,6 +130,15 @@ function saveSettingsSync(data) {
+   fs.writeFileSync(settingsFilePath(), JSON.stringify(data, null, 2), 'utf8');
+ }
+ 
++// Update preferences (Settings ▸ Updates) live in settings.json like everything
++// else; this is the slice updater.js needs. Missing/unknown values mean the
++// default: check this project's GitHub Releases.
++function getUpdateConfig() {
++  const s = loadSettingsSync() || {};
++  const mode = ['github', 'custom', 'off'].includes(s.updateMode) ? s.updateMode : 'github';
++  return { mode, url: typeof s.updateUrl === 'string' ? s.updateUrl : '' };
++}
++
+ // Same six operations as server.js's HTTP routes, over IPC instead.
+ // Thrown errors reject the renderer's ipcRenderer.invoke() promise
+ // automatically — db-client.js's try/catch handles that exactly like an
+@@ -165,6 +175,14 @@ function registerIpcHandlers() {
+   // loadSettingsSync's one-time first-run fallback above.
+   ipcMain.handle('settings:loadDefaults', () => loadDefaultSettingsSync());
+ 
++  // Settings ▸ Updates. The renderer passes its live (possibly not yet saved)
++  // choice for "Check now"; background checks read settings.json instead.
++  ipcMain.handle('updater:getStatus', () => updater.getStatus());
++  ipcMain.handle('updater:check', (event, config) => {
++    const mode = config && ['github', 'custom', 'off'].includes(config.mode) ? config.mode : 'github';
++    return updater.checkForUpdates({ mode, url: config && typeof config.url === 'string' ? config.url : '' }, { manual: true });
++  });
++
+   // Right-click a tab > Open in New Window (index.html): opens a fresh
+   // window pointed at the same reference/translation/compare state as
+   // the tab it was opened from — see createWindow's openTabPayload
+@@ -396,9 +414,13 @@ function buildMenuTemplate(win, settings) {
+           label: 'About ' + getAppName(),
+           click: () => sendAction('about')
+         },
++        {
++          label: 'Check for Updates\u2026',
++          click: () => updater.checkForUpdates(getUpdateConfig(), { manual: true })
++        },
+         {
+           label: 'River on GitHub',
+-          click: () => shell.openExternal('https://github.com/elvishcraftsman/river-bible')
++          click: () => shell.openExternal('https://github.com/riverstudytools/river-bible')
+         }
+       ]
+     }
+@@ -415,6 +437,7 @@ app.whenReady().then(() => {
+   // this copy is only used for the native menu's initial checked state.
+   const initialSettings = loadSettingsSync();
+   createWindow(initialSettings);
++  updater.startBackgroundChecks(getUpdateConfig);
+ 
+   app.on('activate', () => {
+     if (BrowserWindow.getAllWindows().length === 0) createWindow(loadSettingsSync());
+diff --git a/package.json b/package.json
+index 703f01b..118de19 100644
+--- a/package.json
++++ b/package.json
+@@ -13,18 +13,19 @@
+   },
+   "repository": {
+     "type": "git",
+-    "url": "git+https://github.com/elvishcraftsman/river-bible.git"
++    "url": "git+https://github.com/riverstudytools/river-bible.git"
+   },
+   "keywords": [],
+   "author": "",
+   "license": "ISC",
+   "bugs": {
+-    "url": "https://github.com/elvishcraftsman/river-bible/issues"
++    "url": "https://github.com/riverstudytools/river-bible/issues"
+   },
+-  "homepage": "https://github.com/elvishcraftsman/river-bible#readme",
++  "homepage": "https://github.com/riverstudytools/river-bible#readme",
+   "dependencies": {
+     "better-sqlite3": "^13.0.3",
+     "electron-squirrel-startup": "^1.0.1",
++    "electron-updater": "^6.8.11",
+     "express": "^5.2.1"
+   },
+   "devDependencies": {
+@@ -34,8 +35,7 @@
+     "@electron-forge/maker-squirrel": "^6.4.2",
+     "@electron-forge/maker-zip": "^6.4.2",
+     "@electron-forge/plugin-auto-unpack-natives": "^6.4.2",
+-    "@reforged/maker-appimage": "^5.3.1",
+     "electron": "^44.1.0",
+     "nodemon": "^3.1.14"
+   }
+-}
+\ No newline at end of file
++}
+diff --git a/preload.js b/preload.js
+index 2f9b7b1..3260f0c 100644
+--- a/preload.js
++++ b/preload.js
+@@ -46,6 +46,15 @@ contextBridge.exposeInMainWorld('electronAPI', {
+     return () => ipcRenderer.removeListener('menu:action', listener);
+   },
+ 
++  // ---- app updates (AppImage only; see updater.js) ----
++  getUpdateStatus: () => ipcRenderer.invoke('updater:getStatus'),
++  checkForUpdates: (config) => ipcRenderer.invoke('updater:check', config),
++  onUpdateStatus: (callback) => {
++    const listener = (event, status) => callback(status);
++    ipcRenderer.on('updater:status', listener);
++    return () => ipcRenderer.removeListener('updater:status', listener);
++  },
++
+   // Hands a URL off to the OS's default browser instead of letting it
+   // load inside this window — see index.html's document-level external
+   // link click handler, and main.js's 'open-external' listener plus its
+diff --git a/updater.js b/updater.js
+new file mode 100644
+index 0000000..ea04c46
+--- /dev/null
++++ b/updater.js
+@@ -0,0 +1,162 @@
++// updater.js — AppImage auto-update for the Electron main process
++//
++// Three modes, chosen in Settings ▸ Updates (stored in settings.json as
++// `updateMode` / `updateUrl`; main.js hands them to us via getConfig):
++//
++//   'github' (default)  Check this project's GitHub Releases.
++//   'custom'            Check a release page the user supplies:
++//                         • https://github.com/<owner>/<repo>[/releases…]  → that repo's Releases
++//                         • any other https:// URL → a folder that contains latest-linux.yml
++//                           (build.sh writes that file next to the AppImage it uploads)
++//   'off'               Never check.
++//
++// Updating only applies to the AppImage build (electron-updater swaps the
++// running .AppImage file in place). Dev runs and other package formats just
++// report "unsupported" and never touch the network.
++
++const { app, dialog, BrowserWindow } = require('electron');
++
++const DEFAULT_OWNER = 'riverstudytools';
++const DEFAULT_REPO = 'river-bible';
++const RECHECK_MS = 6 * 60 * 60 * 1000; // re-check every 6 hours while the app stays open
++const STARTUP_DELAY_MS = 8000;         // let the window finish loading first
++
++let autoUpdater = null;
++let checking = false;
++let manualCheck = false;
++let status = { state: 'idle' };
++
++function isSupported() {
++  return app.isPackaged && !!process.env.APPIMAGE;
++}
++
++function setStatus(next) {
++  status = next;
++  for (const win of BrowserWindow.getAllWindows()) {
++    if (!win.isDestroyed()) win.webContents.send('updater:status', status);
++  }
++}
++
++// Turns Settings' "custom release page" text into an electron-updater feed
++// config, or null if it isn't something we can use.
++function parseCustomUrl(raw) {
++  const text = String(raw || '').trim();
++  if (!text) return null;
++  let url;
++  try { url = new URL(/^[a-z][a-z0-9+.-]*:\/\//i.test(text) ? text : 'https://' + text); }
++  catch { return null; }
++  const localhost = url.hostname === 'localhost' || url.hostname === '127.0.0.1';
++  if (url.protocol !== 'https:' && !(url.protocol === 'http:' && localhost)) return null;
++
++  if (url.hostname === 'github.com' || url.hostname === 'www.github.com') {
++    const [owner, repo] = url.pathname.split('/').filter(Boolean);
++    if (!owner || !repo) return null;
++    return { provider: 'github', owner, repo: repo.replace(/\.git$/, '') };
++  }
++  // Generic server: accept either the folder or a direct link to latest-linux.yml.
++  const base = url.origin + url.pathname.replace(/\/[^/]*\.ya?ml$/i, '').replace(/\/+$/, '');
++  return { provider: 'generic', url: base };
++}
++
++function resolveFeed(config) {
++  const mode = config && config.mode;
++  if (mode === 'off') return null;
++  if (mode === 'custom') return parseCustomUrl(config.url); // null → invalid, handled by caller
++  return { provider: 'github', owner: DEFAULT_OWNER, repo: DEFAULT_REPO };
++}
++
++function getUpdater() {
++  if (autoUpdater) return autoUpdater;
++  // Required lazily so a dev run (or a build without the module) never pays for it.
++  ({ autoUpdater } = require('electron-updater'));
++  autoUpdater.autoDownload = true;
++  autoUpdater.autoInstallOnAppQuit = true; // "Later" still installs on the next quit
++  autoUpdater.allowPrerelease = false;
++  autoUpdater.logger = console;
++
++  autoUpdater.on('checking-for-update', () => setStatus({ state: 'checking' }));
++  autoUpdater.on('update-available', (info) => setStatus({ state: 'downloading', version: info.version, percent: 0 }));
++  autoUpdater.on('download-progress', (p) => setStatus({ state: 'downloading', version: status.version, percent: Math.round(p.percent) }));
++  autoUpdater.on('update-not-available', () => {
++    checking = false;
++    setStatus({ state: 'current', version: app.getVersion() });
++    if (manualCheck) {
++      dialog.showMessageBox({ type: 'info', message: 'River Bible is up to date.', detail: `You have version ${app.getVersion()}.` });
++    }
++    manualCheck = false;
++  });
++  autoUpdater.on('update-downloaded', (info) => {
++    checking = false;
++    setStatus({ state: 'downloaded', version: info.version });
++    manualCheck = false;
++    dialog.showMessageBox({
++      type: 'info',
++      buttons: ['Restart Now', 'Later'],
++      defaultId: 0,
++      cancelId: 1,
++      message: `River Bible ${info.version} is ready to install.`,
++      detail: 'Restart to finish updating. If you choose Later, it installs the next time you quit.',
++    }).then(({ response }) => { if (response === 0) autoUpdater.quitAndInstall(); });
++  });
++  autoUpdater.on('error', (err) => {
++    checking = false;
++    const message = (err && err.message ? err.message : String(err)).split('\n')[0];
++    setStatus({ state: 'error', message });
++    if (manualCheck) dialog.showMessageBox({ type: 'error', message: 'Could not check for updates.', detail: message });
++    manualCheck = false;
++  });
++  return autoUpdater;
++}
++
++// config = { mode: 'github' | 'custom' | 'off', url: string }
++// manual = true when the person asked (menu item / Settings button): results
++// are shown in dialogs, and a check runs even in "off" mode.
++async function checkForUpdates(config, { manual = false } = {}) {
++  if (!isSupported()) {
++    setStatus({ state: 'unsupported' });
++    if (manual) dialog.showMessageBox({ type: 'info', message: 'Updates are only available in the AppImage version of River Bible.' });
++    return status;
++  }
++  if (checking) return status;
++
++  const effective = manual && config && config.mode === 'off' ? { mode: 'github' } : config;
++  if (!manual && config && config.mode === 'off') { setStatus({ state: 'disabled' }); return status; }
++
++  const feed = resolveFeed(effective);
++  if (!feed) {
++    setStatus({ state: 'error', message: 'The custom release page is not a valid URL.' });
++    if (manual) dialog.showMessageBox({ type: 'error', message: 'Could not check for updates.', detail: 'The custom release page is not a valid URL.' });
++    return status;
++  }
++
++  checking = true;
++  manualCheck = manual;
++  try {
++    const updater = getUpdater();
++    updater.setFeedURL(feed);
++    await updater.checkForUpdates(); // outcomes arrive through the events above
++  } catch (err) {
++    // 'error' event normally covers this; this catches setFeedURL/require failures.
++    checking = false;
++    const message = (err && err.message ? err.message : String(err)).split('\n')[0];
++    setStatus({ state: 'error', message });
++    if (manual) dialog.showMessageBox({ type: 'error', message: 'Could not check for updates.', detail: message });
++    manualCheck = false;
++  }
++  return status;
++}
++
++// Called once from main.js after the first window exists. getConfig is read
++// fresh each time so a change made in Settings applies to the next check.
++function startBackgroundChecks(getConfig) {
++  if (!isSupported()) { setStatus({ state: 'unsupported' }); return; }
++  const run = () => checkForUpdates(getConfig(), { manual: false }).catch(() => {});
++  setTimeout(run, STARTUP_DELAY_MS);
++  setInterval(run, RECHECK_MS).unref();
++}
++
++function getStatus() {
++  return isSupported() ? status : { state: 'unsupported' };
++}
++
++module.exports = { checkForUpdates, startBackgroundChecks, getStatus, parseCustomUrl };

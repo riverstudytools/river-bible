@@ -4,3 +4,4 @@ bible.sqlite
 bible.sqlite-shm
 out/
 import/sources/kaikki.org-dictionary-AncientGreek.jsonl
+.build-cache/

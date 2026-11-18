@@ -12,6 +12,7 @@ const path = require('path');
 const fs = require('fs');
 const Database = require('better-sqlite3');
 const { createQueries } = require('./db-queries');
+const updater = require('./updater');
 
 // AppImage FUSE mounts are nosuid, so chrome-sandbox can never be mode
 // 4755 root. Chromium then aborts if that helper is present but
@@ -129,6 +130,15 @@ function saveSettingsSync(data) {
   fs.writeFileSync(settingsFilePath(), JSON.stringify(data, null, 2), 'utf8');
 }
 
+// Update preferences (Settings ▸ Updates) live in settings.json like everything
+// else; this is the slice updater.js needs. Missing/unknown values mean the
+// default: check this project's GitHub Releases.
+function getUpdateConfig() {
+  const s = loadSettingsSync() || {};
+  const mode = ['github', 'custom', 'off'].includes(s.updateMode) ? s.updateMode : 'github';
+  return { mode, url: typeof s.updateUrl === 'string' ? s.updateUrl : '' };
+}
+
 // Same six operations as server.js's HTTP routes, over IPC instead.
 // Thrown errors reject the renderer's ipcRenderer.invoke() promise
 // automatically — db-client.js's try/catch handles that exactly like an
@@ -164,6 +174,14 @@ function registerIpcHandlers() {
   // Settings dialog's "Restore Default Settings" button, as opposed to
   // loadSettingsSync's one-time first-run fallback above.
   ipcMain.handle('settings:loadDefaults', () => loadDefaultSettingsSync());
+
+  // Settings ▸ Updates. The renderer passes its live (possibly not yet saved)
+  // choice for "Check now"; background checks read settings.json instead.
+  ipcMain.handle('updater:getStatus', () => updater.getStatus());
+  ipcMain.handle('updater:check', (event, config) => {
+    const mode = config && ['github', 'custom', 'off'].includes(config.mode) ? config.mode : 'github';
+    return updater.checkForUpdates({ mode, url: config && typeof config.url === 'string' ? config.url : '' }, { manual: true });
+  });
 
   // Right-click a tab > Open in New Window (index.html): opens a fresh
   // window pointed at the same reference/translation/compare state as
@@ -397,8 +415,12 @@ function buildMenuTemplate(win, settings) {
           click: () => sendAction('about')
         },
         {
+          label: 'Check for Updates\u2026',
+          click: () => updater.checkForUpdates(getUpdateConfig(), { manual: true })
+        },
+        {
           label: 'River on GitHub',
-          click: () => shell.openExternal('https://github.com/elvishcraftsman/river-bible')
+          click: () => shell.openExternal('https://github.com/riverstudytools/river-bible')
         }
       ]
     }
@@ -415,6 +437,7 @@ app.whenReady().then(() => {
   // this copy is only used for the native menu's initial checked state.
   const initialSettings = loadSettingsSync();
   createWindow(initialSettings);
+  updater.startBackgroundChecks(getUpdateConfig);
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow(loadSettingsSync());

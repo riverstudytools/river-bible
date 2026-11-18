@@ -3161,6 +3161,31 @@ h3.section-hdg + .psalm-hdg{ margin-top:2px; }
         <div class="menu-separator"></div>
       </div>
 
+      <!-- Electron only: the website is always current, so this block stays hidden there. -->
+      <div id="settingsUpdatesSection" hidden>
+        <div class="settings-section-hdg">Updates</div>
+        <div class="menu-row menu-row-wrap" id="settingsUpdateModeRow">
+          <span class="menu-row-label">Check for Updates</span>
+          <div class="btn-group" id="settingsUpdateModeGroup" role="radiogroup" aria-label="How River checks for updates">
+            <button type="button" class="btn flat" data-update-mode="github" role="radio" aria-checked="true">GitHub Releases</button>
+            <button type="button" class="btn flat" data-update-mode="custom" role="radio" aria-checked="false">Custom page</button>
+            <button type="button" class="btn flat" data-update-mode="off" role="radio" aria-checked="false">Never</button>
+          </div>
+        </div>
+        <div class="menu-row menu-row-wrap" id="settingsUpdateUrlRow" hidden>
+          <label class="menu-row-label" for="settingsUpdateUrlInput">Release Page</label>
+          <input type="text" id="settingsUpdateUrlInput" class="settings-text-input" placeholder="https://github.com/owner/repo" autocomplete="off" autocapitalize="off" spellcheck="false">
+        </div>
+        <p class="settings-hint" id="settingsUpdateHint">River checks its GitHub Releases when it starts and downloads new versions in the background. Updates apply the next time you restart.</p>
+        <div class="settings-import-export">
+          <button type="button" class="btn flat" id="settingsUpdateCheckBtn">Check Now</button>
+          <span class="settings-hint" id="settingsUpdateStatus" aria-live="polite"></span>
+        </div>
+        <p class="settings-hint">Updating works in the AppImage version only.</p>
+
+        <div class="menu-separator"></div>
+      </div>
+
       <div class="settings-section-hdg">Translations</div>
       <p class="settings-hint">Arrange translations into groups — drag a translation chip to reorder it within its group, or drag a group's handle to reorder the groups themselves. Groups appear in this order in every translation dropdown, and a translation can belong to more than one group at once (e.g. a favorite Old Testament text).</p>
       <div id="translationGroupsList" class="translation-groups-list"></div>
@@ -3284,6 +3309,9 @@ var state = {
   // own to use). On the website this setting is ignored and hidden — links use the site's own origin.
   // See shareOrigin / normalizeShareDomain.
   shareDomain: 'earlychristianbible.org',
+  // Electron/AppImage only — see updater.js. 'github' (default) | 'custom' | 'off'; updateUrl is used by 'custom'.
+  updateMode: 'github',
+  updateUrl: '',
   tabs: [],              // open tabs, in tab-strip display order
   mru: [],               // tab ids, most-recently-used first (drives the alt-tab-style switcher)
   focusedPaneIndex: 0,    // which pane the search box / nav buttons / keyboard shortcuts act on
@@ -6365,6 +6393,7 @@ async function ensureLexFamilyLoaded(paneIndex){
 
 /* ---- related words: shared default / reset ---- */
 
+function normalizeUpdateMode(v){ return (v === 'custom' || v === 'off') ? v : 'github'; }
 function normalizeRelatedWordsDefault(v){ return (v === 'on' || v === 'remember') ? v : 'off'; }
 
 // Where the "Show related words" switch starts each time a new word is looked up (Settings ▸ Word Study).
@@ -11855,6 +11884,62 @@ settingsShareDomainInput.addEventListener('change', function(){
 });
 syncShareDomainSetting();
 
+// Settings ▸ Updates (Electron only; main.js reads updateMode/updateUrl back out of settings.json,
+// and the "Check Now" button hands it the live values so it works before the debounced save lands).
+var settingsUpdatesSection = document.getElementById('settingsUpdatesSection');
+var settingsUpdateModeGroup = document.getElementById('settingsUpdateModeGroup');
+var settingsUpdateUrlRow = document.getElementById('settingsUpdateUrlRow');
+var settingsUpdateUrlInput = document.getElementById('settingsUpdateUrlInput');
+var settingsUpdateHint = document.getElementById('settingsUpdateHint');
+var settingsUpdateStatus = document.getElementById('settingsUpdateStatus');
+var UPDATE_HINTS = {
+  github: 'River checks its GitHub Releases when it starts and downloads new versions in the background. Updates apply the next time you restart.',
+  custom: 'Paste a GitHub repository address (https://github.com/owner/repo) or the web folder that holds latest-linux.yml and the AppImage.',
+  off: 'River will not look for updates on its own. You can still use Check Now or Help ▸ Check for Updates.'
+};
+function syncUpdateSettings(){
+  Array.prototype.forEach.call(settingsUpdateModeGroup.querySelectorAll('[data-update-mode]'), function(b){
+    var on = b.getAttribute('data-update-mode') === state.updateMode;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-checked', on ? 'true' : 'false');
+  });
+  settingsUpdateUrlRow.hidden = state.updateMode !== 'custom';
+  settingsUpdateUrlInput.value = state.updateUrl;
+  settingsUpdateHint.textContent = UPDATE_HINTS[state.updateMode];
+}
+function showUpdateStatus(st){
+  var t = '';
+  if (!st) t = '';
+  else if (st.state === 'checking') t = 'Checking…';
+  else if (st.state === 'downloading') t = 'Downloading ' + (st.version || '') + (typeof st.percent === 'number' ? ' (' + st.percent + '%)' : '') + '…';
+  else if (st.state === 'downloaded') t = 'Version ' + st.version + ' is ready — restart to install.';
+  else if (st.state === 'current') t = 'You have the latest version.';
+  else if (st.state === 'error') t = st.message || 'Could not check for updates.';
+  else if (st.state === 'unsupported') t = 'Updates are not available in this build.';
+  settingsUpdateStatus.textContent = t;
+}
+if (window.electronAPI && window.electronAPI.checkForUpdates){
+  settingsUpdatesSection.hidden = false;
+  settingsUpdateModeGroup.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-update-mode]');
+    if (!btn) return;
+    state.updateMode = normalizeUpdateMode(btn.getAttribute('data-update-mode'));
+    syncUpdateSettings();
+    scheduleSaveSettings();
+  });
+  settingsUpdateUrlInput.addEventListener('change', function(){
+    state.updateUrl = settingsUpdateUrlInput.value.trim();
+    scheduleSaveSettings();
+  });
+  document.getElementById('settingsUpdateCheckBtn').addEventListener('click', function(){
+    state.updateUrl = settingsUpdateUrlInput.value.trim();
+    window.electronAPI.checkForUpdates({ mode: state.updateMode, url: state.updateUrl }).then(showUpdateStatus);
+  });
+  window.electronAPI.onUpdateStatus(showUpdateStatus);
+  window.electronAPI.getUpdateStatus().then(showUpdateStatus);
+}
+syncUpdateSettings();
+
 document.getElementById('settingsCopyVerseNumsRow').addEventListener('click', function(){
   state.copyIncludeVerseNumbers = !state.copyIncludeVerseNumbers;
   setSwitch(settingsCopyVerseNumsSwitch, state.copyIncludeVerseNumbers);
@@ -11919,6 +12004,9 @@ function applySettingsBlob(data, opts){
   syncRelatedWordsSetting();
   state.shareDomain = normalizeShareDomain(data.shareDomain);
   syncShareDomainSetting();
+  state.updateMode = normalizeUpdateMode(data.updateMode);
+  state.updateUrl = typeof data.updateUrl === 'string' ? data.updateUrl.trim() : '';
+  syncUpdateSettings();
 
   // translationGroups: null (or absent) means "use whatever's already in
   // place" (default-settings.json sets it to null deliberately, to mean
@@ -12302,6 +12390,8 @@ function buildSettingsPayload(){
     relatedWordsDefault: state.relatedWordsDefault,
     relatedWordsLast: state.relatedWordsLast,
     shareDomain: state.shareDomain,
+    updateMode: state.updateMode,
+    updateUrl: state.updateUrl,
     // Groups are stored as {id, name, translationCodes} — translationIds
     // is intentionally omitted here (contrast state.translationGroups,
     // the in-memory shape used everywhere else in the app) so a saved
@@ -12481,6 +12571,9 @@ function restoreSession(session){
       syncRelatedWordsSetting();
       state.shareDomain = normalizeShareDomain(saved.shareDomain);
       syncShareDomainSetting();
+      state.updateMode = normalizeUpdateMode(saved.updateMode);
+      state.updateUrl = typeof saved.updateUrl === 'string' ? saved.updateUrl.trim() : '';
+      syncUpdateSettings();
       if (Array.isArray(saved.translationGroups)){
         // translationGroups entries can carry translationCodes (portable
         // across bible.sqlite builds — see default-settings.json) in

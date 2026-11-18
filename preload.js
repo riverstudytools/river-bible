@@ -46,6 +46,15 @@ contextBridge.exposeInMainWorld('electronAPI', {
     return () => ipcRenderer.removeListener('menu:action', listener);
   },
 
+  // ---- app updates (AppImage only; see updater.js) ----
+  getUpdateStatus: () => ipcRenderer.invoke('updater:getStatus'),
+  checkForUpdates: (config) => ipcRenderer.invoke('updater:check', config),
+  onUpdateStatus: (callback) => {
+    const listener = (event, status) => callback(status);
+    ipcRenderer.on('updater:status', listener);
+    return () => ipcRenderer.removeListener('updater:status', listener);
+  },
+
   // Hands a URL off to the OS's default browser instead of letting it
   // load inside this window — see index.html's document-level external
   // link click handler, and main.js's 'open-external' listener plus its

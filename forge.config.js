@@ -14,6 +14,9 @@ module.exports = {
       /\/import($|\/)/,
       /^\/bible\.sqlite$/,
     ],
+    // The AppImage is assembled by build.sh (uruntime + appimagetool) from the
+    // output of `electron-forge package`, so there is no AppImage maker below.
+    //
     // AppImage (and most FUSE) mounts are nosuid, so a shipped
     // chrome-sandbox can never be the setuid-root helper Chromium wants.
     // Removing it lets the namespace sandbox / --no-sandbox path work.
@@ -39,14 +42,6 @@ module.exports = {
     {
       name: '@electron-forge/maker-deb',
       config: {},
-    },
-    {
-      name: '@reforged/maker-appimage',
-      config: {
-        options: {
-          icon: './assets/icon.svg',
-        },
-      },
     },
     {
       name: '@electron-forge/maker-rpm',
