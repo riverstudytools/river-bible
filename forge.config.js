@@ -25,7 +25,6 @@ module.exports = {
         if (platform === 'linux') {
           fs.rmSync(path.join(extractPath, 'chrome-sandbox'), { force: true });
         }
-        done();
       },
     ],
   },
