@@ -180,10 +180,13 @@ Terminal=false
 Categories=Education;Literature;
 EOF
 
+# --no-sandbox has to be on the command line: Electron sets up Chromium's sandbox before any JS runs,
+# so app.commandLine.appendSwitch in main.js is too late. AppImage mounts are nosuid, which rules out the
+# setuid helper, and the namespace sandbox isn't reliably available inside the AppImage's own namespaces.
 cat > "$APPDIR/AppRun" <<'EOF'
 #!/bin/sh
 HERE="$(dirname "$(readlink -f "$0")")"
-exec "$HERE/river-bible" "$@"
+exec "$HERE/river-bible" --no-sandbox "$@"
 EOF
 chmod +x "$APPDIR/AppRun"
 # Other users must be able to read/run the AppImage; your umask may have made these 0700.
