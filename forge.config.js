@@ -20,11 +20,21 @@ module.exports = {
     // AppImage (and most FUSE) mounts are nosuid, so a shipped
     // chrome-sandbox can never be the setuid-root helper Chromium wants.
     // Removing it lets the namespace sandbox / --no-sandbox path work.
+    //
+    // @electron/packager >= 19 calls hooks with ONE options object
+    // ({ buildPath, electronVersion, platform, arch }); older versions used
+    // positional arguments plus a `done` callback. Handle both.
     afterExtract: [
-      (extractPath, _electronVersion, platform, _arch, done) => {
-        if (platform === 'linux') {
-          fs.rmSync(path.join(extractPath, 'chrome-sandbox'), { force: true });
+      (...args) => {
+        const first = args[0];
+        const opts = first && typeof first === 'object'
+          ? first
+          : { buildPath: args[0], platform: args[2] };
+        if (opts.platform === 'linux') {
+          fs.rmSync(path.join(opts.buildPath, 'chrome-sandbox'), { force: true });
         }
+        const done = args[args.length - 1];
+        if (typeof done === 'function') done();
       },
     ],
   },

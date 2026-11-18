@@ -160,6 +160,11 @@ PKG_DIR="$(ls -d out/*-linux-x64 | head -n1)"
 say "Assembling AppDir"
 mkdir -p "$APPDIR" "$RELEASE_DIR"
 cp -a "$PKG_DIR"/. "$APPDIR"/
+# AppImage mounts are nosuid, so Chromium's setuid helper can never work there; if it is present,
+# Chromium aborts with "The SUID sandbox helper binary was found, but is not configured correctly".
+# forge.config.js removes it; this is a safety net so a packager change can't ship it again.
+rm -f "$APPDIR/chrome-sandbox"
+[ ! -e "$APPDIR/chrome-sandbox" ] || die "chrome-sandbox is still in the AppDir."
 # appimagetool wants a PNG icon (it derives .DirIcon from it); an SVG .DirIcon is rejected.
 [ -f assets/icon.png ] || die "assets/icon.png is missing (it is rendered from assets/icon.svg and committed)."
 cp assets/icon.png "$APPDIR/$APP_ID.png"
