@@ -13,6 +13,7 @@ const fs = require('fs');
 const Database = require('better-sqlite3');
 const { createQueries } = require('./db-queries');
 const updater = require('./updater');
+const { installDesktopIntegration } = require('./desktop-integration');
 
 // AppImage FUSE mounts are nosuid, so chrome-sandbox can never be mode
 // 4755 root. Chromium then aborts if that helper is present but
@@ -437,6 +438,7 @@ app.whenReady().then(() => {
   // this copy is only used for the native menu's initial checked state.
   const initialSettings = loadSettingsSync();
   createWindow(initialSettings);
+  installDesktopIntegration(); // AppImage only: app-menu entry + icon
   updater.startBackgroundChecks(getUpdateConfig);
 
   app.on('activate', () => {

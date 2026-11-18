@@ -178,6 +178,7 @@ Exec=$APP_ID %U
 Icon=$APP_ID
 Terminal=false
 Categories=Education;Literature;
+StartupWMClass=$APP_ID
 EOF
 
 # --no-sandbox has to be on the command line: Electron sets up Chromium's sandbox before any JS runs,
