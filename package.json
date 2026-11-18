@@ -4,6 +4,9 @@
   "version": "1.0.0",
   "description": "Open source Bible app",
   "main": "main.js",
+  "engines": {
+    "npm": ">=10.9.0"
+  },
   "scripts": {
     "start": "electron-forge start",
     "dev": "nodemon server.js",
